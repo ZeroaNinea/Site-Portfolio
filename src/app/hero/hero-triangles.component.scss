@@ -76,26 +76,27 @@
 
 .triangle-container-3 {
   position: absolute;
-  right: 30rem;
-  top: -2rem;
-  animation: counterclockwise-rotation-with-X-movement 18s linear infinite;
+  right: 40rem;
+  top: -3rem;
+  animation: counterclockwise-rotation-with-X-movement-reverse 15s linear
+    infinite;
 
   .triangle {
     width: 0;
     height: 0;
-    border-left: 40px solid transparent;
+    border-left: 60px solid transparent;
     border-right: 100px solid transparent;
-    border-bottom: 80px solid var(--blue-triangle);
+    border-bottom: 70px solid var(--green-triangle);
 
     .inner-triangle {
       position: relative;
-      left: -35px;
-      top: 6.5px;
+      left: -54px;
+      top: 5px;
       width: 0;
       height: 0;
-      border-left: 37px solid transparent;
+      border-left: 55px solid transparent;
       border-right: 90px solid transparent;
-      border-bottom: 70px solid white;
+      border-bottom: 62px solid white;
     }
   }
 }
@@ -118,6 +119,18 @@
   }
   100% {
     transform: translateX(-0px) rotate(0deg);
+  }
+}
+
+@keyframes counterclockwise-rotation-with-X-movement-reverse {
+  0% {
+    transform: translateX(0) translateY(0px) rotate(360deg);
+  }
+  50% {
+    transform: translateX(-300px) translateY(100px) rotate(180deg);
+  }
+  100% {
+    transform: translateX(-0px) translateY(0px) rotate(0deg);
   }
 }
 
