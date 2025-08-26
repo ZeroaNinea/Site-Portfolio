@@ -32,6 +32,12 @@
   animation: fadeDown 1s forwards;
 }
 
+.fede-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: fadeLeft 1s forwards;
+}
+
 .fade-left-wide {
   opacity: 0.2;
   transform: translateX(50px);

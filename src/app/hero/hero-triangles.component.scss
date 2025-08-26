@@ -76,7 +76,7 @@
 
 .triangle-container-3 {
   position: absolute;
-  right: 40rem;
+  left: 30rem;
   top: -3rem;
   animation: counterclockwise-rotation-with-X-movement-reverse 15s linear
     infinite;
@@ -97,6 +97,32 @@
       border-left: 55px solid transparent;
       border-right: 90px solid transparent;
       border-bottom: 62px solid white;
+    }
+  }
+}
+
+.triangle-container-4 {
+  position: absolute;
+  left: 20rem;
+  top: 10rem;
+  animation: chaotic-movement-with-rotation 13s linear infinite;
+
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 90px solid transparent;
+    border-right: 70px solid transparent;
+    border-bottom: 120px solid var(--pink-triangle);
+
+    .inner-triangle {
+      position: relative;
+      left: -80px;
+      top: 10px;
+      width: 0;
+      height: 0;
+      border-left: 80px solid transparent;
+      border-right: 60px solid transparent;
+      border-bottom: 105px solid white;
     }
   }
 }
@@ -146,6 +172,24 @@
   }
   75% {
     transform: translateX(-10px) rotate(-100deg);
+  }
+  100% {
+    transform: translateX(0) rotate(360deg);
+  }
+}
+
+@keyframes chaotic-movement-with-rotation-wide {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(300px) rotate(120deg);
+  }
+  50% {
+    transform: translateX(0) rotate(0deg);
+  }
+  75% {
+    transform: translateX(-400px) rotate(-100deg);
   }
   100% {
     transform: translateX(0) rotate(360deg);
