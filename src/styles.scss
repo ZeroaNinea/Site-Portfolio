@@ -1,6 +1,4 @@
-:root {
-  --blue-triangle: #7cc7ff;
-}
+@use "./styles/colors.scss" as *;
 
 html,
 body {

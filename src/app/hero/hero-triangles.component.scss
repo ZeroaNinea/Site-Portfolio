@@ -74,6 +74,32 @@
   }
 }
 
+.triangle-container-3 {
+  position: absolute;
+  right: 30rem;
+  top: -2rem;
+  animation: counterclockwise-rotation-with-X-movement 18s linear infinite;
+
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 80px solid var(--blue-triangle);
+
+    .inner-triangle {
+      position: relative;
+      left: -35px;
+      top: 6.5px;
+      width: 0;
+      height: 0;
+      border-left: 37px solid transparent;
+      border-right: 90px solid transparent;
+      border-bottom: 70px solid white;
+    }
+  }
+}
+
 @keyframes clockwise-rotation {
   0% {
     transform: rotate(0deg);
