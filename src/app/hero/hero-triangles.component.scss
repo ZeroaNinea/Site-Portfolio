@@ -205,6 +205,32 @@
   }
 }
 
+.triangle-container-8 {
+  position: absolute;
+  right: 8rem;
+  top: 27rem;
+  animation: chaotic-X-Y-movement-with-rotation 9s linear infinite;
+
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 90px solid transparent;
+    border-bottom: 110px solid var(--pink-triangle);
+
+    .inner-triangle {
+      position: relative;
+      left: -91px;
+      top: 8px;
+      width: 0;
+      height: 0;
+      border-left: 92px solid transparent;
+      border-right: 82px solid transparent;
+      border-bottom: 98px solid var(--mat-sys-background);
+    }
+  }
+}
+
 @keyframes clockwise-rotation {
   0% {
     transform: rotate(0deg);
@@ -253,6 +279,24 @@
   }
   100% {
     transform: translateX(0) rotate(360deg);
+  }
+}
+
+@keyframes chaotic-X-Y-movement-with-rotation {
+  0% {
+    transform: translateX(0) translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-110px) translateY(-80px) rotate(120deg);
+  }
+  50% {
+    transform: translateX(0) translateY(0px) rotate(0deg);
+  }
+  75% {
+    transform: translateX(100px) translateY(120px) rotate(-100deg);
+  }
+  100% {
+    transform: translateX(0) translateY(0px) rotate(360deg);
   }
 }
 
