@@ -27,6 +27,7 @@
 }
 
 .fade-down {
+  opacity: 0;
   transform: translateY(-20px);
   animation: fadeDown 1s forwards;
 }
