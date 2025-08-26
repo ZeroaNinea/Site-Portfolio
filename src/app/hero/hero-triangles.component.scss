@@ -1,3 +1,8 @@
+.triangle {
+  opacity: 0.8;
+  filter: blur(0.25px);
+}
+
 .triangle-container-0 {
   position: absolute;
   animation: clockwise-rotation 10s linear infinite;
