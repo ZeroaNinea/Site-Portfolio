@@ -61,6 +61,12 @@
     text-align: left;
     width: 100%;
     border-radius: 0;
+
+    @include mat.theme(
+      (
+        color: mat.$orange-palette,
+      )
+    );
   }
 
   &.open {
