@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
 })
-export class HeroComponent {}
+export class HeroComponent {
+  scrollToAbout() {
+    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+  }
+}
