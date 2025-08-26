@@ -49,10 +49,13 @@
 .scroll-down {
   position: absolute;
   bottom: 20px;
-  font-size: 2rem;
-  color: #666;
+  color: var(--mat-sys-outline);
   cursor: pointer;
   animation: bounce 2s infinite;
+
+  mat-icon {
+    font-size: 1.9rem;
+  }
 }
 
 @keyframes bounce {
