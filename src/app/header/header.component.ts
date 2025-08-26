@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   standalone: true,
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  styleUrls: ['./header.component.scss', './header.media.component.scss'],
 })
 export class HeaderComponent {
   menuOpen = false;
