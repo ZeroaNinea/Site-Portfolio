@@ -1,4 +1,4 @@
-<mat-toolbar class="header">
+<!-- <mat-toolbar class="header">
   <a href="https://github.com/ZeroaNinea" class="app-title">
     Heghine | Portfolio
   </a>
@@ -48,4 +48,40 @@
     </button>
   </mat-sidenav>
   <mat-sidenav-content></mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
+<mat-toolbar class="header">
+  <a href="https://github.com/ZeroaNinea" class="app-title">
+    Heghine | Portfolio
+  </a>
+
+  <span class="spacer"></span>
+
+  <!-- Desktop Nav -->
+  <nav class="desktop-nav">
+    <button mat-button routerLink="" fragment="about">About Me</button>
+    <button mat-button routerLink="" fragment="tech-stack">Tech Stack</button>
+    <button mat-button routerLink="" fragment="projects">Projects</button>
+    <button mat-button routerLink="" fragment="contacts">Contacts</button>
+  </nav>
+
+  <!-- Mobile Hamburger -->
+  <button mat-icon-button class="mobile-menu-btn" (click)="toggleMenu()">
+    <mat-icon>{{ menuOpen ? "close" : "menu" }}</mat-icon>
+  </button>
+</mat-toolbar>
+
+<!-- Custom mobile dropdown -->
+<nav class="mobile-nav" [class.open]="menuOpen">
+  <button mat-button (click)="toggleMenu()" routerLink="" fragment="about">
+    About Me
+  </button>
+  <button mat-button (click)="toggleMenu()" routerLink="" fragment="tech-stack">
+    Tech Stack
+  </button>
+  <button mat-button (click)="toggleMenu()" routerLink="" fragment="projects">
+    Projects
+  </button>
+  <button mat-button (click)="toggleMenu()" routerLink="" fragment="contacts">
+    Contacts
+  </button>
+</nav>
