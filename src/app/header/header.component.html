@@ -1,10 +1,51 @@
 <mat-toolbar class="header">
-  <a href="https://github.com/ZeroaNinea" class="app-title"
-    >Heghine | Portfolio</a
-  >
+  <a href="https://github.com/ZeroaNinea" class="app-title">
+    Heghine | Portfolio
+  </a>
+
   <span class="spacer"></span>
-  <button mat-button routerLink="" fragment="about">About Me</button>
-  <button mat-button routerLink="" fragment="tech-stack">Tech Stack</button>
-  <button mat-button routerLink="" fragment="projects">Projects</button>
-  <button mat-button routerLink="" fragment="contacts">Contacts</button>
+
+  <nav class="desktop-nav">
+    <button mat-button routerLink="" fragment="about">About Me</button>
+    <button mat-button routerLink="" fragment="tech-stack">Tech Stack</button>
+    <button mat-button routerLink="" fragment="projects">Projects</button>
+    <button mat-button routerLink="" fragment="contacts">Contacts</button>
+  </nav>
+
+  <button mat-icon-button class="mobile-menu-btn" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
 </mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="over" class="sidenav">
+    <button mat-button (click)="sidenav.close()" routerLink="" fragment="about">
+      About Me
+    </button>
+    <button
+      mat-button
+      (click)="sidenav.close()"
+      routerLink=""
+      fragment="tech-stack"
+    >
+      Tech Stack
+    </button>
+    <button
+      mat-button
+      (click)="sidenav.close()"
+      routerLink=""
+      fragment="projects"
+    >
+      Projects
+    </button>
+    <button
+      mat-button
+      (click)="sidenav.close()"
+      routerLink=""
+      fragment="contacts"
+    >
+      Contacts
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content></mat-sidenav-content>
+</mat-sidenav-container>
