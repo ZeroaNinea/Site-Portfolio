@@ -26,6 +26,12 @@
   animation: fadeUp 1s forwards;
 }
 
+.fade-left-wide {
+  opacity: 0.2;
+  transform: translateX(30px);
+  animation: fadeLeft 1s forwards;
+}
+
 .fade-right {
   opacity: 0;
   transform: translateX(-20px);
@@ -52,6 +58,32 @@
       border-left: 16.5px solid transparent;
       border-right: 35px solid transparent;
       border-bottom: 60px solid white;
+    }
+  }
+}
+
+.triangle-container-1 {
+  position: absolute;
+  right: 10rem;
+  top: 8rem;
+  animation: clockwise-rotation 10s linear infinite;
+
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 80px solid transparent;
+    border-right: 80px solid transparent;
+    border-bottom: 130px solid var(--blue-triangle);
+
+    .inner-triangle {
+      position: relative;
+      left: -70px;
+      top: 11px;
+      width: 0;
+      height: 0;
+      border-left: 70px solid transparent;
+      border-right: 70px solid transparent;
+      border-bottom: 113px solid white;
     }
   }
 }
@@ -137,6 +169,13 @@
 }
 
 @keyframes fadeRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeLeft {
   to {
     opacity: 1;
     transform: translateX(0);
