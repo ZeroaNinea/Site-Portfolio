@@ -48,6 +48,12 @@
   animation: fadeLeft 1s forwards;
 }
 
+.fade-left {
+  opacity: 0;
+  transform: translateX(20px);
+  animation: fadeLeft 1s forwards;
+}
+
 .fade-right {
   opacity: 0;
   transform: translateX(-20px);
