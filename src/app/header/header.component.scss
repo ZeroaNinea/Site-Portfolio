@@ -42,16 +42,16 @@
 }
 
 .mobile-nav {
-  display: none;
+  // display: none;
   flex-direction: column;
-  background: var(--mat-sys-surface);
+  background: var(--mat-sys-background);
   padding: 1rem;
   position: absolute;
   top: 64px;
   left: 0;
   right: 0;
   z-index: 999;
-  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 5px -2px rgba(0, 0, 0, 0.1);
 
   button {
     text-align: left;
@@ -61,6 +61,10 @@
   &.open {
     display: flex;
     animation: fadeIn 0.2s ease-in-out;
+  }
+
+  &.closed {
+    animation: fadeOut 0.2s ease-in-out;
   }
 }
 
@@ -72,5 +76,16 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
   }
 }
