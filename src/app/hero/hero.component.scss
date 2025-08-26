@@ -27,6 +27,7 @@
 }
 
 .fade-right {
+  opacity: 0;
   transform: translateX(-20px);
   animation: fadeRight 1s forwards;
 }
