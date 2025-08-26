@@ -42,35 +42,34 @@
 }
 
 .mobile-nav {
-  display: none;
+  height: 0;
   flex-direction: column;
   background: var(--mat-sys-background);
-  padding: 1rem;
+  padding: 0;
   position: absolute;
   top: 64px;
   left: 0;
   right: 0;
   z-index: 999;
   box-shadow: 0 5px 5px -2px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+
+  transition: all 0.2s ease-in-out;
 
   button {
+    display: none;
     text-align: left;
     width: 100%;
   }
 
   &.open {
     display: flex;
-    animation: fadeIn 0.2s ease-in-out;
-  }
-}
+    height: 150px;
+    pointer-events: auto;
+    padding: 2rem;
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    button {
+      display: block;
+    }
   }
 }
