@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [MatIconModule],
   standalone: true,
   templateUrl: './hero.component.html',
-  styleUrl: './hero.component.scss',
+  styleUrls: ['./hero.component.scss', './hero-triangles.component.scss'],
 })
 export class HeroComponent {
   scrollToAbout() {
