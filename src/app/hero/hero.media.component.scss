@@ -5,4 +5,14 @@
   .hero-subtext {
     font-size: 1rem;
   }
+
+  .hero-container {
+    height: 100vh;
+  }
+}
+
+@media (max-height: 412px) {
+  .hero-container {
+    height: 84vh;
+  }
 }
