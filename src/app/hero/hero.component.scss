@@ -26,6 +26,11 @@
   animation: fadeUp 1s forwards;
 }
 
+.fade-down {
+  transform: translateY(-20px);
+  animation: fadeDown 1s forwards;
+}
+
 .fade-left-wide {
   opacity: 0.2;
   transform: translateX(50px);
@@ -120,5 +125,12 @@
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes fadeDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

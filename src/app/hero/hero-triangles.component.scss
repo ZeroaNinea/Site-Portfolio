@@ -48,12 +48,50 @@
   }
 }
 
+.triangle-container-2 {
+  position: absolute;
+  right: 30rem;
+  top: -2rem;
+  animation: counterclockwise-rotation-with-X-movement 20s linear infinite;
+
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 80px solid var(--blue-triangle);
+
+    .inner-triangle {
+      position: relative;
+      left: -35px;
+      top: 6.5px;
+      width: 0;
+      height: 0;
+      border-left: 37px solid transparent;
+      border-right: 90px solid transparent;
+      border-bottom: 70px solid white;
+    }
+  }
+}
+
 @keyframes clockwise-rotation {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes counterclockwise-rotation-with-X-movement {
+  0% {
+    transform: translateX(0) rotate(360deg);
+  }
+  50% {
+    transform: translateX(200px) rotate(180deg);
+  }
+  100% {
+    transform: translateX(-0px) rotate(0deg);
   }
 }
 
