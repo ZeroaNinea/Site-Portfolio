@@ -1,11 +1,5 @@
 @use "@angular/material" as mat;
 
-.fixed {
-  position: fixed;
-  top: 0;
-  animation: fixing 0.2s linear;
-}
-
 .toolbar-spacer {
   height: 64px;
   display: none;
@@ -36,6 +30,11 @@
   width: 100%;
   top: 0;
   z-index: 1000;
+
+  &.fixed {
+    position: fixed;
+    animation: fixing 0.2s linear;
+  }
 }
 
 .spacer {
@@ -96,6 +95,11 @@
       padding-left: 3rem;
       padding-right: 3rem;
     }
+  }
+
+  &.fixed {
+    position: fixed;
+    animation: fixing 0.2s linear;
   }
 }
 

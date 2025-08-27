@@ -27,7 +27,7 @@
   </button>
 </mat-toolbar>
 
-<nav class="mobile-nav" [class.open]="menuOpen">
+<nav class="mobile-nav" [class.open]="menuOpen" [class.fixed]="scrolled">
   <button mat-button (click)="toggleMenu()" routerLink="" fragment="home">
     Home
   </button>

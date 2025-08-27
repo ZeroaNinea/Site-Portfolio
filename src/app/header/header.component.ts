@@ -22,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 export class HeaderComponent {
   menuOpen = false;
   scrolled = false;
+  isScrolling = false;
 
   toggleMenu(section?: string, timeout: number = 0) {
     setTimeout(() => {
@@ -34,9 +35,14 @@ export class HeaderComponent {
   }
 
   scrollToSection(section: string) {
+    this.isScrolling = true;
     document
       .querySelector(`#${section}`)
       ?.scrollIntoView({ behavior: 'smooth' });
+
+    setTimeout(() => {
+      this.isScrolling = false;
+    });
   }
 
   @HostListener('window:scroll', [])
