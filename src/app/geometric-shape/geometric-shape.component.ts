@@ -6,17 +6,18 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import * as THREE from 'three';
 
 @Component({
   selector: 'app-geometric-shape',
-  imports: [MatIconModule],
+  imports: [MatIconModule, MatButtonModule],
   standalone: true,
   templateUrl: './geometric-shape.component.html',
   styleUrl: './geometric-shape.component.scss',
 })
-export class GeometricShapeComponent {
+export class GeometricShapeComponent implements OnInit, OnDestroy {
   @ViewChild('canvas', { static: true })
   canvasRef!: ElementRef<HTMLCanvasElement>;
   @ViewChild('container', { static: true })

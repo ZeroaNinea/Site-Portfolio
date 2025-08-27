@@ -1,4 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  inject,
+  PLATFORM_ID,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+
 import { GeometricShapeComponent } from '../geometric-shape/geometric-shape.component';
 
 @Component({
@@ -9,4 +16,7 @@ import { GeometricShapeComponent } from '../geometric-shape/geometric-shape.comp
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
-export class AboutComponent {}
+export class AboutComponent {
+  private platformId = inject(PLATFORM_ID);
+  isBrowser = isPlatformBrowser(this.platformId);
+}
