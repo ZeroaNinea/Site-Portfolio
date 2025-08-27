@@ -28,6 +28,7 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
   private renderer!: THREE.WebGLRenderer;
   private mesh!: THREE.Mesh;
   private animationId: number = 0;
+  private axesHelper!: THREE.AxesHelper;
   hovered = false;
 
   ngOnInit(): void {
@@ -51,6 +52,9 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
       alpha: true,
     });
     this.renderer.setSize(300, 300);
+
+    // this.axesHelper = new THREE.AxesHelper(5); // Adds a 3D axis helper.
+    // this.scene.add(this.axesHelper);
 
     // const geometry = new THREE.IcosahedronGeometry(1, 1);
     const geometry = new THREE.BoxGeometry(1, 1, 1);
