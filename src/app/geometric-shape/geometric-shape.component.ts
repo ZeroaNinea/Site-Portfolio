@@ -29,6 +29,7 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
   private camera!: THREE.PerspectiveCamera;
   private renderer!: THREE.WebGLRenderer;
   private mesh!: THREE.Mesh;
+  private meshes: THREE.Mesh[] = [];
   private animationId: number = 0;
   // private axesHelper!: THREE.AxesHelper;
   private orbit!: OrbitControls;
@@ -48,7 +49,7 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
     // this.camera.position.z = 3;
-    this.camera.position.set(0, 0, 3); // X, Y, Z.
+    this.camera.position.set(0, 0, 6); // X, Y, Z.
 
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvasRef.nativeElement,
@@ -69,21 +70,41 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
     // const geometry = new THREE.BoxGeometry(1, 1, 1);
     // const geometry = new THREE.TorusGeometry(1, 0.3, 16, 100);
 
-    const shape = new THREE.Shape();
-    shape.moveTo(0, 0);
-    shape.lineTo(0, 1);
-    shape.lineTo(1, 1);
-    shape.lineTo(1, 0);
-    shape.lineTo(0, 0);
+    // const shape = new THREE.Shape();
+    // shape.moveTo(0, 0);
+    // shape.lineTo(0, 1);
+    // shape.lineTo(1, 1);
+    // shape.lineTo(1, 0);
+    // shape.lineTo(0, 0);
 
-    const geometry = new THREE.ShapeGeometry(shape);
+    // const geometry = new THREE.ShapeGeometry(shape);
 
-    const material = new THREE.MeshStandardMaterial({
-      color: 0x673ab7,
-      flatShading: true,
+    const geometries = [
+      new THREE.BoxGeometry(0.5, 0.5, 0.5),
+      new THREE.SphereGeometry(0.4, 16, 16),
+      new THREE.TorusGeometry(0.5, 0.15, 16, 100),
+      new THREE.ConeGeometry(0.5, 1, 16),
+    ];
+
+    geometries.forEach((geometry, i) => {
+      const material = new THREE.MeshStandardMaterial({
+        color: 0x673ab7,
+        flatShading: true,
+      });
+      this.mesh = new THREE.Mesh(geometry, material);
+      this.mesh.position.x = Math.cos(i * (Math.PI / 2)) * 2;
+      this.mesh.position.y = Math.sin(i * (Math.PI / 2)) * 2;
+
+      this.meshes.push(this.mesh);
+      this.scene.add(this.mesh);
     });
-    this.mesh = new THREE.Mesh(geometry, material);
-    this.scene.add(this.mesh);
+
+    // const material = new THREE.MeshStandardMaterial({
+    //   color: 0x673ab7,
+    //   flatShading: true,
+    // });
+    // this.mesh = new THREE.Mesh(geometry, material);
+    // this.scene.add(this.mesh);
 
     const light = new THREE.DirectionalLight(0xffffff, 1);
     light.position.set(2, 2, 5);
