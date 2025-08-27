@@ -33,6 +33,7 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
   private animationId: number = 0;
   // private axesHelper!: THREE.AxesHelper;
   private orbit!: OrbitControls;
+  private angle = 0;
   hovered = false;
 
   ngOnInit(): void {
@@ -111,11 +112,30 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
     this.scene.add(light);
   }
 
+  // private animate = (): void => {
+  //   this.animationId = requestAnimationFrame(this.animate);
+
+  //   this.mesh.rotation.x += 0.005;
+  //   this.mesh.rotation.y += 0.01;
+
+  //   this.renderer.render(this.scene, this.camera);
+  // };
+
   private animate = (): void => {
     this.animationId = requestAnimationFrame(this.animate);
 
-    this.mesh.rotation.x += 0.005;
-    this.mesh.rotation.y += 0.01;
+    this.angle += 0.01;
+
+    this.meshes.forEach((mesh, i) => {
+      const radius = this.hovered ? 3 : 2;
+      const offset = (i * (Math.PI * 2)) / this.meshes.length;
+
+      mesh.position.x = Math.cos(this.angle + offset) * radius;
+      mesh.position.y = Math.sin(this.angle + offset) * radius;
+
+      mesh.rotation.x += 0.01;
+      mesh.rotation.y += 0.01;
+    });
 
     this.renderer.render(this.scene, this.camera);
   };
