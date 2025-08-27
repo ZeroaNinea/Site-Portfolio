@@ -6,7 +6,7 @@
   <span class="spacer"></span>
 
   <nav class="desktop-nav">
-    <button mat-button routerLink="" fragment="about">Home</button>
+    <button mat-button routerLink="" fragment="home">Home</button>
     <button
       mat-button
       routerLink=""
@@ -26,7 +26,9 @@
 </mat-toolbar>
 
 <nav class="mobile-nav" [class.open]="menuOpen">
-  <button mat-button (click)="toggleMenu()" routerLink="">Home</button>
+  <button mat-button (click)="toggleMenu()" routerLink="" fragment="home">
+    Home
+  </button>
   <button
     mat-button
     (click)="toggleMenu('about', 200)"
