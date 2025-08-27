@@ -89,9 +89,10 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
 
     geometries.forEach((geometry, i) => {
       const material = new THREE.MeshStandardMaterial({
-        color: 0x673ab7,
+        color: new THREE.Color(`hsl(${i * 90}, 70%, 50%)`),
         flatShading: true,
       });
+
       this.mesh = new THREE.Mesh(geometry, material);
       this.mesh.position.x = Math.cos(i * (Math.PI / 2)) * 2;
       this.mesh.position.y = Math.sin(i * (Math.PI / 2)) * 2;
