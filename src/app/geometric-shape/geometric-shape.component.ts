@@ -81,7 +81,8 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
     // const geometry = new THREE.ShapeGeometry(shape);
 
     const geometries = [
-      new THREE.BoxGeometry(0.5, 0.5, 0.5),
+      new THREE.IcosahedronGeometry(0.5, 1),
+      new THREE.BoxGeometry(1, 0.5, 0.5),
       new THREE.SphereGeometry(0.4, 16, 16),
       new THREE.TorusGeometry(0.5, 0.15, 16, 100),
       new THREE.ConeGeometry(0.5, 1, 16),
