@@ -8,7 +8,9 @@ import {
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+
 import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 @Component({
   selector: 'app-geometric-shape',
@@ -28,7 +30,8 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
   private renderer!: THREE.WebGLRenderer;
   private mesh!: THREE.Mesh;
   private animationId: number = 0;
-  private axesHelper!: THREE.AxesHelper;
+  // private axesHelper!: THREE.AxesHelper;
+  private orbit!: OrbitControls;
   hovered = false;
 
   ngOnInit(): void {
@@ -55,6 +58,12 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
 
     // this.axesHelper = new THREE.AxesHelper(5); // Adds a 3D axis helper.
     // this.scene.add(this.axesHelper);
+
+    this.orbit = new OrbitControls(
+      this.camera,
+      this.containerRef.nativeElement
+    );
+    this.orbit.update();
 
     // const geometry = new THREE.IcosahedronGeometry(1, 1);
     const geometry = new THREE.BoxGeometry(1, 1, 1);
