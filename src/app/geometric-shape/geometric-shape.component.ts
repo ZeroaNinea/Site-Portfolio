@@ -43,7 +43,8 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
   private initScene(): void {
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-    this.camera.position.set(0, 0, 2); // X, Y, Z.
+    // this.camera.position.z = 3;
+    this.camera.position.set(0, 0, 3); // X, Y, Z.
 
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvasRef.nativeElement,
@@ -51,7 +52,8 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
     });
     this.renderer.setSize(300, 300);
 
-    const geometry = new THREE.IcosahedronGeometry(1, 1);
+    // const geometry = new THREE.IcosahedronGeometry(1, 1);
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
     const material = new THREE.MeshStandardMaterial({
       color: 0x673ab7,
       flatShading: true,
