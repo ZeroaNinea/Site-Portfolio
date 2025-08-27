@@ -34,6 +34,8 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
   // private axesHelper!: THREE.AxesHelper;
   private orbit!: OrbitControls;
   private angle = 0;
+  private targetRadius = 2;
+  private currentRadius = 2;
   hovered = false;
 
   ngOnInit(): void {
@@ -132,12 +134,18 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
 
     this.angle += 0.01;
 
+    // Smoothly move radius toward target
+    this.currentRadius = THREE.MathUtils.lerp(
+      this.currentRadius,
+      this.targetRadius,
+      0.05
+    );
+
     this.meshes.forEach((mesh, i) => {
-      const radius = this.hovered ? 3 : 2;
       const offset = (i * (Math.PI * 2)) / this.meshes.length;
 
-      mesh.position.x = Math.cos(this.angle + offset) * radius;
-      mesh.position.y = Math.sin(this.angle + offset) * radius;
+      mesh.position.x = Math.cos(this.angle + offset) * this.currentRadius;
+      mesh.position.y = Math.sin(this.angle + offset) * this.currentRadius;
 
       mesh.rotation.x += 0.01;
       mesh.rotation.y += 0.01;
@@ -148,6 +156,7 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
 
   onHover(state: boolean): void {
     this.hovered = state;
+    this.targetRadius = state ? 3 : 2;
     if (this.hovered) {
       (this.mesh.material as THREE.MeshStandardMaterial).color.set(0xff4081);
     } else {
