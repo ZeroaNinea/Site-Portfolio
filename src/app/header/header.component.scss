@@ -3,7 +3,7 @@
 .fixed {
   position: fixed;
   top: 0;
-  animation: fixing 0.5s linear;
+  animation: fixing 0.2s linear;
 }
 
 .toolbar-spacer {
@@ -101,8 +101,8 @@
 
 @keyframes fixing {
   from {
-    filter: blur(0.6px);
-    transform: translateY(-30%);
+    filter: blur(2px);
+    transform: translateY(-70%);
   }
   to {
     filter: blur(0px);
