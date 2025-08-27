@@ -43,7 +43,7 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
   private initScene(): void {
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-    this.camera.position.z = 3;
+    this.camera.position.set(0, 0, 2); // X, Y, Z.
 
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvasRef.nativeElement,
