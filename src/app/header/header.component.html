@@ -6,7 +6,15 @@
   <span class="spacer"></span>
 
   <nav class="desktop-nav">
-    <button mat-button routerLink="" fragment="about">About Me</button>
+    <button mat-button routerLink="" fragment="about">Home</button>
+    <button
+      mat-button
+      routerLink=""
+      fragment="about"
+      (click)="scrollToSection('about')"
+    >
+      About Me
+    </button>
     <button mat-button routerLink="" fragment="tech-stack">Tech Stack</button>
     <button mat-button routerLink="" fragment="projects">Projects</button>
     <button mat-button routerLink="" fragment="contacts">Contacts</button>
@@ -19,7 +27,12 @@
 
 <nav class="mobile-nav" [class.open]="menuOpen">
   <button mat-button (click)="toggleMenu()" routerLink="">Home</button>
-  <button mat-button (click)="toggleMenu()" routerLink="" fragment="about">
+  <button
+    mat-button
+    (click)="toggleMenu('about')"
+    routerLink=""
+    fragment="about"
+  >
     About Me
   </button>
   <button mat-button (click)="toggleMenu()" routerLink="" fragment="tech-stack">

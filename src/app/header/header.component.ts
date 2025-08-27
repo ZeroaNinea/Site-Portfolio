@@ -22,7 +22,17 @@ import { MatIconModule } from '@angular/material/icon';
 export class HeaderComponent {
   menuOpen = false;
 
-  toggleMenu() {
+  toggleMenu(section?: string) {
     this.menuOpen = !this.menuOpen;
+
+    if (section) {
+      this.scrollToSection(section);
+    }
+  }
+
+  scrollToSection(section: string) {
+    document
+      .querySelector(`#${section}`)
+      ?.scrollIntoView({ behavior: 'smooth' });
   }
 }
