@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class HeaderComponent {
   menuOpen = false;
+  scrolled = false;
 
   toggleMenu(section?: string, timeout: number = 0) {
     setTimeout(() => {
@@ -36,5 +37,10 @@ export class HeaderComponent {
     document
       .querySelector(`#${section}`)
       ?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.scrolled = window.scrollY > 64;
   }
 }

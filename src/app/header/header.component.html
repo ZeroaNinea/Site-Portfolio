@@ -1,4 +1,6 @@
-<mat-toolbar class="header">
+<div class="toolbar-spacer" [class.block]="scrolled"></div>
+
+<mat-toolbar class="header" [class.fixed]="scrolled">
   <a href="https://github.com/ZeroaNinea" class="app-title">
     Heghine | Portfolio
   </a>

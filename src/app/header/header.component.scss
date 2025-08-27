@@ -1,5 +1,20 @@
 @use "@angular/material" as mat;
 
+.fixed {
+  position: fixed;
+  top: 0;
+  animation: fixing 0.5s linear;
+}
+
+.toolbar-spacer {
+  height: 64px;
+  display: none;
+
+  &.block {
+    display: block;
+  }
+}
+
 .app-title {
   font-weight: bold;
   font-size: 1.2rem;
@@ -18,7 +33,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
@@ -82,6 +96,17 @@
       padding-left: 3rem;
       padding-right: 3rem;
     }
+  }
+}
+
+@keyframes fixing {
+  from {
+    filter: blur(0.6px);
+    transform: translateY(-30%);
+  }
+  to {
+    filter: blur(0px);
+    transform: translateY(0);
   }
 }
 
