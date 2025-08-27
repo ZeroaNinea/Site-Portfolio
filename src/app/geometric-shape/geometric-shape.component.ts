@@ -66,7 +66,18 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
     this.orbit.update();
 
     // const geometry = new THREE.IcosahedronGeometry(1, 1);
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    // const geometry = new THREE.BoxGeometry(1, 1, 1);
+    // const geometry = new THREE.TorusGeometry(1, 0.3, 16, 100);
+
+    const shape = new THREE.Shape();
+    shape.moveTo(0, 0);
+    shape.lineTo(0, 1);
+    shape.lineTo(1, 1);
+    shape.lineTo(1, 0);
+    shape.lineTo(0, 0);
+
+    const geometry = new THREE.ShapeGeometry(shape);
+
     const material = new THREE.MeshStandardMaterial({
       color: 0x673ab7,
       flatShading: true,
