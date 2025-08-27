@@ -22,8 +22,10 @@ import { MatIconModule } from '@angular/material/icon';
 export class HeaderComponent {
   menuOpen = false;
 
-  toggleMenu(section?: string) {
-    this.menuOpen = !this.menuOpen;
+  toggleMenu(section?: string, timeout: number = 0) {
+    setTimeout(() => {
+      this.menuOpen = !this.menuOpen;
+    }, timeout);
 
     if (section) {
       this.scrollToSection(section);
