@@ -1,0 +1,13 @@
+<div
+  class="shape-container"
+  #container
+  (mouseenter)="onHover(true)"
+  (mouseleave)="onHover(false)"
+>
+  <canvas #canvas></canvas>
+  @if (hovered) {
+  <button mat-fab color="accent" class="car-btn">
+    <mat-icon>directions_car</mat-icon>
+  </button>
+  }
+</div>
