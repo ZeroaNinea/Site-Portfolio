@@ -10,9 +10,7 @@ export class AnimationsService {
 
   private html = this.document.querySelector('html');
   private aboutSection = this.document.querySelector('section.about');
-  private aboutSubtitle = this.document.querySelector(
-    '.about .typewriter-limiter .subtitle'
-  );
+  private aboutSubtitle = this.document.querySelector('.about h3.subtitle');
 
   aboutAndHtmlAnimate(entry: IntersectionObserverEntry, renderer: Renderer2) {
     if (entry.isIntersecting) {
@@ -69,7 +67,9 @@ export class AnimationsService {
         }
       );
 
-      this.aboutSubtitle!.textContent = '';
+      setTimeout(() => {
+        this.aboutSubtitle!.textContent = '';
+      }, 200);
     }
   }
 

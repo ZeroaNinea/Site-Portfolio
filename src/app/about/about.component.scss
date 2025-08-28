@@ -19,6 +19,10 @@
   margin-bottom: 2rem;
   color: var(--mat-sys-secondary);
   font-weight: 500;
+  display: inline-block;
+  border-right: 0.12em solid var(--mat-sys-primary);
+  height: 1.5em;
+  animation: blink 0.75s step-end infinite;
 }
 
 .about-content {
@@ -54,20 +58,6 @@
   }
 }
 
-.typewriter {
-  display: inline-block;
-  overflow: hidden;
-  border-right: 0.12em solid var(--mat-sys-primary);
-  white-space: nowrap;
-  animation: typing 4s steps(30, end), blink 0.75s step-end infinite;
-}
-
-.typewriter-limiter {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
 .attribution {
   font-size: 0.8rem;
   color: var(--mat-sys-outline);
@@ -78,15 +68,6 @@
 
   a:visited {
     color: #9575cd;
-  }
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
   }
 }
 
