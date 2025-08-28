@@ -21,7 +21,7 @@
   font-weight: 500;
   display: inline-block;
   border-right: 0.12em solid var(--mat-sys-primary);
-  height: 1.5em;
+  min-height: 1.25rem;
   animation: blink 0.75s step-end infinite;
 }
 

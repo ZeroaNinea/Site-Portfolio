@@ -40,6 +40,7 @@ export class AnimationsService {
         }
       );
 
+      this.aboutSubtitle!.textContent = '';
       setTimeout(() => {
         const text = 'Building interactive apps with style 🚀';
 
@@ -66,19 +67,18 @@ export class AnimationsService {
           fill: 'forwards',
         }
       );
-
-      setTimeout(() => {
-        this.aboutSubtitle!.textContent = '';
-      }, 200);
     }
   }
 
   textTypingEffect(element: Element, text: string, i = 0) {
     element.textContent += text[i];
-    if (i < text.length - 1) {
-      setTimeout(() => {
-        this.textTypingEffect(element, text, i + 1);
-      }, 100);
+
+    if (i === text.length - 1) {
+      return;
     }
+
+    setTimeout(() => {
+      this.textTypingEffect(element, text, i + 1);
+    }, 40);
   }
 }
