@@ -81,25 +81,6 @@
   }
 }
 
-.appear-from-left {
-  animation: appear-form-left 1s ease-in-out;
-}
-
-@keyframes appear-form-left {
-  0% {
-    transform: translateX(-100px);
-    opacity: 0;
-  }
-  50% {
-    transform: translateX(20px);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
 @keyframes typing {
   from {
     width: 0;
