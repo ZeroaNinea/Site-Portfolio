@@ -1,7 +1,7 @@
 @use "@angular/material" as mat;
 
 .about {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 6rem 2rem;
   text-align: center;
@@ -9,15 +9,49 @@
 
 .about h2 {
   font-size: 2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   font-weight: bold;
   color: var(--mat-sys-primary);
 }
 
-.about p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--mat-sys-on-background);
+.subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: var(--mat-sys-secondary);
+  font-weight: 500;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
+
+.shape-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-wrapper {
+  flex: 2;
+  text-align: left;
+
+  p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: var(--mat-sys-on-background);
+  }
 }
 
 .typewriter {
@@ -25,7 +59,7 @@
   overflow: hidden;
   border-right: 0.12em solid var(--mat-sys-primary);
   white-space: nowrap;
-  animation: typing 6s steps(80, end), blink 0.75s step-end infinite;
+  animation: typing 4s steps(30, end), blink 0.75s step-end infinite;
 }
 
 .attribution {
@@ -41,6 +75,7 @@
   }
 }
 
+/* Animations */
 @keyframes typing {
   from {
     width: 0;

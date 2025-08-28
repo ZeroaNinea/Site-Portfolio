@@ -1,24 +1,35 @@
 <section class="about">
-  <h2 class="typewriter">About Me</h2>
+  <h2>About Me</h2>
+  <h3 class="subtitle typewriter">Building interactive apps with style 🚀</h3>
 
-  <div>
+  <div class="about-content">
     @if (isBrowser) {
-    <app-geometric-shape></app-geometric-shape>
+    <div class="shape-wrapper">
+      <app-geometric-shape></app-geometric-shape>
+    </div>
     }
 
-    <p>
-      I'm a passionate full-stack web developer with a strong background in
-      building modern, scalable applications. Using Angular, Node.js, and
-      cloud-native tools like Docker and Kubernetes, I create performant and
-      reliable solutions that meet both technical and business needs. My
-      expertise spans from frontend development with Angular and RxJS to backend
-      APIs with Express and Nest.js. With experience in testing, CI/CD
-      pipelines, and performance optimization, I deliver clean, maintainable
-      code that brings ideas to life. Whether it's crafting interactive UIs or
-      deploying resilient services, I aim to turn complex problems into simple,
-      elegant solutions. By the way: "car 👍"...
-    </p>
+    <div class="text-wrapper">
+      <p>
+        I'm a passionate full-stack web developer with a strong background in
+        building modern, scalable applications. Using Angular, Node.js, and
+        cloud-native tools like Docker and Kubernetes, I create performant and
+        reliable solutions that meet both technical and business needs.
+      </p>
+      <p>
+        My expertise spans from frontend development with Angular and RxJS to
+        backend APIs with Express and Nest.js. With experience in testing, CI/CD
+        pipelines, and performance optimization, I deliver clean, maintainable
+        code that brings ideas to life.
+      </p>
+      <p>
+        Whether it's crafting interactive UIs or deploying resilient services, I
+        aim to turn complex problems into simple, elegant solutions. By the way:
+        "car 👍"...
+      </p>
+    </div>
   </div>
+
   <model-viewer
     src="./assets/3d-models/bmw_m3_gts_e92.glb"
     alt="BMW M3 GTS"
@@ -28,6 +39,7 @@
     style="width: 100%; max-width: 600px; height: 400px; border-radius: 1rem"
   >
   </model-viewer>
+
   <span class="attribution"
     >&#169; 3D model of BMW M3 GTS by
     <a
