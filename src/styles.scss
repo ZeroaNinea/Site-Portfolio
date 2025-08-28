@@ -6,18 +6,18 @@ body {
   height: 100%;
 }
 
-// html {
-//   @include mat.theme(
-//     (
-//       color: (
-//         theme-type: dark,
-//       ),
-//     )
-//   );
-// }
-
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--mat-sys-background);
+}
+
+.dark-theme {
+  @include mat.theme(
+    (
+      color: (
+        theme-type: dark,
+      ),
+    )
+  );
 }
