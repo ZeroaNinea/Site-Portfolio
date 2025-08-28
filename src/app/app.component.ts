@@ -36,7 +36,7 @@ export class AppComponent {
     if (this.about) {
       this.observer = new IntersectionObserver(
         (entries) => {
-          entries.forEach((entry) => this.aboutAnimate(entry));
+          entries.forEach((entry) => this.aboutAndHtmlAnimate(entry));
         },
         {
           threshold: 0.5,
@@ -47,7 +47,7 @@ export class AppComponent {
     }
   }
 
-  aboutAnimate(entry: IntersectionObserverEntry) {
+  aboutAndHtmlAnimate(entry: IntersectionObserverEntry) {
     if (entry.isIntersecting) {
       this.renderer.addClass(this.html, 'dark-theme');
       this.renderer.removeClass(this.html, 'light-theme');
