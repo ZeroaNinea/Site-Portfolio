@@ -43,8 +43,5 @@ export class AppComponent {
 
       this.observer.observe(about);
     }
-
-    // this.renderer.addClass(html, 'dark-theme');
-    // this.renderer.removeClass(html, 'light-theme');
   }
 }
