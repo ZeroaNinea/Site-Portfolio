@@ -1,9 +1,21 @@
+@use "@angular/material" as mat;
 @use "./styles/colors.scss" as *;
 
 html,
 body {
   height: 100%;
 }
+
+// html {
+//   @include mat.theme(
+//     (
+//       color: (
+//         theme-type: dark,
+//       ),
+//     )
+//   );
+// }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
