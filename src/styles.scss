@@ -6,6 +6,10 @@ body {
   height: 100%;
 }
 
+html {
+  transition: all 0.3s ease-in-out;
+}
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -13,6 +17,8 @@ body {
 }
 
 .dark-theme {
+  background-color: var(--mat-sys-background);
+
   @include mat.theme(
     (
       color: (

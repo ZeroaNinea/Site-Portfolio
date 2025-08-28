@@ -23,19 +23,23 @@ export class AppComponent {
     const html = this.document.querySelector('html');
     const about = this.document.querySelector('#about');
 
-    // observe about and change the class
     if (about) {
-      this.observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            html?.classList.add('dark-theme');
-            html?.classList.remove('light-theme');
-          } else {
-            html?.classList.remove('dark-theme');
-            html?.classList.add('light-theme');
-          }
-        });
-      });
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              html?.classList.add('dark-theme');
+              html?.classList.remove('light-theme');
+            } else {
+              html?.classList.remove('dark-theme');
+              html?.classList.add('light-theme');
+            }
+          });
+        },
+        {
+          threshold: 0.5,
+        }
+      );
 
       this.observer.observe(about);
     }
