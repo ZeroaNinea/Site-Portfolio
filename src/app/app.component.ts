@@ -22,17 +22,26 @@ export class AppComponent {
   constructor() {
     const html = this.document.querySelector('html');
     const about = this.document.querySelector('#about');
+    const aboutSubtitle = this.document.querySelector(
+      '#about .typewriter-limiter .subtitle'
+    );
 
     if (about) {
       this.observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              html?.classList.add('dark-theme');
-              html?.classList.remove('light-theme');
+              this.renderer.addClass(html, 'dark-theme');
+              this.renderer.removeClass(html, 'light-theme');
+
+              console.log(aboutSubtitle);
+
+              this.renderer.removeClass(aboutSubtitle, 'typewriter');
+              this.renderer.addClass(aboutSubtitle, 'typewriter');
             } else {
-              html?.classList.remove('dark-theme');
-              html?.classList.add('light-theme');
+              this.renderer.addClass(html, 'light-theme');
+              this.renderer.removeClass(html, 'dark-theme');
+              this.renderer.removeClass(aboutSubtitle, 'typewriter');
             }
           });
         },
