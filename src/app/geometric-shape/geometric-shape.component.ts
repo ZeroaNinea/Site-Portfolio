@@ -96,7 +96,8 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
 
     geometries.forEach((geometry, i) => {
       const material = new THREE.MeshStandardMaterial({
-        color: new THREE.Color(`hsl(${i * 90}, 70%, 50%)`),
+        // color: new THREE.Color(`hsl(${i * 90}, 70%, 50%)`),
+        color: new THREE.Color('#E0F7FA'),
         flatShading: true,
       });
 
@@ -158,9 +159,13 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
     this.hovered = state;
     this.targetRadius = state ? 3 : 2;
     if (this.hovered) {
-      (this.mesh.material as THREE.MeshStandardMaterial).color.set(0xff4081);
+      this.meshes.forEach((mesh, i) => {
+        (mesh.material as THREE.MeshStandardMaterial).color.set(0xc8e6c9);
+      });
     } else {
-      (this.mesh.material as THREE.MeshStandardMaterial).color.set(0x673ab7);
+      this.meshes.forEach((mesh, i) => {
+        (mesh.material as THREE.MeshStandardMaterial).color.set(0xe0f7fa);
+      });
     }
   }
 }
