@@ -14,7 +14,7 @@ import { GeometricShapeComponent } from '../geometric-shape/geometric-shape.comp
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   standalone: true,
   templateUrl: './about.component.html',
-  styleUrl: './about.component.scss',
+  styleUrls: ['./about.component.scss', './about.media.component.scss'],
 })
 export class AboutComponent {
   private platformId = inject(PLATFORM_ID);
