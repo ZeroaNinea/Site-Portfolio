@@ -5,8 +5,9 @@ import {
   inject,
   PLATFORM_ID,
   Renderer2,
+  DOCUMENT
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+
 import { isPlatformBrowser } from '@angular/common';
 
 import { GeometricShapeComponent } from '../geometric-shape/geometric-shape.component';
