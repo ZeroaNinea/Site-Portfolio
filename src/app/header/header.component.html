@@ -1,4 +1,4 @@
-<div class="toolbar-spacer" [class.block]="scrolled"></div>
+<div class="toolbar-spacer" [class.block]="scrolled" id="home"></div>
 
 <mat-toolbar class="header" [class.fixed]="scrolled">
   <a href="https://github.com/ZeroaNinea" class="app-title">
@@ -8,7 +8,14 @@
   <span class="spacer"></span>
 
   <nav class="desktop-nav">
-    <button mat-button routerLink="" fragment="home">Home</button>
+    <button
+      mat-button
+      routerLink=""
+      fragment="home"
+      (click)="scrollToSection('home')"
+    >
+      Home
+    </button>
     <button
       mat-button
       routerLink=""
