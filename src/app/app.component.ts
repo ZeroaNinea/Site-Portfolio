@@ -22,9 +22,7 @@ export class AppComponent {
   constructor() {
     const html = this.document.querySelector('html');
     const about = this.document.querySelector('#about');
-    const aboutSubtitle = this.document.querySelector(
-      '#about .typewriter-limiter .subtitle'
-    );
+    const aboutSection = this.document.querySelector('section.about');
 
     if (about) {
       this.observer = new IntersectionObserver(
@@ -34,14 +32,16 @@ export class AppComponent {
               this.renderer.addClass(html, 'dark-theme');
               this.renderer.removeClass(html, 'light-theme');
 
-              console.log(aboutSubtitle);
-
-              this.renderer.removeClass(aboutSubtitle, 'typewriter');
-              this.renderer.addClass(aboutSubtitle, 'typewriter');
+              console.log(aboutSection);
+              this.renderer.addClass(aboutSection, 'appear-form-left');
+              console.log(aboutSection);
             } else {
               this.renderer.addClass(html, 'light-theme');
               this.renderer.removeClass(html, 'dark-theme');
-              this.renderer.removeClass(aboutSubtitle, 'typewriter');
+
+              console.log(aboutSection);
+              this.renderer.removeClass(aboutSection, 'appear-form-left');
+              console.log(aboutSection);
             }
           });
         },

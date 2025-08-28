@@ -1,9 +1,12 @@
 import {
+  afterNextRender,
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   inject,
   PLATFORM_ID,
+  Renderer2,
 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
 
 import { GeometricShapeComponent } from '../geometric-shape/geometric-shape.component';
