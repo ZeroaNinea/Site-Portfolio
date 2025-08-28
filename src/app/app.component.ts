@@ -17,12 +17,30 @@ export class AppComponent {
 
   private document = inject(DOCUMENT);
   private renderer = inject(Renderer2);
+  private observer: IntersectionObserver | undefined;
 
   constructor() {
     const html = this.document.querySelector('html');
     const about = this.document.querySelector('#about');
 
-    this.renderer.addClass(html, 'dark-theme');
-    this.renderer.removeClass(html, 'light-theme');
+    // observe about and change the class
+    if (about) {
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            html?.classList.add('dark-theme');
+            html?.classList.remove('light-theme');
+          } else {
+            html?.classList.remove('dark-theme');
+            html?.classList.add('light-theme');
+          }
+        });
+      });
+
+      this.observer.observe(about);
+    }
+
+    // this.renderer.addClass(html, 'dark-theme');
+    // this.renderer.removeClass(html, 'light-theme');
   }
 }
