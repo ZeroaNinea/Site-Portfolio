@@ -116,9 +116,21 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
     // this.mesh = new THREE.Mesh(geometry, material);
     // this.scene.add(this.mesh);
 
-    const light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(2, 2, 5);
-    this.scene.add(light);
+    // const light = new THREE.DirectionalLight(0xffffff, 1);
+    // light.position.set(2, 2, 5);
+    // this.scene.add(light);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+    this.scene.add(ambientLight);
+
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+    dirLight.position.set(2, 2, 5);
+    this.scene.add(dirLight);
+
+    const hoverLight = new THREE.PointLight(0x2196f3, 2, 20);
+    hoverLight.position.set(0, 0, 5);
+    this.scene.add(hoverLight);
+
+    (this as any).hoverLight = hoverLight;
   }
 
   // private animate = (): void => {
