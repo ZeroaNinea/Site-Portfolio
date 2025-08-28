@@ -45,7 +45,7 @@ export class AnimationsService {
         const text = 'Building interactive apps with style 🚀';
 
         this.textTypingEffect(this.aboutSubtitle!, text);
-      }, 1000);
+      }, 400);
     } else {
       renderer.addClass(this.html, 'light-theme');
       renderer.removeClass(this.html, 'dark-theme');
