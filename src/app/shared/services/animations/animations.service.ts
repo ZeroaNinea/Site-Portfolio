@@ -15,6 +15,23 @@ export class AnimationsService {
     'section.about .about-content .text-wrapper p'
   );
 
+  private paragraphsAnimation = [
+    {
+      transform: 'translateX(-100px)',
+      opacity: 0,
+      filter: 'blur(1px)',
+    },
+    {
+      transform: 'translateX(20px)',
+      opacity: 0.5,
+    },
+    {
+      transform: 'translateX(0)',
+      filter: 'blur(0px)',
+      opacity: 1,
+    },
+  ];
+
   aboutAndHtmlAnimate(entry: IntersectionObserverEntry, renderer: Renderer2) {
     if (entry.isIntersecting) {
       renderer.addClass(this.html, 'dark-theme');
@@ -51,76 +68,22 @@ export class AnimationsService {
       }, 400);
 
       setTimeout(() => {
-        this.aboutParagraphs[0].animate(
-          [
-            {
-              transform: 'translateX(-50px)',
-              opacity: 0,
-              filter: 'blur(1px)',
-            },
-            {
-              transform: 'translateX(10px)',
-              opacity: 0.5,
-            },
-            {
-              transform: 'translateX(0)',
-              filter: 'blur(0px)',
-              opacity: 1,
-            },
-          ],
-          {
-            duration: 500,
-            fill: 'forwards',
-          }
-        );
+        this.aboutParagraphs[0].animate(this.paragraphsAnimation, {
+          duration: 500,
+          fill: 'forwards',
+        });
 
         setTimeout(() => {
-          this.aboutParagraphs[1].animate(
-            [
-              {
-                transform: 'translateX(-100px)',
-                opacity: 0,
-                filter: 'blur(1px)',
-              },
-              {
-                transform: 'translateX(20px)',
-                opacity: 0.5,
-              },
-              {
-                transform: 'translateX(0)',
-                filter: 'blur(0px)',
-                opacity: 1,
-              },
-            ],
-            {
-              duration: 500,
-              fill: 'forwards',
-            }
-          );
+          this.aboutParagraphs[1].animate(this.paragraphsAnimation, {
+            duration: 500,
+            fill: 'forwards',
+          });
 
           setTimeout(() => {
-            this.aboutParagraphs[2].animate(
-              [
-                {
-                  transform: 'translateX(-100px)',
-                  opacity: 0,
-                  filter: 'blur(1px)',
-                },
-                {
-                  transform: 'translateX(20px)',
-                  opacity: 0.5,
-                },
-                {
-                  transform: 'translateX(0)',
-                  filter: 'blur(0px)',
-                  opacity: 1,
-                },
-              ],
-              {
-                duration: 500,
-                fill: 'forwards',
-              }
-            );
+            this.aboutParagraphs[2].animate(this.paragraphsAnimation, {
+              duration: 500,
+              fill: 'forwards',
+            });
           }, 200);
         }, 200);
       }, 200);
