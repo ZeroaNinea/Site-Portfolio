@@ -11,6 +11,9 @@ export class AnimationsService {
   private html = this.document.querySelector('html');
   private aboutSection = this.document.querySelector('section.about');
   private aboutSubtitle = this.document.querySelector('.about h3.subtitle');
+  private aboutParagraphs = this.document.querySelectorAll(
+    'section.about .about-content .text-wrapper p'
+  );
 
   aboutAndHtmlAnimate(entry: IntersectionObserverEntry, renderer: Renderer2) {
     if (entry.isIntersecting) {
@@ -46,6 +49,81 @@ export class AnimationsService {
 
         this.textTypingEffect(this.aboutSubtitle!, text);
       }, 400);
+
+      setTimeout(() => {
+        this.aboutParagraphs[0].animate(
+          [
+            {
+              transform: 'translateX(-50px)',
+              opacity: 0,
+              filter: 'blur(1px)',
+            },
+            {
+              transform: 'translateX(10px)',
+              opacity: 0.5,
+            },
+            {
+              transform: 'translateX(0)',
+              filter: 'blur(0px)',
+              opacity: 1,
+            },
+          ],
+          {
+            duration: 500,
+            fill: 'forwards',
+          }
+        );
+
+        setTimeout(() => {
+          this.aboutParagraphs[1].animate(
+            [
+              {
+                transform: 'translateX(-100px)',
+                opacity: 0,
+                filter: 'blur(1px)',
+              },
+              {
+                transform: 'translateX(20px)',
+                opacity: 0.5,
+              },
+              {
+                transform: 'translateX(0)',
+                filter: 'blur(0px)',
+                opacity: 1,
+              },
+            ],
+            {
+              duration: 500,
+              fill: 'forwards',
+            }
+          );
+
+          setTimeout(() => {
+            this.aboutParagraphs[2].animate(
+              [
+                {
+                  transform: 'translateX(-100px)',
+                  opacity: 0,
+                  filter: 'blur(1px)',
+                },
+                {
+                  transform: 'translateX(20px)',
+                  opacity: 0.5,
+                },
+                {
+                  transform: 'translateX(0)',
+                  filter: 'blur(0px)',
+                  opacity: 1,
+                },
+              ],
+              {
+                duration: 500,
+                fill: 'forwards',
+              }
+            );
+          }, 200);
+        }, 200);
+      }, 200);
     } else {
       renderer.addClass(this.html, 'light-theme');
       renderer.removeClass(this.html, 'dark-theme');
@@ -67,6 +145,22 @@ export class AnimationsService {
           fill: 'forwards',
         }
       );
+
+      this.aboutParagraphs.forEach((p) => {
+        p.animate(
+          [
+            {
+              opacity: 1,
+            },
+            {
+              opacity: 0,
+            },
+          ],
+          {
+            fill: 'forwards',
+          }
+        );
+      });
     }
   }
 
