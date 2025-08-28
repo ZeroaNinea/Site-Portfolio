@@ -1,3 +1,5 @@
+@use "@angular/material" as mat;
+
 .about {
   max-width: 800px;
   margin: 0 auto;
@@ -24,6 +26,19 @@
   border-right: 0.12em solid var(--mat-sys-primary);
   white-space: nowrap;
   animation: typing 6s steps(80, end), blink 0.75s step-end infinite;
+}
+
+.attribution {
+  font-size: 0.8rem;
+  color: var(--mat-sys-outline);
+
+  a {
+    color: var(--mat-sys-primary);
+  }
+
+  a:visited {
+    color: #9575cd;
+  }
 }
 
 @keyframes typing {
