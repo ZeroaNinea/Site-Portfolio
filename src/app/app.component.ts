@@ -27,7 +27,6 @@ export class AppComponent {
   private observer: IntersectionObserver | undefined;
 
   constructor() {
-    // afterNextRender(() => {
     const html = this.document.querySelector('html');
     const about = this.document.querySelector('#about');
     const aboutSection = this.document.querySelector('section.about');
@@ -59,6 +58,7 @@ export class AppComponent {
                 ],
                 {
                   duration: 1000,
+                  fill: 'forwards',
                 }
               );
             } else {
@@ -68,22 +68,18 @@ export class AppComponent {
               aboutSection?.animate(
                 [
                   {
-                    transform: 'translateX(-50px)',
-                    opacity: 0.5,
-                  },
-                  {
                     transform: 'translateX(0)',
-                    filter: 'blur(0px)',
+                    filter: 'blur(1px)',
                     opacity: 1,
                   },
                   {
                     transform: 'translateX(200px)',
                     opacity: 0,
-                    filter: 'blur(1px)',
                   },
                 ],
                 {
-                  duration: 1000,
+                  duration: 200,
+                  fill: 'forwards',
                 }
               );
             }
@@ -96,6 +92,5 @@ export class AppComponent {
 
       this.observer.observe(about);
     }
-    // });
   }
 }
