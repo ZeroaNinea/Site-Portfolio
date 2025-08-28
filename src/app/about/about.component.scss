@@ -62,6 +62,12 @@
   animation: typing 4s steps(30, end), blink 0.75s step-end infinite;
 }
 
+.typewriter-limiter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .attribution {
   font-size: 0.8rem;
   color: var(--mat-sys-outline);
@@ -75,7 +81,6 @@
   }
 }
 
-/* Animations */
 @keyframes typing {
   from {
     width: 0;
