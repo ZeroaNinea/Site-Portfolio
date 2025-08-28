@@ -32,22 +32,24 @@ export class AppComponent {
   private aboutHtmlAnimationsService = inject(AnimationsService);
 
   constructor() {
-    if (this.about) {
-      this.observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) =>
-            this.aboutHtmlAnimationsService.aboutAndHtmlAnimate(
-              entry,
-              this.renderer
-            )
-          );
-        },
-        {
-          threshold: 0.5,
-        }
-      );
+    afterNextRender(() => {
+      if (this.about) {
+        this.observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) =>
+              this.aboutHtmlAnimationsService.aboutAndHtmlAnimate(
+                entry,
+                this.renderer
+              )
+            );
+          },
+          {
+            threshold: 0.5,
+          }
+        );
 
-      this.observer.observe(this.about);
-    }
+        this.observer.observe(this.about);
+      }
+    });
   }
 }
