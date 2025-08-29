@@ -55,6 +55,11 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
                 threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
                 rootMargin: '0px 0px -100px 0px',
               }
+            : window.innerHeight >= 1080
+            ? {
+                threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
+                rootMargin: '0px 0px -100px 0px',
+              }
             : {
                 threshold: [0, 0.25, 0.35, 0.5, 1],
                 rootMargin: '0px 0px -20px 0px',
