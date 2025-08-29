@@ -17,12 +17,6 @@
   }
 }
 
-@media (min-height: 667px) {
-  .hero-container {
-    height: 92vh !important;
-  }
-}
-
 @media (min-height: 760px) {
   .hero-container {
     height: 92.5vh !important;
@@ -56,5 +50,11 @@
 @media (min-height: 1080px) {
   .hero-container {
     height: 94vh !important;
+  }
+}
+
+@media (max-height: 667px) {
+  .hero-container {
+    height: 92vh !important;
   }
 }
