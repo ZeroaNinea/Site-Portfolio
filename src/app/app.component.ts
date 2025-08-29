@@ -25,7 +25,7 @@ export class AppComponent {
   title = 'portfolio';
 
   private document = inject(DOCUMENT);
-  private observer: IntersectionObserver | undefined;
+  private observer!: IntersectionObserver;
   private about = this.document.querySelector('#about');
   private renderer = inject(Renderer2);
 
@@ -33,24 +33,23 @@ export class AppComponent {
 
   constructor() {
     afterNextRender(() => {
+      const options =
+        window.innerWidth > 768
+          ? {
+              threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
+              rootMargin: '0px 0px -100px 0px',
+            }
+          : {
+              threshold: [0, 0.5, 1, 0.25, 0.35, 1],
+              rootMargin: '0px 0px -20px 0px',
+            };
+
       if (this.about) {
-        this.observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) =>
-              this.animationService.aboutAndHtmlAnimate(entry, this.renderer)
-            );
-          },
-          {
-            threshold:
-              window.innerWidth <= 768
-                ? [0, 0.5, 1, 0.25, 0.35, 1]
-                : [0, 0.1, 0.25, 0.35, 0.5, 1],
-            rootMargin:
-              window.innerWidth >= 768
-                ? '0px 0px -100px 0px'
-                : '0px 0px -20px 0px',
-          }
-        );
+        this.observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) =>
+            this.animationService.aboutAndHtmlAnimate(entry, this.renderer)
+          );
+        }, options);
 
         this.observer.observe(this.about);
       }
