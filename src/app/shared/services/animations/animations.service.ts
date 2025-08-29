@@ -34,6 +34,8 @@ export class AnimationsService {
   private typingInterval: any;
 
   aboutAndHtmlAnimate(entry: IntersectionObserverEntry, renderer: Renderer2) {
+    console.log(window.innerWidth);
+
     if (entry.isIntersecting) {
       renderer.addClass(this.html, 'dark-theme');
       renderer.removeClass(this.html, 'light-theme');
@@ -41,12 +43,16 @@ export class AnimationsService {
       this.aboutSection?.animate(
         [
           {
-            transform: 'translateX(-200px)',
+            transform:
+              window.innerWidth < 768
+                ? 'translateX(-70px)'
+                : 'translateX(-200px)',
             opacity: 0,
             filter: 'blur(1px)',
           },
           {
-            transform: 'translateX(50px)',
+            transform:
+              window.innerWidth < 768 ? 'translateX(20px)' : 'translateX(50px)',
             opacity: 0.5,
           },
           {
