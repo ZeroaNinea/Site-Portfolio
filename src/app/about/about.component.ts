@@ -31,39 +31,10 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('about', { static: false }) about!: ElementRef<HTMLElement>;
 
-  // private document = inject(DOCUMENT);
   private observer!: IntersectionObserver;
-  // // private about = this.document.querySelector('#about');
   private renderer = inject(Renderer2);
 
   private animationService = inject(AnimationsService);
-
-  // constructor() {
-  //   afterNextRender(() => {
-  //     console.log(this.about.nativeElement);
-
-  //     const options =
-  //       window.innerWidth > 768
-  //         ? {
-  //             threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
-  //             rootMargin: '0px 0px -100px 0px',
-  //           }
-  //         : {
-  //             threshold: [0, 0.5, 1, 0.25, 0.35, 1],
-  //             rootMargin: '0px 0px -20px 0px',
-  //           };
-
-  //     if (this.about) {
-  //       this.observer = new IntersectionObserver((entries) => {
-  //         entries.forEach((entry) =>
-  //           this.animationService.aboutAndHtmlAnimate(entry, this.renderer)
-  //         );
-  //       }, options);
-
-  //       this.observer.observe(this.about.nativeElement);
-  //     }
-  //   });
-  // }
 
   ngAfterViewInit(): void {
     this.createObserver();
