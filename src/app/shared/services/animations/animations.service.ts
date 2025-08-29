@@ -139,9 +139,7 @@ export class AnimationsService {
       });
     }
 
-    setTimeout(() => {
-      this.aboutAnimating = false;
-    }, 2000);
+    this.aboutAnimating = false;
   }
 
   textTypingEffect(element: Element, text: string) {

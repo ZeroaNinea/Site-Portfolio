@@ -41,7 +41,7 @@ export class AppComponent {
             );
           },
           {
-            threshold: 0.3,
+            threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
             rootMargin: '0px 0px -100px 0px',
           }
         );
