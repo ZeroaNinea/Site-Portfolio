@@ -70,7 +70,6 @@ export class AnimationsService {
       setTimeout(() => {
         const text = 'Building interactive apps with style 🚀';
 
-        // this.aboutSubtitle!.textContent = '';
         this.textTypingEffect(this.aboutSubtitle!, text);
       }, 400);
 
@@ -139,7 +138,6 @@ export class AnimationsService {
   }
 
   textTypingEffect(element: Element, text: string) {
-    // stop previous typing if still running
     if (this.typingInterval) {
       clearInterval(this.typingInterval);
       this.typingInterval = null;
