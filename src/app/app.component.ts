@@ -27,7 +27,6 @@ export class AppComponent {
   private document = inject(DOCUMENT);
   private observer: IntersectionObserver | undefined;
   private about = this.document.querySelector('#about');
-  private aboutSubtitle = this.document.querySelector('.about h3.subtitle');
   private renderer = inject(Renderer2);
 
   private aboutHtmlAnimationsService = inject(AnimationsService);
