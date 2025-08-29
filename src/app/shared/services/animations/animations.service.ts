@@ -31,6 +31,7 @@ export class AnimationsService {
       opacity: 1,
     },
   ];
+  private typingInterval: any;
 
   aboutAndHtmlAnimate(entry: IntersectionObserverEntry, renderer: Renderer2) {
     if (entry.isIntersecting) {
@@ -60,11 +61,10 @@ export class AnimationsService {
         }
       );
 
-      this.aboutSubtitle!.textContent = '';
-      this.aboutSubtitle!.innerHTML = '';
       setTimeout(() => {
         const text = 'Building interactive apps with style 🚀';
 
+        // this.aboutSubtitle!.textContent = '';
         this.textTypingEffect(this.aboutSubtitle!, text);
       }, 400);
 
@@ -132,13 +132,23 @@ export class AnimationsService {
     }
   }
 
-  textTypingEffect(element: Element, text: string, i = 0) {
-    element.textContent += text[i];
-
-    if (i < text.length - 1) {
-      setTimeout(() => {
-        this.textTypingEffect(element, text, i + 1);
-      }, 40);
+  textTypingEffect(element: Element, text: string) {
+    // stop previous typing if still running
+    if (this.typingInterval) {
+      clearInterval(this.typingInterval);
+      this.typingInterval = null;
     }
+
+    element.textContent = '';
+    let i = 0;
+
+    this.typingInterval = setInterval(() => {
+      element.textContent += text[i];
+      i++;
+      if (i >= text.length) {
+        clearInterval(this.typingInterval);
+        this.typingInterval = null;
+      }
+    }, 40);
   }
 }
