@@ -32,11 +32,12 @@ export class AnimationsService {
     },
   ];
   private typingInterval: any;
+  private aboutAnimating = false;
 
   aboutAndHtmlAnimate(entry: IntersectionObserverEntry, renderer: Renderer2) {
-    console.log(window.innerWidth);
+    if (entry.isIntersecting && !this.aboutAnimating) {
+      this.aboutAnimating = true;
 
-    if (entry.isIntersecting) {
       renderer.addClass(this.html, 'dark-theme');
       renderer.removeClass(this.html, 'light-theme');
 
@@ -44,7 +45,7 @@ export class AnimationsService {
         [
           {
             transform:
-              window.innerWidth < 768
+              window.innerWidth <= 768
                 ? 'translateX(-70px)'
                 : 'translateX(-200px)',
             opacity: 0,
@@ -52,7 +53,9 @@ export class AnimationsService {
           },
           {
             transform:
-              window.innerWidth < 768 ? 'translateX(20px)' : 'translateX(50px)',
+              window.innerWidth <= 768
+                ? 'translateX(20px)'
+                : 'translateX(50px)',
             opacity: 0.5,
           },
           {
@@ -135,6 +138,10 @@ export class AnimationsService {
         );
       });
     }
+
+    setTimeout(() => {
+      this.aboutAnimating = false;
+    }, 2000);
   }
 
   textTypingEffect(element: Element, text: string) {

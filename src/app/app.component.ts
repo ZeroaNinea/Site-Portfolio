@@ -29,7 +29,7 @@ export class AppComponent {
   private about = this.document.querySelector('#about');
   private renderer = inject(Renderer2);
 
-  private aboutHtmlAnimationsService = inject(AnimationsService);
+  private animationService = inject(AnimationsService);
 
   constructor() {
     afterNextRender(() => {
@@ -37,14 +37,11 @@ export class AppComponent {
         this.observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) =>
-              this.aboutHtmlAnimationsService.aboutAndHtmlAnimate(
-                entry,
-                this.renderer
-              )
+              this.animationService.aboutAndHtmlAnimate(entry, this.renderer)
             );
           },
           {
-            threshold: 0.3,
+            threshold: 0.5,
             rootMargin: '0px 0px -100px 0px',
           }
         );
