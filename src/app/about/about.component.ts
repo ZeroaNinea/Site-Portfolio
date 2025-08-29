@@ -1,11 +1,9 @@
 import {
-  afterNextRender,
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   inject,
   PLATFORM_ID,
   Renderer2,
-  DOCUMENT,
   ViewChild,
   ElementRef,
   OnDestroy,

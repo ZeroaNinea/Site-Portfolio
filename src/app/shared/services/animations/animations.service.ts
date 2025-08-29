@@ -1,12 +1,15 @@
-import { Injectable, inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Injectable, inject, NgZone, PLATFORM_ID } from '@angular/core';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Renderer2 } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class AnimationsService {
   private document = inject(DOCUMENT);
+  private ngZone = inject(NgZone);
+  private platformId = inject(PLATFORM_ID);
+  private isBrowser = isPlatformBrowser(this.platformId);
 
-  private paragraphsAnimation = [
+  private paragraphsAnimation: Keyframe[] = [
     { transform: 'translateX(-100px)', opacity: 0, filter: 'blur(1px)' },
     { transform: 'translateX(20px)', opacity: 0.5 },
     { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
@@ -19,12 +22,14 @@ export class AnimationsService {
   private EXIT_THRESHOLD = 0.1;
 
   aboutAndHtmlAnimate(entry: IntersectionObserverEntry, renderer: Renderer2) {
-    const base = entry.target as HTMLElement;
+    if (!this.isBrowser) return;
 
-    const aboutSection =
-      base.matches && base.matches('section.about')
-        ? base
-        : (base.querySelector('section.about') as HTMLElement) ?? base;
+    const base = entry.target as HTMLElement;
+    const aboutSection = base.matches?.('section.about')
+      ? base
+      : base.querySelector('section.about') ?? base;
+
+    if (!aboutSection) return;
 
     const aboutSubtitle = aboutSection.querySelector(
       'h3.subtitle'
@@ -36,16 +41,13 @@ export class AnimationsService {
     const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
 
     if (!entry.isIntersecting || ratio <= this.EXIT_THRESHOLD) {
-      if (this.typingInterval) {
-        clearInterval(this.typingInterval);
-        this.typingInterval = null;
-      }
+      this.resetTyping();
       if (aboutSubtitle) aboutSubtitle.textContent = '';
 
       renderer.addClass(this.document.documentElement, 'light-theme');
       renderer.removeClass(this.document.documentElement, 'dark-theme');
 
-      aboutSection?.animate(
+      aboutSection.animate(
         [
           { transform: 'translateX(0)', filter: 'blur(1px)', opacity: 1 },
           { transform: 'translateX(200px)', opacity: 0 },
@@ -72,7 +74,7 @@ export class AnimationsService {
       renderer.addClass(this.document.documentElement, 'dark-theme');
       renderer.removeClass(this.document.documentElement, 'light-theme');
 
-      const sectionAnim = aboutSection?.animate(
+      const sectionAnim = aboutSection.animate(
         [
           {
             transform:
@@ -94,72 +96,55 @@ export class AnimationsService {
         { duration: 1000, fill: 'forwards' }
       );
 
-      const paragraphAnims: Animation[] = [];
-      setTimeout(() => {
-        if (aboutParagraphs[0])
-          paragraphAnims.push(
-            aboutParagraphs[0].animate(this.paragraphsAnimation, {
-              duration: 500,
-              fill: 'forwards',
-            })
-          );
-        setTimeout(() => {
-          if (aboutParagraphs[1])
-            paragraphAnims.push(
-              aboutParagraphs[1].animate(this.paragraphsAnimation, {
-                duration: 500,
-                fill: 'forwards',
-              })
-            );
-          setTimeout(() => {
-            if (aboutParagraphs[2])
-              paragraphAnims.push(
-                aboutParagraphs[2].animate(this.paragraphsAnimation, {
-                  duration: 500,
-                  fill: 'forwards',
-                })
-              );
-          }, 200);
-        }, 200);
-      }, 200);
+      this.animateParagraphs(aboutParagraphs);
 
       const subtitleText = 'Building interactive apps with style 🚀';
       setTimeout(() => {
         if (aboutSubtitle) this.startTyping(aboutSubtitle, subtitleText);
       }, 400);
 
-      const promises: Promise<void>[] = [];
+      const animations: Promise<void>[] = [];
       if (sectionAnim?.finished)
-        promises.push(sectionAnim.finished.then(() => {}));
-      paragraphAnims.forEach((a) => {
-        if (a?.finished) promises.push(a.finished.then(() => {}));
-      });
+        animations.push(sectionAnim.finished.then(() => {}));
 
-      if (promises.length === 0) {
+      if (animations.length === 0) {
         setTimeout(() => (this.aboutAnimating = false), 1200);
       } else {
-        Promise.all(promises).finally(() => {
-          setTimeout(() => (this.aboutAnimating = false), 150);
-        });
+        Promise.all(animations).finally(() =>
+          setTimeout(() => (this.aboutAnimating = false), 150)
+        );
       }
     }
   }
 
+  private animateParagraphs(paragraphs: NodeListOf<HTMLElement>) {
+    Array.from(paragraphs).forEach((p, i) => {
+      setTimeout(() => {
+        p.animate(this.paragraphsAnimation, {
+          duration: 500,
+          fill: 'forwards',
+        });
+      }, i * 200);
+    });
+  }
+
   private startTyping(element: Element, text: string) {
+    this.resetTyping();
+
+    element.textContent = '';
+    let i = 0;
+
+    this.typingInterval = setInterval(() => {
+      element.textContent += text[i];
+      i++;
+      if (i >= text.length) this.resetTyping();
+    }, 40);
+  }
+
+  private resetTyping() {
     if (this.typingInterval) {
       clearInterval(this.typingInterval);
       this.typingInterval = null;
     }
-
-    element.textContent = '';
-    let i = 0;
-    this.typingInterval = setInterval(() => {
-      element.textContent += text[i];
-      i++;
-      if (i >= text.length) {
-        clearInterval(this.typingInterval);
-        this.typingInterval = null;
-      }
-    }, 40);
   }
 }
