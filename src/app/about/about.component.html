@@ -4,7 +4,7 @@
   <div class="about-content">
     @if (isBrowser) {
     <div class="shape-wrapper">
-      <app-geometric-shape [toggleCar]="toggleCar"></app-geometric-shape>
+      <app-geometric-shape (carToggled)="toggleCar()"></app-geometric-shape>
     </div>
     }
 

@@ -6,7 +6,7 @@
 >
   <canvas #canvas></canvas>
   @if (hovered) {
-  <button mat-mini-fab (click)="toggleCar.emit()" class="car-btn">
+  <button mat-mini-fab (click)="carToggled.emit()" class="car-btn">
     <mat-icon>directions_car</mat-icon>
   </button>
   }

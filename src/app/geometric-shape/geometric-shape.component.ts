@@ -22,7 +22,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
   styleUrl: './geometric-shape.component.scss',
 })
 export class GeometricShapeComponent implements OnInit, OnDestroy {
-  @Output() toggleCar = new EventEmitter<void>();
+  @Output() carToggled = new EventEmitter<void>();
 
   @ViewChild('canvas', { static: true })
   canvasRef!: ElementRef<HTMLCanvasElement>;
