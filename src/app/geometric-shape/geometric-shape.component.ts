@@ -7,6 +7,8 @@ import {
   ViewChild,
   Output,
   EventEmitter,
+  NgZone,
+  inject,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,6 +31,8 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
   @ViewChild('container', { static: true })
   containerRef!: ElementRef<HTMLDivElement>;
 
+  private ngZone: NgZone = inject(NgZone);
+
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;
   private renderer!: THREE.WebGLRenderer;
@@ -43,8 +47,10 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
   hovered = false;
 
   ngOnInit(): void {
-    this.initScene();
-    this.animate();
+    this.ngZone.runOutsideAngular(() => {
+      this.initScene();
+      this.animate();
+    });
   }
 
   ngOnDestroy(): void {
