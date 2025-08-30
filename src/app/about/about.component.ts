@@ -34,6 +34,8 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
 
   private animationService = inject(AnimationsService);
 
+  showCar = false;
+
   ngAfterViewInit(): void {
     this.createObserver();
   }
@@ -80,5 +82,9 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
     if (this.observer) {
       this.observer.disconnect();
     }
+  }
+
+  toggleCar() {
+    this.showCar = !this.showCar;
   }
 }

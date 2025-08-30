@@ -5,6 +5,8 @@ import {
   OnDestroy,
   Renderer2,
   ViewChild,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,6 +22,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
   styleUrl: './geometric-shape.component.scss',
 })
 export class GeometricShapeComponent implements OnInit, OnDestroy {
+  @Output() toggleCar = new EventEmitter<void>();
+
   @ViewChild('canvas', { static: true })
   canvasRef!: ElementRef<HTMLCanvasElement>;
   @ViewChild('container', { static: true })

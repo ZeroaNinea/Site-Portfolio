@@ -29,6 +29,7 @@
     </div>
   </div>
 
+  @if (isBrowser) {
   <model-viewer
     src="./assets/3d-models/bmw_m3_gts_e92.glb"
     alt="BMW M3 GTS"
@@ -36,8 +37,11 @@
     camera-controls
     shadow-intensity="0.8"
     style="width: 100%; max-width: 600px; height: 400px; border-radius: 1rem"
+    [class.show]="showCar"
+    [toggleCar]="toggleCar"
   >
   </model-viewer>
+  }
 
   <span class="attribution"
     >&#169; 3D model of BMW M3 GTS by
