@@ -81,3 +81,18 @@
     border-color: var(--mat-sys-primary);
   }
 }
+
+.car-container {
+  height: 0;
+  pointer-events: none;
+
+  transition: height 0.3s ease-in-out;
+
+  model-viewer {
+    display: none;
+  }
+
+  .attribution {
+    display: none;
+  }
+}

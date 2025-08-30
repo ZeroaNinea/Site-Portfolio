@@ -85,6 +85,8 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
   }
 
   toggleCar() {
+    console.log('toggleCar');
+
     this.showCar = !this.showCar;
   }
 }
