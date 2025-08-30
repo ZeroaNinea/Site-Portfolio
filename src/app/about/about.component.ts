@@ -92,7 +92,9 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
     this.showCar = !this.showCar;
 
     if (this.showCar) {
-      this.scrollToCar();
+      setTimeout(() => {
+        this.scrollToCar();
+      }, 300);
     }
   }
 
