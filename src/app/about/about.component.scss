@@ -95,4 +95,17 @@
   .attribution {
     display: none;
   }
+
+  &.show {
+    height: 400px;
+    pointer-events: all;
+
+    model-viewer {
+      display: block;
+    }
+
+    .attribution {
+      display: inline;
+    }
+  }
 }
