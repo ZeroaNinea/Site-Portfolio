@@ -23,6 +23,7 @@ import { AnimationsService } from '../shared/services/animations/animations.serv
   standalone: true,
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss', './about.media.component.scss'],
+  host: { ngSkipHydration: 'true' },
 })
 export class AboutComponent implements AfterViewInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
