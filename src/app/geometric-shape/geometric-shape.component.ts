@@ -14,7 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 @Component({
   selector: 'app-geometric-shape',
@@ -40,7 +40,7 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
   private meshes: THREE.Mesh[] = [];
   private animationId: number = 0;
   // private axesHelper!: THREE.AxesHelper;
-  private orbit!: OrbitControls;
+  // private orbit!: OrbitControls;
   private angle = 0;
   private targetRadius = 2;
   private currentRadius = 2;
@@ -73,11 +73,11 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
     // this.axesHelper = new THREE.AxesHelper(5); // Adds a 3D axis helper.
     // this.scene.add(this.axesHelper);
 
-    this.orbit = new OrbitControls(
-      this.camera,
-      this.containerRef.nativeElement
-    );
-    this.orbit.update();
+    // this.orbit = new OrbitControls(
+    //   this.camera,
+    //   this.containerRef.nativeElement
+    // );
+    // this.orbit.update();
 
     // const geometry = new THREE.IcosahedronGeometry(1, 1);
     // const geometry = new THREE.BoxGeometry(1, 1, 1);

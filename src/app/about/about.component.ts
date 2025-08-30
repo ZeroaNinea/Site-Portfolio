@@ -70,9 +70,9 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
               };
 
         this.observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) =>
-            this.animationService.aboutAndHtmlAnimate(entry, this.renderer)
-          );
+          entries.forEach((entry) => {
+            this.animationService.aboutAndHtmlAnimate(entry, this.renderer);
+          });
         }, options);
 
         this.observer.observe(this.about.nativeElement);
