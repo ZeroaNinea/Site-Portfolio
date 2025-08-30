@@ -4,7 +4,7 @@
   <div class="about-content">
     @if (isBrowser) {
     <div class="shape-wrapper">
-      <app-geometric-shape></app-geometric-shape>
+      <app-geometric-shape [toggleCar]="toggleCar"></app-geometric-shape>
     </div>
     }
 
@@ -29,26 +29,26 @@
     </div>
   </div>
 
-  @if (isBrowser) {
-  <model-viewer
-    src="./assets/3d-models/bmw_m3_gts_e92.glb"
-    alt="BMW M3 GTS"
-    auto-rotate
-    camera-controls
-    shadow-intensity="0.8"
-    style="width: 100%; max-width: 600px; height: 400px; border-radius: 1rem"
-    [class.show]="showCar"
-    [toggleCar]="toggleCar"
-  >
-  </model-viewer>
-  }
-
-  <span class="attribution"
-    >&#169; 3D model of BMW M3 GTS by
-    <a
-      href="https://sketchfab.com/3d-models/bmw-m3-gts-e92-034f2fdd761342dca3c5400a190eb3d5"
-      >Mona x Supercars</a
+  <div class="car-container" [class.show]="showCar">
+    @if (isBrowser) {
+    <model-viewer
+      src="./assets/3d-models/bmw_m3_gts_e92.glb"
+      alt="BMW M3 GTS"
+      auto-rotate
+      camera-controls
+      shadow-intensity="0.8"
+      style="width: 100%; max-width: 600px; height: 400px; border-radius: 1rem"
     >
-    via CC BY.</span
-  >
+    </model-viewer>
+    }
+
+    <span class="attribution"
+      >&#169; 3D model of BMW M3 GTS by
+      <a
+        href="https://sketchfab.com/3d-models/bmw-m3-gts-e92-034f2fdd761342dca3c5400a190eb3d5"
+        >Mona x Supercars</a
+      >
+      via CC BY.</span
+    >
+  </div>
 </section>
