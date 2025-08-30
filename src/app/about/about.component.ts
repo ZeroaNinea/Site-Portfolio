@@ -9,6 +9,7 @@ import {
   OnDestroy,
   AfterViewInit,
   HostListener,
+  DOCUMENT,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -31,6 +32,7 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
 
   private observer!: IntersectionObserver;
   private renderer = inject(Renderer2);
+  private document = inject(DOCUMENT);
 
   private animationService = inject(AnimationsService);
 
@@ -88,5 +90,13 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
     console.log('toggleCar');
 
     this.showCar = !this.showCar;
+
+    if (this.showCar) {
+      this.scrollToCar();
+    }
+  }
+
+  scrollToCar() {
+    this.document.querySelector('#car')?.scrollIntoView({ behavior: 'smooth' });
   }
 }
