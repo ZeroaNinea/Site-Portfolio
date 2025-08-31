@@ -2,8 +2,11 @@
 
 .about {
   max-width: 1000px;
+  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0 auto;
   padding: 6rem 2rem;
+  padding-bottom: 1rem;
   text-align: center;
 }
 

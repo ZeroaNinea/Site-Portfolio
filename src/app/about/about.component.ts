@@ -96,10 +96,20 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
       setTimeout(() => {
         this.scrollToCar();
       }, 300);
+    } else {
+      setTimeout(() => {
+        this.scrollToAbout();
+      }, 300);
     }
   }
 
   scrollToCar() {
     this.document.querySelector('#car')?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  scrollToAbout() {
+    this.document
+      .querySelector('#about')
+      ?.scrollIntoView({ behavior: 'smooth' });
   }
 }
