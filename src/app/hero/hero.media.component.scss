@@ -30,8 +30,8 @@
 
 @media (min-height: 1080px) {
   .hero-container {
-    height: 94vh;
-    height: 94dvh;
-    min-height: calc(100dvh - 64px);
+    // height: 100vh;
+    // height: 100dvh;
+    min-height: calc(99.9dvh - 64px);
   }
 }
