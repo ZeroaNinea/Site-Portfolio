@@ -6,9 +6,11 @@
     font-size: 1rem;
   }
 
-  // .hero-container {
-  //   height: 100vh;
-  // }
+  .hero-container {
+    height: 94vh;
+    height: 94dvh;
+    min-height: calc(100dvh - 64px);
+  }
 }
 
 // @media (min-height: 760px) {
