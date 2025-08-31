@@ -13,7 +13,7 @@
   }
 }
 
-@media (max-height: 768px) {
+@media (min-height: 768px) {
   .hero-text {
     font-size: 2rem;
   }
