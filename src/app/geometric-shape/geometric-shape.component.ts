@@ -14,7 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 import * as THREE from 'three';
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 @Component({
   selector: 'app-geometric-shape',
@@ -40,7 +40,7 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
   private meshes: THREE.Mesh[] = [];
   private animationId: number = 0;
   // private axesHelper!: THREE.AxesHelper;
-  // private orbit!: OrbitControls;
+  private orbit!: OrbitControls;
   private angle = 0;
   private targetRadius = 2;
   private currentRadius = 2;
@@ -73,11 +73,8 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
     // this.axesHelper = new THREE.AxesHelper(5); // Adds a 3D axis helper.
     // this.scene.add(this.axesHelper);
 
-    // this.orbit = new OrbitControls(
-    //   this.camera,
-    //   this.containerRef.nativeElement
-    // );
-    // this.orbit.update();
+    this.orbit = new OrbitControls(this.camera, this.canvasRef.nativeElement);
+    this.orbit.update();
 
     // const geometry = new THREE.IcosahedronGeometry(1, 1);
     // const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -179,6 +176,23 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
 
   onHover(state: boolean): void {
     this.hovered = state;
+    this.targetRadius = state ? 3 : 2;
+    if (this.hovered) {
+      this.meshes.forEach((mesh, i) => {
+        (mesh.material as THREE.MeshStandardMaterial).color.set(0xc8e6c9);
+      });
+    } else {
+      this.meshes.forEach((mesh, i) => {
+        (mesh.material as THREE.MeshStandardMaterial).color.set(0xe0f7fa);
+      });
+    }
+  }
+
+  onTouch(state: boolean) {
+    setTimeout(() => {
+      this.hovered = state;
+    }, 200);
+
     this.targetRadius = state ? 3 : 2;
     if (this.hovered) {
       this.meshes.forEach((mesh, i) => {
