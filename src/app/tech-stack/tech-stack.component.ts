@@ -138,6 +138,10 @@ export class TechStackComponent {
       name: 'Lighthouse CI',
       icon: 'lighthouseci.png',
     },
+    {
+      name: 'Clinic.js',
+      icon: 'clinicjs.svg',
+    },
   ];
 
   ngAfterViewInit(): void {
