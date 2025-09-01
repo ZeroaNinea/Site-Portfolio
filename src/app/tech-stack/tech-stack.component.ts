@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 
 import { MatRippleModule } from '@angular/material/core';
+
 import { AnimationsService } from '../shared/services/animations/animations.service';
 @Component({
   selector: 'app-tech-stack',
