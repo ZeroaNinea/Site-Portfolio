@@ -191,28 +191,6 @@ export class AnimationsService {
     if (entry.isIntersecting && ratio >= this.START_THRESHOLD) {
       this.setTheme(renderer, 'green-light');
 
-      // techStackSection.animate(
-      //   [
-      //     {
-      //       transform:
-      //         window.innerWidth <= 768
-      //           ? 'translateX(-70px)'
-      //           : 'translateX(-200px)',
-      //       opacity: 0,
-      //       filter: 'blur(1px)',
-      //     },
-      //     {
-      //       transform:
-      //         window.innerWidth <= 768
-      //           ? 'translateX(20px)'
-      //           : 'translateX(50px)',
-      //       opacity: 0.5,
-      //     },
-      //     { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
-      //   ],
-      //   { duration: 1000, fill: 'forwards' }
-      // );
-
       const sectionAnim = techStackSection.animate(
         [
           {
