@@ -20,6 +20,7 @@ import {
 } from '@angular/cdk/drag-drop';
 
 import { AnimationsService } from '../shared/services/animations/animations.service';
+import { StackItem } from '../shared/types/stack-item.interface';
 @Component({
   selector: 'app-tech-stack',
   imports: [MatRippleModule, CdkDropList, CdkDrag],
@@ -44,17 +45,14 @@ export class TechStackComponent {
     {
       name: 'Angular',
       icon: 'angular.svg',
-      attribute: '#angular',
     },
     {
       name: 'NgRx',
       icon: 'ngrx.svg',
-      attribute: '#ngrx',
     },
     {
       name: 'RxJS',
       icon: 'rxjs.svg',
-      attribute: '#rxjs',
     },
   ];
 
@@ -106,7 +104,7 @@ export class TechStackComponent {
     }
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<StackItem[]>) {
     moveItemInArray(
       this.frontendTechnologies,
       event.previousIndex,

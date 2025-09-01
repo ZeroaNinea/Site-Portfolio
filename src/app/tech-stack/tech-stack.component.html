@@ -1,8 +1,27 @@
 <section #techStack class="tech-stack">
   <h2 class="section-title">Tech Stack</h2>
 
-  <div class="stack-grid">
-    <div matRipple [matRippleTrigger]="angular" class="ripple">
+  <div
+    cdkDropList
+    cdkDropListOrientation="mixed"
+    class="stack-grid"
+    (cdkDropListDropped)="drop($event)"
+  >
+    @for(item of frontendTechnologies; track item) {
+    <div cdkDrag matRipple class="ripple">
+      <div class="stack-card">
+        <img
+          src="./assets/icons/{{ item.icon }}"
+          alt="{{ item.name }}"
+          class="stack-icon"
+        />
+        <p>{{ item.name }}</p>
+      </div>
+    </div>
+    }
+  </div>
+</section>
+<!-- <div matRipple [matRippleTrigger]="angular" class="ripple">
       <div #angular class="stack-card">
         <img
           src="./assets/icons/angular.svg"
@@ -112,6 +131,4 @@
         />
         <p>TypeScript</p>
       </div>
-    </div>
-  </div>
-</section>
+    </div> -->
