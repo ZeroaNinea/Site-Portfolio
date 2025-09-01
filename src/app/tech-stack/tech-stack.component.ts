@@ -41,7 +41,7 @@ export class TechStackComponent {
 
   private animationService = inject(AnimationsService);
 
-  frontendTechnologies = [
+  stackItems: StackItem[] = [
     {
       name: 'Angular',
       icon: 'angular.svg',
@@ -53,6 +53,26 @@ export class TechStackComponent {
     {
       name: 'RxJS',
       icon: 'rxjs.svg',
+    },
+    {
+      name: 'Angular Material',
+      icon: 'angular-material.svg',
+    },
+    {
+      name: 'Node.js',
+      icon: 'node.svg',
+    },
+    {
+      name: 'Express JS',
+      icon: 'expressjs.svg',
+    },
+    {
+      name: 'Sequelize',
+      icon: 'sequelize.svg',
+    },
+    {
+      name: 'Mongoose',
+      icon: 'mongoose.svg',
     },
   ];
 
@@ -105,10 +125,6 @@ export class TechStackComponent {
   }
 
   drop(event: CdkDragDrop<StackItem[]>) {
-    moveItemInArray(
-      this.frontendTechnologies,
-      event.previousIndex,
-      event.currentIndex
-    );
+    moveItemInArray(this.stackItems, event.previousIndex, event.currentIndex);
   }
 }

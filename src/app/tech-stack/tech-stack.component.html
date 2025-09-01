@@ -7,7 +7,7 @@
     class="stack-grid"
     (cdkDropListDropped)="drop($event)"
   >
-    @for(item of frontendTechnologies; track item) {
+    @for(item of stackItems; track item) {
     <div cdkDrag matRipple [matRippleTrigger]="trigger" class="ripple">
       <div #trigger class="stack-card">
         <img
