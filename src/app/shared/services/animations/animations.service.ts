@@ -17,6 +17,7 @@ export class AnimationsService {
 
   private typingInterval: any = null;
   private aboutAnimating = false;
+  private techStackAnimating = false;
 
   private START_THRESHOLD = 0.35;
   private EXIT_THRESHOLD = 0.1;
@@ -189,6 +190,62 @@ export class AnimationsService {
 
     if (entry.isIntersecting && ratio >= this.START_THRESHOLD) {
       this.setTheme(renderer, 'green-light');
+
+      // techStackSection.animate(
+      //   [
+      //     {
+      //       transform:
+      //         window.innerWidth <= 768
+      //           ? 'translateX(-70px)'
+      //           : 'translateX(-200px)',
+      //       opacity: 0,
+      //       filter: 'blur(1px)',
+      //     },
+      //     {
+      //       transform:
+      //         window.innerWidth <= 768
+      //           ? 'translateX(20px)'
+      //           : 'translateX(50px)',
+      //       opacity: 0.5,
+      //     },
+      //     { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
+      //   ],
+      //   { duration: 1000, fill: 'forwards' }
+      // );
+
+      const sectionAnim = techStackSection.animate(
+        [
+          {
+            transform:
+              window.innerWidth <= 768
+                ? 'translateX(-70px)'
+                : 'translateX(-200px)',
+            opacity: 0,
+            filter: 'blur(1px)',
+          },
+          {
+            transform:
+              window.innerWidth <= 768
+                ? 'translateX(20px)'
+                : 'translateX(50px)',
+            opacity: 0.5,
+          },
+          { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
+        ],
+        { duration: 1000, fill: 'forwards' }
+      );
+
+      const animations: Promise<void>[] = [];
+      if (sectionAnim?.finished)
+        animations.push(sectionAnim.finished.then(() => {}));
+
+      if (animations.length === 0) {
+        setTimeout(() => (this.techStackAnimating = false), 1200);
+      } else {
+        Promise.all(animations).finally(() =>
+          setTimeout(() => (this.techStackAnimating = false), 150)
+        );
+      }
     }
   }
 
@@ -205,12 +262,7 @@ export class AnimationsService {
     const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
 
     if (entry.isIntersecting && ratio >= this.START_THRESHOLD) {
-      console.log('homeAndHtmlAnimate');
-
-      // this.setTheme(renderer, 'light');
-      renderer.removeClass(this.document.documentElement, 'light-theme');
-      renderer.removeClass(this.document.documentElement, 'dark-theme');
-      renderer.removeClass(this.document.documentElement, 'green-light-theme');
+      this.setTheme(renderer, 'light');
     }
   }
 }
