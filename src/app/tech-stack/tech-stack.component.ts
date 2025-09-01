@@ -10,10 +10,12 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
+
+import { MatRippleModule } from '@angular/material/core';
 import { AnimationsService } from '../shared/services/animations/animations.service';
 @Component({
   selector: 'app-tech-stack',
-  imports: [],
+  imports: [MatRippleModule],
   standalone: true,
   templateUrl: './tech-stack.component.html',
   styleUrl: './tech-stack.component.scss',
