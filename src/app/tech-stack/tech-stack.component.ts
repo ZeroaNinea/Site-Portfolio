@@ -12,11 +12,17 @@ import {
 } from '@angular/core';
 
 import { MatRippleModule } from '@angular/material/core';
+import {
+  CdkDragDrop,
+  CdkDropList,
+  CdkDrag,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
 
 import { AnimationsService } from '../shared/services/animations/animations.service';
 @Component({
   selector: 'app-tech-stack',
-  imports: [MatRippleModule],
+  imports: [MatRippleModule, CdkDropList, CdkDrag],
   standalone: true,
   templateUrl: './tech-stack.component.html',
   styleUrl: './tech-stack.component.scss',
@@ -33,6 +39,24 @@ export class TechStackComponent {
   private document = inject(DOCUMENT);
 
   private animationService = inject(AnimationsService);
+
+  frontendTechnologies = [
+    {
+      name: 'Angular',
+      icon: 'angular.svg',
+      attribute: '#angular',
+    },
+    {
+      name: 'NgRx',
+      icon: 'ngrx.svg',
+      attribute: '#ngrx',
+    },
+    {
+      name: 'RxJS',
+      icon: 'rxjs.svg',
+      attribute: '#rxjs',
+    },
+  ];
 
   ngAfterViewInit(): void {
     this.createObserver();
@@ -80,5 +104,13 @@ export class TechStackComponent {
     if (this.observer) {
       this.observer.disconnect();
     }
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(
+      this.frontendTechnologies,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 }
