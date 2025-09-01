@@ -118,6 +118,26 @@ export class TechStackComponent {
       name: 'Cypress',
       icon: 'cypress.svg',
     },
+    {
+      name: 'Jasmine',
+      icon: 'jasmine.svg',
+    },
+    {
+      name: 'Karma',
+      icon: 'karma.svg',
+    },
+    {
+      name: 'Mocha',
+      icon: 'mocha.svg',
+    },
+    {
+      name: 'Chai',
+      icon: 'chai.svg',
+    },
+    {
+      name: 'Lighthouse CI',
+      icon: 'lighthouseci.png',
+    },
   ];
 
   ngAfterViewInit(): void {
