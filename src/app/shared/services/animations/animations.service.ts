@@ -21,6 +21,27 @@ export class AnimationsService {
   private START_THRESHOLD = 0.35;
   private EXIT_THRESHOLD = 0.1;
 
+  private setTheme(
+    renderer: Renderer2,
+    theme: 'light' | 'dark' | 'green-light'
+  ) {
+    renderer.removeClass(this.document.documentElement, 'light-theme');
+    renderer.removeClass(this.document.documentElement, 'dark-theme');
+    renderer.removeClass(this.document.documentElement, 'green-light-theme');
+
+    switch (theme) {
+      case 'light':
+        renderer.addClass(this.document.documentElement, 'light-theme');
+        break;
+      case 'dark':
+        renderer.addClass(this.document.documentElement, 'dark-theme');
+        break;
+      case 'green-light':
+        renderer.addClass(this.document.documentElement, 'green-light-theme');
+        break;
+    }
+  }
+
   aboutAndHtmlAnimate(entry: IntersectionObserverEntry, renderer: Renderer2) {
     if (!this.isBrowser) return;
 
@@ -44,8 +65,10 @@ export class AnimationsService {
       this.resetTyping();
       if (aboutSubtitle) aboutSubtitle.textContent = '';
 
-      renderer.addClass(this.document.documentElement, 'light-theme');
-      renderer.removeClass(this.document.documentElement, 'dark-theme');
+      // renderer.addClass(this.document.documentElement, 'light-theme');
+      // renderer.removeClass(this.document.documentElement, 'dark-theme');
+
+      // this.setTheme(renderer, 'light');
 
       aboutSection.animate(
         [
@@ -71,8 +94,9 @@ export class AnimationsService {
     ) {
       this.aboutAnimating = true;
 
-      renderer.addClass(this.document.documentElement, 'dark-theme');
-      renderer.removeClass(this.document.documentElement, 'light-theme');
+      // renderer.addClass(this.document.documentElement, 'dark-theme');
+      // renderer.removeClass(this.document.documentElement, 'light-theme');
+      this.setTheme(renderer, 'dark');
 
       const sectionAnim = aboutSection.animate(
         [
@@ -163,10 +187,30 @@ export class AnimationsService {
 
     const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
 
-    if (!entry.isIntersecting || ratio <= this.EXIT_THRESHOLD) {
+    if (entry.isIntersecting && ratio >= this.START_THRESHOLD) {
+      this.setTheme(renderer, 'green-light');
+    }
+  }
+
+  homeAndHtmlAnimate(entry: IntersectionObserverEntry, renderer: Renderer2) {
+    if (!this.isBrowser) return;
+
+    const base = entry.target as HTMLElement;
+    const homeSection = base.matches?.('section.home')
+      ? base
+      : base.querySelector('section.home') ?? base;
+
+    if (!homeSection) return;
+
+    const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
+
+    if (entry.isIntersecting && ratio >= this.START_THRESHOLD) {
+      console.log('homeAndHtmlAnimate');
+
+      // this.setTheme(renderer, 'light');
       renderer.removeClass(this.document.documentElement, 'light-theme');
       renderer.removeClass(this.document.documentElement, 'dark-theme');
-      renderer.addClass(this.document.documentElement, 'green-light-theme');
+      renderer.removeClass(this.document.documentElement, 'green-light-theme');
     }
   }
 }

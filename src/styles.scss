@@ -34,10 +34,7 @@ body {
 
   @include mat.theme(
     (
-      // color: (
-      //   theme-type: light,
-      // ),
-      color: mat.$green-palette
+      color: mat.$green-palette,
     )
   );
 }

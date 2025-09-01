@@ -46,36 +46,27 @@ export class TechStackComponent {
   private createObserver() {
     if (isPlatformBrowser(this.platformId)) {
       if (this.techStack) {
-        // const options =
-        //   window.innerWidth > 768
-        //     ? {
-        //         threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
-        //         rootMargin: '0px 0px -100px 0px',
-        //       }
-        //     : window.innerHeight >= 1080
-        //     ? {
-        //         threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
-        //         rootMargin: '0px 0px -100px 0px',
-        //       }
-        //     : {
-        //         threshold: [0, 0.25, 0.35, 0.5, 1],
-        //         rootMargin: '0px 0px -20px 0px',
-        //       };
+        const options =
+          window.innerWidth > 768
+            ? {
+                threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
+                rootMargin: '0px 0px -100px 0px',
+              }
+            : window.innerHeight >= 1080
+            ? {
+                threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
+                rootMargin: '0px 0px -100px 0px',
+              }
+            : {
+                threshold: [0, 0.25, 0.35, 0.5, 1],
+                rootMargin: '0px 0px -20px 0px',
+              };
 
-        this.observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              this.animationService.techStackAndHtmlAnimate(
-                entry,
-                this.renderer
-              );
-            });
-          },
-          {
-            threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
-            rootMargin: '0px 0px -100px 0px',
-          }
-        );
+        this.observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            this.animationService.techStackAndHtmlAnimate(entry, this.renderer);
+          });
+        }, options);
 
         this.observer.observe(this.techStack.nativeElement);
       }
