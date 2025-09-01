@@ -142,6 +142,10 @@ export class TechStackComponent {
       name: 'Clinic.js',
       icon: 'clinicjs.svg',
     },
+    {
+      name: 'Artillery',
+      icon: 'artillery.svg',
+    },
   ];
 
   ngAfterViewInit(): void {
