@@ -24,7 +24,14 @@
     >
       About Me
     </button>
-    <button mat-button routerLink="" fragment="tech-stack">Tech Stack</button>
+    <button
+      mat-button
+      routerLink=""
+      fragment="tech-stack"
+      (click)="scrollToSection('tech-stack')"
+    >
+      Tech Stack
+    </button>
     <button mat-button routerLink="" fragment="projects">Projects</button>
     <button mat-button routerLink="" fragment="contacts">Contacts</button>
   </nav>
@@ -51,7 +58,12 @@
   >
     About Me
   </button>
-  <button mat-button (click)="toggleMenu()" routerLink="" fragment="tech-stack">
+  <button
+    mat-button
+    (click)="toggleMenu('tech-stack', 200)"
+    routerLink=""
+    fragment="tech-stack"
+  >
     Tech Stack
   </button>
   <button mat-button (click)="toggleMenu()" routerLink="" fragment="projects">
