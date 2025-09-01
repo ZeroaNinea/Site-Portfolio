@@ -110,6 +110,14 @@ export class TechStackComponent {
       name: 'Kubernetes',
       icon: 'kubernetes.svg',
     },
+    {
+      name: 'Jenkins',
+      icon: 'jenkins.svg',
+    },
+    {
+      name: 'Cypress',
+      icon: 'cypress.svg',
+    },
   ];
 
   ngAfterViewInit(): void {
