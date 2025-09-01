@@ -147,4 +147,26 @@ export class AnimationsService {
       this.typingInterval = null;
     }
   }
+
+  techStackAndHtmlAnimate(
+    entry: IntersectionObserverEntry,
+    renderer: Renderer2
+  ) {
+    if (!this.isBrowser) return;
+
+    const base = entry.target as HTMLElement;
+    const techStackSection = base.matches?.('section.tech-stack')
+      ? base
+      : base.querySelector('section.tech-stack') ?? base;
+
+    if (!techStackSection) return;
+
+    const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
+
+    if (!entry.isIntersecting || ratio <= this.EXIT_THRESHOLD) {
+      renderer.removeClass(this.document.documentElement, 'light-theme');
+      renderer.removeClass(this.document.documentElement, 'dark-theme');
+      renderer.addClass(this.document.documentElement, 'green-light-theme');
+    }
+  }
 }

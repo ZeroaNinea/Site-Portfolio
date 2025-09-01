@@ -28,3 +28,16 @@ body {
     )
   );
 }
+
+.green-light-theme {
+  background-color: var(--mat-sys-background);
+
+  @include mat.theme(
+    (
+      // color: (
+      //   theme-type: light,
+      // ),
+      color: mat.$green-palette
+    )
+  );
+}
