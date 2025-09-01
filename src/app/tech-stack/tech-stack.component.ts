@@ -59,6 +59,10 @@ export class TechStackComponent {
       icon: 'angular-material.svg',
     },
     {
+      name: 'Three.js',
+      icon: 'threejs.svg',
+    },
+    {
       name: 'Node.js',
       icon: 'node.svg',
     },
@@ -73,6 +77,38 @@ export class TechStackComponent {
     {
       name: 'Mongoose',
       icon: 'mongoose.svg',
+    },
+    {
+      name: 'Redis',
+      icon: 'redis.svg',
+    },
+    {
+      name: 'Socket.io',
+      icon: 'socketio.svg',
+    },
+    {
+      name: 'JWT',
+      icon: 'jwt.svg',
+    },
+    {
+      name: 'Auth0',
+      icon: 'auth0.svg',
+    },
+    {
+      name: 'Passport.js',
+      icon: 'passportjs.svg',
+    },
+    {
+      name: 'Git',
+      icon: 'git.svg',
+    },
+    {
+      name: 'Docker',
+      icon: 'docker.svg',
+    },
+    {
+      name: 'Kubernetes',
+      icon: 'kubernetes.svg',
     },
   ];
 
