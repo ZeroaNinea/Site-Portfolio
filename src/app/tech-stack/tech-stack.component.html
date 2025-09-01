@@ -8,8 +8,8 @@
     (cdkDropListDropped)="drop($event)"
   >
     @for(item of frontendTechnologies; track item) {
-    <div cdkDrag matRipple class="ripple">
-      <div class="stack-card">
+    <div cdkDrag matRipple [matRippleTrigger]="trigger" class="ripple">
+      <div #trigger class="stack-card">
         <img
           src="./assets/icons/{{ item.icon }}"
           alt="{{ item.name }}"
