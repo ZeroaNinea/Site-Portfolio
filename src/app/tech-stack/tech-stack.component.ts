@@ -26,7 +26,10 @@ import { StackItem } from '../shared/types/stack-item.interface';
   imports: [MatRippleModule, CdkDropList, CdkDrag],
   standalone: true,
   templateUrl: './tech-stack.component.html',
-  styleUrl: './tech-stack.component.scss',
+  styleUrls: [
+    './tech-stack.component.scss',
+    './tech-stack.media.component.scss',
+  ],
 })
 export class TechStackComponent {
   private platformId = inject(PLATFORM_ID);
