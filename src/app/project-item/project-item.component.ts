@@ -18,6 +18,11 @@ export class ProjectItemComponent {
   private camera!: THREE.PerspectiveCamera;
   private animationId: number = 0;
 
+  // --- Random rotation speeds & offsets ---
+  private cube1Rot = { x: 0, y: 0 };
+  private cube2Rot = { x: 0, y: 0 };
+  private planePhase = Math.random() * Math.PI * 2; // Random start for sine wave.
+
   constructor(private host: ElementRef) {}
 
   ngAfterViewInit() {
@@ -36,10 +41,10 @@ export class ProjectItemComponent {
     });
     this.renderer.setSize(300, 300);
 
+    // --- Cubes ---
     const cube1 = new THREE.Mesh(
       new THREE.BoxGeometry(1, 1, 1),
       new THREE.MeshBasicMaterial({
-        // color: 0x81c784,
         color: 0x4db6ac,
         wireframe: true,
         opacity: 0.5,
@@ -51,7 +56,6 @@ export class ProjectItemComponent {
     const cube2 = new THREE.Mesh(
       new THREE.BoxGeometry(1, 1, 1),
       new THREE.MeshBasicMaterial({
-        // color: 0x4fc3f7,
         color: 0xf48fb1,
         wireframe: true,
         opacity: 0.5,
@@ -60,6 +64,7 @@ export class ProjectItemComponent {
     );
     this.scene.add(cube2);
 
+    // --- Project image plane ---
     const textureLoader = new THREE.TextureLoader();
     const projectTexture = textureLoader.load(this.project.image);
     const plane = new THREE.Mesh(
@@ -68,14 +73,30 @@ export class ProjectItemComponent {
     );
     this.scene.add(plane);
 
+    // --- Randomize cube speeds ---
+    this.cube1Rot.x = Math.random() * 0.02 - 0.01 || 0.01;
+    this.cube1Rot.y = Math.random() * 0.02 - 0.01 || 0.01;
+
+    this.cube2Rot.x = Math.random() * 0.02 - 0.01 || -0.008;
+    this.cube2Rot.y = Math.random() * 0.02 - 0.01 || -0.008;
+
+    // --- Animation loop ---
+    let clock = new THREE.Clock();
+
     const animate = () => {
       this.animationId = requestAnimationFrame(animate);
 
-      cube1.rotation.x += 0.01;
-      cube1.rotation.y += 0.01;
+      // Random cube rotations.
+      cube1.rotation.x += this.cube1Rot.x;
+      cube1.rotation.y += this.cube1Rot.y;
 
-      cube2.rotation.x -= 0.008;
-      cube2.rotation.y -= 0.008;
+      cube2.rotation.x += this.cube2Rot.x;
+      cube2.rotation.y += this.cube2Rot.y;
+
+      // Slight plane wobble.
+      const t = clock.getElapsedTime();
+      plane.rotation.x = Math.sin(t + this.planePhase) * 0.15; // ±8.5°
+      plane.rotation.y = Math.cos(t + this.planePhase) * 0.15;
 
       this.renderer.render(this.scene, this.camera);
     };
