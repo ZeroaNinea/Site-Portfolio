@@ -2,6 +2,8 @@
   class="cube-wrapper"
   (mouseenter)="onHover(true)"
   (mouseleave)="onHover(false)"
+  (touchstart)="onHover(true)"
+  (touchend)="onHover(false)"
 >
   <canvas #canvas></canvas>
   <h4 class="project-name">{{ project.name }}</h4>
