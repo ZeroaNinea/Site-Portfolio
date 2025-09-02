@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, inject, Input } from '@angular/core';
 import { Project } from '../shared/types/project.interface';
 
 import * as THREE from 'three';
@@ -25,12 +25,18 @@ export class ProjectItemComponent {
   private planeAmp!: number;
   private planeSpeed!: number;
 
-  constructor(private host: ElementRef) {}
+  private host = inject(ElementRef);
 
   ngAfterViewInit() {
     const canvas = this.host.nativeElement.querySelector(
       'canvas'
     ) as HTMLCanvasElement;
+    const wrapper = this.host.nativeElement.querySelector('.cube-wrapper');
+    const lighting = wrapper.querySelector(
+      '.background-lighting'
+    ) as HTMLElement;
+
+    lighting.style.animationDelay = `${Math.random() * 5}s`;
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
