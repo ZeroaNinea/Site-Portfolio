@@ -18,12 +18,12 @@ export class ProjectsComponent {
     {
       name: 'Real-Time Chat App',
       image: '',
-      link: '',
+      link: 'https://github.com/ZeroaNinea/Real-Time-Chat-App',
     },
     {
       name: 'UI Elements',
       image: '',
-      link: '',
+      link: 'https://github.com/ZeroaNinea/UI-Elements',
     },
   ];
 }
