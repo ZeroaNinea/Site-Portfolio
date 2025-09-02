@@ -1,46 +1,9 @@
 .cube-wrapper {
-  perspective: 1000px;
   display: inline-block;
   margin: 1rem;
   cursor: pointer;
-}
 
-.cube {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  transform-style: preserve-3d;
-  transition: transform 0.8s ease-in-out;
-
-  .face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 0.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backface-visibility: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  canvas {
+    border-radius: 1rem;
   }
-
-  .front {
-    background: var(--mat-sys-secondary-container);
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-  }
-
-  .back {
-    background: var(--mat-sys-primary-container);
-    color: var(--mat-sys-on-primary-container);
-    transform: rotateY(180deg);
-  }
-}
-
-.cube-wrapper:hover .cube {
-  transform: rotateY(180deg);
 }
