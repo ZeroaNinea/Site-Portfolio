@@ -2,6 +2,8 @@ import { Injectable, inject, NgZone, PLATFORM_ID } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Renderer2 } from '@angular/core';
 
+import { Theme } from '../../types/theme.alias';
+
 @Injectable({ providedIn: 'root' })
 export class AnimationsService {
   private document = inject(DOCUMENT);
@@ -22,10 +24,7 @@ export class AnimationsService {
   private START_THRESHOLD = 0.35;
   private EXIT_THRESHOLD = 0.1;
 
-  private setTheme(
-    renderer: Renderer2,
-    theme: 'light' | 'dark' | 'green-light'
-  ) {
+  private setTheme(renderer: Renderer2, theme: Theme) {
     renderer.removeClass(this.document.documentElement, 'light-theme');
     renderer.removeClass(this.document.documentElement, 'dark-theme');
     renderer.removeClass(this.document.documentElement, 'green-light-theme');
@@ -39,6 +38,9 @@ export class AnimationsService {
         break;
       case 'green-light':
         renderer.addClass(this.document.documentElement, 'green-light-theme');
+        break;
+      case 'rose-dark':
+        renderer.addClass(this.document.documentElement, 'rose-dark-theme');
         break;
     }
   }
@@ -260,7 +262,7 @@ export class AnimationsService {
     const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
 
     if (entry.isIntersecting && ratio >= this.START_THRESHOLD) {
-      this.setTheme(renderer, 'green-light');
+      this.setTheme(renderer, 'rose-dark');
 
       const sectionAnim = techStackSection.animate(
         [
