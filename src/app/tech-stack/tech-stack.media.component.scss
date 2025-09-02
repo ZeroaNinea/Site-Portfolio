@@ -22,3 +22,31 @@
     }
   }
 }
+
+@media (max-width: 915px) {
+  .tech-stack {
+    min-height: 90vh;
+    min-height: 90dvh;
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .stack-grid {
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+
+    .ripple {
+      .stack-card {
+        .stack-icon {
+          width: 22px;
+          height: 22px;
+        }
+
+        p {
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+}
