@@ -17,12 +17,12 @@ export class ProjectsComponent {
   projectList: Project[] = [
     {
       name: 'Real-Time Chat App',
-      image: '',
+      image: './assets/previews/real-time-chat-app.png',
       link: 'https://github.com/ZeroaNinea/Real-Time-Chat-App',
     },
     {
       name: 'UI Elements',
-      image: '',
+      image: './assets/previews/ui-elements.png',
       link: 'https://github.com/ZeroaNinea/UI-Elements',
     },
   ];
