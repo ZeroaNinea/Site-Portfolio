@@ -167,10 +167,11 @@ export class ProjectItemComponent {
       // Reset plane animation phase immediately.
       // this.planePhase = 0;
       this.lighting.style.animationDelay = '0s';
-    } else {
-      // Randomize plane again on leave.
-      // this.planePhase = Math.random() * Math.PI * 2;
-      // this.lighting.style.animationDelay = `${Math.random() * 5}s`;
     }
+    // else {
+    // Randomize plane again on leave.
+    // this.planePhase = Math.random() * Math.PI * 2;
+    // this.lighting.style.animationDelay = `${Math.random() * 5}s`;
+    // }
   }
 }
