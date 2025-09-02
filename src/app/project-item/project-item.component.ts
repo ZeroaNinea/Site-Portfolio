@@ -38,14 +38,21 @@ export class ProjectItemComponent {
 
     const cube1 = new THREE.Mesh(
       new THREE.BoxGeometry(1, 1, 1),
-      new THREE.MeshBasicMaterial({ color: 0x81c784, wireframe: true })
+      new THREE.MeshBasicMaterial({
+        // color: 0x81c784,
+        color: 0x4db6ac,
+        wireframe: true,
+        opacity: 0.5,
+        transparent: true,
+      })
     );
     this.scene.add(cube1);
 
     const cube2 = new THREE.Mesh(
       new THREE.BoxGeometry(1, 1, 1),
       new THREE.MeshBasicMaterial({
-        color: 0x4fc3f7,
+        // color: 0x4fc3f7,
+        color: 0xf48fb1,
         wireframe: true,
         opacity: 0.5,
         transparent: true,
