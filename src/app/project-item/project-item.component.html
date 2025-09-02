@@ -1,4 +1,8 @@
-<div class="cube-wrapper">
+<div
+  class="cube-wrapper"
+  (mouseenter)="onHover(true)"
+  (mouseleave)="onHover(false)"
+>
   <canvas #canvas></canvas>
   <h4 class="project-name">{{ project.name }}</h4>
   <div class="background-lighting"></div>

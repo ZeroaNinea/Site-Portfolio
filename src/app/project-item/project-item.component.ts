@@ -128,4 +128,6 @@ export class ProjectItemComponent {
     cancelAnimationFrame(this.animationId);
     this.renderer.dispose();
   }
+
+  onHover(state: boolean) {}
 }
