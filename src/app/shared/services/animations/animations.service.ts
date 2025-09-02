@@ -28,6 +28,7 @@ export class AnimationsService {
     renderer.removeClass(this.document.documentElement, 'light-theme');
     renderer.removeClass(this.document.documentElement, 'dark-theme');
     renderer.removeClass(this.document.documentElement, 'green-light-theme');
+    renderer.removeClass(this.document.documentElement, 'rose-dark-theme');
 
     switch (theme) {
       case 'light':
