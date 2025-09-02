@@ -22,6 +22,8 @@ export class ProjectItemComponent {
   private cube1Rot = { x: 0, y: 0 };
   private cube2Rot = { x: 0, y: 0 };
   private planePhase = Math.random() * Math.PI * 2; // Random start for sine wave.
+  private planeAmp!: number;
+  private planeSpeed!: number;
 
   constructor(private host: ElementRef) {}
 
@@ -80,6 +82,11 @@ export class ProjectItemComponent {
     this.cube2Rot.x = Math.random() * 0.02 - 0.01 || -0.008;
     this.cube2Rot.y = Math.random() * 0.02 - 0.01 || -0.008;
 
+    // --- Randomize plane speed ---
+    this.planePhase = Math.random() * Math.PI * 2;
+    this.planeAmp = 0.1 + Math.random() * 0.1;
+    this.planeSpeed = 0.5 + Math.random() * 1.0;
+
     // --- Animation loop ---
     let clock = new THREE.Clock();
 
@@ -95,8 +102,10 @@ export class ProjectItemComponent {
 
       // Slight plane wobble.
       const t = clock.getElapsedTime();
-      plane.rotation.x = Math.sin(t + this.planePhase) * 0.15; // ±8.5°
-      plane.rotation.y = Math.cos(t + this.planePhase) * 0.15;
+      plane.rotation.x =
+        Math.sin(t * this.planeSpeed + this.planePhase) * this.planeAmp;
+      plane.rotation.y =
+        Math.cos(t * this.planeSpeed + this.planePhase) * this.planeAmp;
 
       this.renderer.render(this.scene, this.camera);
     };
