@@ -243,4 +243,58 @@ export class AnimationsService {
       this.setTheme(renderer, 'light');
     }
   }
+
+  projectsAndHtmlAnimate(
+    entry: IntersectionObserverEntry,
+    renderer: Renderer2
+  ) {
+    if (!this.isBrowser) return;
+
+    const base = entry.target as HTMLElement;
+    const techStackSection = base.matches?.('section.tech-stack')
+      ? base
+      : base.querySelector('section.tech-stack') ?? base;
+
+    if (!techStackSection) return;
+
+    const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
+
+    if (entry.isIntersecting && ratio >= this.START_THRESHOLD) {
+      this.setTheme(renderer, 'green-light');
+
+      const sectionAnim = techStackSection.animate(
+        [
+          {
+            transform:
+              window.innerWidth <= 768
+                ? 'translateX(-70px)'
+                : 'translateX(-200px)',
+            opacity: 0,
+            filter: 'blur(1px)',
+          },
+          {
+            transform:
+              window.innerWidth <= 768
+                ? 'translateX(20px)'
+                : 'translateX(50px)',
+            opacity: 0.5,
+          },
+          { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
+        ],
+        { duration: 1000, fill: 'forwards' }
+      );
+
+      const animations: Promise<void>[] = [];
+      if (sectionAnim?.finished)
+        animations.push(sectionAnim.finished.then(() => {}));
+
+      if (animations.length === 0) {
+        setTimeout(() => (this.techStackAnimating = false), 1200);
+      } else {
+        Promise.all(animations).finally(() =>
+          setTimeout(() => (this.techStackAnimating = false), 150)
+        );
+      }
+    }
+  }
 }
