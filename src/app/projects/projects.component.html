@@ -2,7 +2,10 @@
   <h2 class="section-title">Projects</h2>
   <div class="project-item-list">
     @if (isBrowser) { @for (project of projectList; track $index) {
-    <app-project-item [project]="project"></app-project-item>
+    <app-project-item
+      [project]="project"
+      class="project-item"
+    ></app-project-item>
     }}
   </div>
 </section>

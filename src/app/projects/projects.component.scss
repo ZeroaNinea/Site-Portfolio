@@ -9,7 +9,22 @@
 
   .section-title {
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     color: var(--mat-sys-primary);
+  }
+
+  .project-item-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5rem;
+
+    .project-item {
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .project-item:hover {
+      background-color: var(--mat-sys-surface-container-high);
+    }
   }
 }
