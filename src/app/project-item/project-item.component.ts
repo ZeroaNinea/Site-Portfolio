@@ -34,48 +34,42 @@ export class ProjectItemComponent {
       alpha: true,
       antialias: true,
     });
-    this.renderer.setSize(200, 200);
+    this.renderer.setSize(300, 300);
 
-    const textureLoader = new THREE.TextureLoader();
-    const projectTexture = textureLoader.load(this.project.image);
-
-    const materials1 = Array(6).fill(
-      new THREE.MeshBasicMaterial({ map: projectTexture })
+    const cube1 = new THREE.Mesh(
+      new THREE.BoxGeometry(1, 1, 1),
+      new THREE.MeshBasicMaterial({ color: 0x4caf50, wireframe: true })
     );
-    const cube1 = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), materials1);
     this.scene.add(cube1);
 
-    const canvas2d = document.createElement('canvas');
-    const ctx = canvas2d.getContext('2d')!;
-    canvas2d.width = 256;
-    canvas2d.height = 256;
-    ctx.fillStyle = '#222';
-    ctx.fillRect(0, 0, 256, 256);
-    ctx.fillStyle = '#fff';
-    ctx.font = '24px sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText(this.project.name, 128, 128);
-
-    const textTexture = new THREE.CanvasTexture(canvas2d);
-    const materials2 = Array(6).fill(
-      new THREE.MeshBasicMaterial({
-        map: textTexture,
-        transparent: true,
-        opacity: 0.8,
-      })
-    );
     const cube2 = new THREE.Mesh(
-      new THREE.BoxGeometry(1.05, 1.05, 1.05),
-      materials2
+      new THREE.BoxGeometry(1, 1, 1),
+      new THREE.MeshBasicMaterial({
+        color: 0x2196f3,
+        wireframe: true,
+        opacity: 0.5,
+        transparent: true,
+      })
     );
     this.scene.add(cube2);
 
+    const textureLoader = new THREE.TextureLoader();
+    const projectTexture = textureLoader.load(this.project.image);
+    const plane = new THREE.Mesh(
+      new THREE.PlaneGeometry(2, 1),
+      new THREE.MeshBasicMaterial({ map: projectTexture, transparent: true })
+    );
+    this.scene.add(plane);
+
     const animate = () => {
       this.animationId = requestAnimationFrame(animate);
+
       cube1.rotation.x += 0.01;
       cube1.rotation.y += 0.01;
+
       cube2.rotation.x -= 0.008;
       cube2.rotation.y -= 0.008;
+
       this.renderer.render(this.scene, this.camera);
     };
     animate();
