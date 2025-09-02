@@ -34,7 +34,7 @@ export class ProjectItemComponent {
       alpha: true,
       antialias: true,
     });
-    this.renderer.setSize(300, 300);
+    this.renderer.setSize(200, 200);
 
     const textureLoader = new THREE.TextureLoader();
     const projectTexture = textureLoader.load(this.project.image);
