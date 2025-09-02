@@ -10,4 +10,8 @@ import { Project } from '../shared/types/project.interface';
 })
 export class ProjectItemComponent {
   @Input() project!: Project;
+
+  openLink(link: string) {
+    if (link) window.open(link, '_blank');
+  }
 }

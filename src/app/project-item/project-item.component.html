@@ -1,1 +1,10 @@
-<p>project-item works!</p>
+<div class="cube-wrapper" (click)="openLink(project.link)">
+  <div class="cube">
+    <div class="face front">
+      <img [src]="project.image" [alt]="project.name" />
+    </div>
+    <div class="face back">
+      <p>{{ project.name }}</p>
+    </div>
+  </div>
+</div>
