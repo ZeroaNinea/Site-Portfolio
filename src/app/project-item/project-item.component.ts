@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Project } from '../shared/types/project.interface';
 
 @Component({
   selector: 'app-project-item',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './project-item.component.html',
   styleUrl: './project-item.component.scss',
 })
-export class ProjectItemComponent {}
+export class ProjectItemComponent {
+  @Input() project!: Project;
+}

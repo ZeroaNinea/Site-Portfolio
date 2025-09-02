@@ -1,1 +1,6 @@
-<p>projects works!</p>
+<section #projects class="projects">
+  <h2 class="section-title">Projects</h2>
+  @if (isBrowser) { @for (project of projectList; track $index) {
+  <app-project-item [project]="project"></app-project-item>
+  }}
+</section>
