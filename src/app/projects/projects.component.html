@@ -3,6 +3,7 @@
   <div class="project-item-list">
     @if (isBrowser) { @for (project of projectList; track $index) {
     <app-project-item
+      matRipple
       [project]="project"
       class="project-item"
     ></app-project-item>

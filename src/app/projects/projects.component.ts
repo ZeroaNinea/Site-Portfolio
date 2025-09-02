@@ -12,10 +12,11 @@ import { ProjectItemComponent } from '../project-item/project-item.component';
 import { isPlatformBrowser } from '@angular/common';
 import { Project } from '../shared/types/project.interface';
 import { AnimationsService } from '../shared/services/animations/animations.service';
+import { MatRippleModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-projects',
-  imports: [ProjectItemComponent],
+  imports: [ProjectItemComponent, MatRippleModule],
   standalone: true,
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
