@@ -18,26 +18,36 @@ export class ProjectItemComponent {
   private camera!: THREE.PerspectiveCamera;
   private animationId: number = 0;
 
-  // --- Random rotation speeds & offsets ---
+  // Random speeds.
   private cube1Rot = { x: 0, y: 0 };
   private cube2Rot = { x: 0, y: 0 };
-  private planePhase = Math.random() * Math.PI * 2; // Random start for sine wave.
+  private planePhase = Math.random() * Math.PI * 2;
   private planeAmp!: number;
   private planeSpeed!: number;
 
+  // Refs.
   private host = inject(ElementRef);
+  private cube1!: THREE.Mesh;
+  private cube2!: THREE.Mesh;
+  private plane!: THREE.Mesh;
+  private lighting!: HTMLElement;
+
+  // Hover state.
+  private isHovered = false;
 
   ngAfterViewInit() {
     const canvas = this.host.nativeElement.querySelector(
       'canvas'
     ) as HTMLCanvasElement;
     const wrapper = this.host.nativeElement.querySelector('.cube-wrapper');
-    const lighting = wrapper.querySelector(
+    this.lighting = wrapper.querySelector(
       '.background-lighting'
     ) as HTMLElement;
 
-    lighting.style.animationDelay = `${Math.random() * 5}s`;
+    // Random lighting delay.
+    this.lighting.style.animationDelay = `${Math.random() * 5}s`;
 
+    // Three.js setup.
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
     this.camera.position.z = 3;
@@ -49,8 +59,8 @@ export class ProjectItemComponent {
     });
     this.renderer.setSize(300, 300);
 
-    // --- Cubes ---
-    const cube1 = new THREE.Mesh(
+    // Cubes.
+    this.cube1 = new THREE.Mesh(
       new THREE.BoxGeometry(1, 1, 1),
       new THREE.MeshBasicMaterial({
         color: 0x4db6ac,
@@ -59,9 +69,9 @@ export class ProjectItemComponent {
         transparent: true,
       })
     );
-    this.scene.add(cube1);
+    this.scene.add(this.cube1);
 
-    const cube2 = new THREE.Mesh(
+    this.cube2 = new THREE.Mesh(
       new THREE.BoxGeometry(1, 1, 1),
       new THREE.MeshBasicMaterial({
         color: 0xf48fb1,
@@ -70,57 +80,78 @@ export class ProjectItemComponent {
         transparent: true,
       })
     );
-    this.scene.add(cube2);
+    this.scene.add(this.cube2);
 
-    // --- Project image plane ---
+    // Plane with project image.
     const textureLoader = new THREE.TextureLoader();
     const projectTexture = textureLoader.load(this.project.image);
-    const plane = new THREE.Mesh(
+    this.plane = new THREE.Mesh(
       new THREE.PlaneGeometry(2, 1),
       new THREE.MeshBasicMaterial({ map: projectTexture, transparent: true })
     );
-    this.scene.add(plane);
+    this.scene.add(this.plane);
 
-    // --- Randomize cube speeds ---
+    // Randomize cube speeds.
     this.cube1Rot.x = Math.random() * 0.02 - 0.01 || 0.01;
     this.cube1Rot.y = Math.random() * 0.02 - 0.01 || 0.01;
-
     this.cube2Rot.x = Math.random() * 0.02 - 0.01 || -0.008;
     this.cube2Rot.y = Math.random() * 0.02 - 0.01 || -0.008;
 
-    // --- Randomize plane speed ---
-    this.planePhase = Math.random() * Math.PI * 2;
+    // Randomize plane wobble.
     this.planeAmp = 0.1 + Math.random() * 0.1;
     this.planeSpeed = 0.5 + Math.random() * 1.0;
 
-    // --- Animation loop ---
+    // Animate.
     let clock = new THREE.Clock();
-
     const animate = () => {
       this.animationId = requestAnimationFrame(animate);
 
-      // Random cube rotations.
-      cube1.rotation.x += this.cube1Rot.x;
-      cube1.rotation.y += this.cube1Rot.y;
+      if (this.isHovered) {
+        this.cube1.scale.set(
+          Math.min(this.cube1.scale.x + 0.015, 1.2),
+          Math.min(this.cube1.scale.y + 0.015, 1.2),
+          Math.min(this.cube1.scale.z + 0.015, 1.2)
+        );
+        this.cube2.scale.set(
+          Math.min(this.cube2.scale.x + 0.015, 1.2),
+          Math.min(this.cube2.scale.y + 0.015, 1.2),
+          Math.min(this.cube2.scale.z + 0.015, 1.2)
+        );
 
-      cube2.rotation.x += this.cube2Rot.x;
-      cube2.rotation.y += this.cube2Rot.y;
+        this.cube1.rotation.x += 0.01;
+        this.cube2.rotation.y -= 0.01;
+      } else {
+        this.cube1.scale.set(
+          Math.max(this.cube1.scale.x - 0.01, 1),
+          Math.max(this.cube1.scale.y - 0.01, 1),
+          Math.max(this.cube1.scale.z - 0.01, 1)
+        );
+        this.cube2.scale.set(
+          Math.max(this.cube2.scale.x - 0.01, 1),
+          Math.max(this.cube2.scale.y - 0.01, 1),
+          Math.max(this.cube2.scale.z - 0.01, 1)
+        );
 
-      // Slight plane wobble.
+        this.cube1.rotation.x += this.cube1Rot.x;
+        this.cube1.rotation.y += this.cube1Rot.y;
+        this.cube2.rotation.x += this.cube2Rot.x;
+        this.cube2.rotation.y += this.cube2Rot.y;
+      }
+
+      // Plane wobble.
       const t = clock.getElapsedTime();
-      plane.rotation.x =
+      this.plane.rotation.x =
         Math.sin(t * this.planeSpeed + this.planePhase) * this.planeAmp;
-      plane.rotation.y =
+      this.plane.rotation.y =
         Math.cos(t * this.planeSpeed + this.planePhase) * this.planeAmp;
 
       this.renderer.render(this.scene, this.camera);
     };
     animate();
 
+    // Click to open project.
     canvas.addEventListener('click', () => {
-      if (this.project.link) {
-        window.open(this.project.link, '_blank');
-      }
+      if (this.project.link) window.open(this.project.link, '_blank');
     });
   }
 
@@ -129,5 +160,17 @@ export class ProjectItemComponent {
     this.renderer.dispose();
   }
 
-  onHover(state: boolean) {}
+  onHover(state: boolean) {
+    this.isHovered = state;
+
+    if (state) {
+      // Reset plane animation phase immediately.
+      this.planePhase = 0;
+      this.lighting.style.animationDelay = '0s';
+    } else {
+      // Randomize plane again on leave.
+      this.planePhase = Math.random() * Math.PI * 2;
+      // this.lighting.style.animationDelay = `${Math.random() * 5}s`;
+    }
+  }
 }
