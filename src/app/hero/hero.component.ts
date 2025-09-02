@@ -1,10 +1,12 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
   DOCUMENT,
   ElementRef,
   HostListener,
   inject,
+  OnDestroy,
   PLATFORM_ID,
   Renderer2,
   ViewChild,
@@ -24,7 +26,7 @@ import { AnimationsService } from '../shared/services/animations/animations.serv
     './hero-triangles.media.component.scss',
   ],
 })
-export class HeroComponent {
+export class HeroComponent implements AfterViewInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
   isBrowser = isPlatformBrowser(this.platformId);
 

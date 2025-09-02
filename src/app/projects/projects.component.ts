@@ -1,7 +1,16 @@
-import { Component, inject, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  DOCUMENT,
+  ElementRef,
+  inject,
+  PLATFORM_ID,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { ProjectItemComponent } from '../project-item/project-item.component';
 import { isPlatformBrowser } from '@angular/common';
 import { Project } from '../shared/types/project.interface';
+import { AnimationsService } from '../shared/services/animations/animations.service';
 
 @Component({
   selector: 'app-projects',
@@ -13,6 +22,15 @@ import { Project } from '../shared/types/project.interface';
 export class ProjectsComponent {
   private platformId = inject(PLATFORM_ID);
   isBrowser = isPlatformBrowser(this.platformId);
+
+  @ViewChild('techStack', { static: false })
+  techStack!: ElementRef<HTMLElement>;
+
+  private observer!: IntersectionObserver;
+  private renderer = inject(Renderer2);
+  private document = inject(DOCUMENT);
+
+  private animationService = inject(AnimationsService);
 
   projectList: Project[] = [
     {

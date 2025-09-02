@@ -1,11 +1,13 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
   afterNextRender,
+  AfterViewInit,
   Component,
   DOCUMENT,
   ElementRef,
   HostListener,
   inject,
+  OnDestroy,
   PLATFORM_ID,
   Renderer2,
   ViewChild,
@@ -31,7 +33,7 @@ import { StackItem } from '../shared/types/stack-item.interface';
     './tech-stack.media.component.scss',
   ],
 })
-export class TechStackComponent {
+export class TechStackComponent implements AfterViewInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
   isBrowser = isPlatformBrowser(this.platformId);
 
