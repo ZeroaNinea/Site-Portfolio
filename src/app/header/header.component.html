@@ -32,7 +32,14 @@
     >
       Tech Stack
     </button>
-    <button mat-button routerLink="" fragment="projects">Projects</button>
+    <button
+      mat-button
+      routerLink=""
+      fragment="projects"
+      (click)="scrollToSection('projects')"
+    >
+      Projects
+    </button>
     <button mat-button routerLink="" fragment="contacts">Contacts</button>
   </nav>
 
@@ -66,7 +73,12 @@
   >
     Tech Stack
   </button>
-  <button mat-button (click)="toggleMenu()" routerLink="" fragment="projects">
+  <button
+    mat-button
+    (click)="toggleMenu('projects', 200)"
+    routerLink=""
+    fragment="projects"
+  >
     Projects
   </button>
   <button mat-button (click)="toggleMenu()" routerLink="" fragment="contacts">
