@@ -22,8 +22,8 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrls: ['./contacts.component.scss', './contacts.media.component.scss'],
 })
 export class ContactsComponent {
-  @ViewChild('techStack', { static: false })
-  techStack!: ElementRef<HTMLElement>;
+  @ViewChild('contacts', { static: false })
+  contacts!: ElementRef<HTMLElement>;
 
   private observer!: IntersectionObserver;
   private renderer = inject(Renderer2);
@@ -47,7 +47,7 @@ export class ContactsComponent {
 
   private createObserver() {
     if (isPlatformBrowser(this.platformId)) {
-      if (this.techStack) {
+      if (this.contacts) {
         const options =
           window.innerWidth > 768
             ? {
@@ -70,7 +70,7 @@ export class ContactsComponent {
           });
         }, options);
 
-        this.observer.observe(this.techStack.nativeElement);
+        this.observer.observe(this.contacts.nativeElement);
       }
     }
   }
