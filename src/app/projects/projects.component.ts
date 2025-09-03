@@ -21,7 +21,7 @@ import { MatRippleModule } from '@angular/material/core';
   imports: [ProjectItemComponent, MatRippleModule],
   standalone: true,
   templateUrl: './projects.component.html',
-  styleUrl: './projects.component.scss',
+  styleUrls: ['./projects.component.scss', './projects.media.component.scss'],
 })
 export class ProjectsComponent implements AfterViewInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
