@@ -1,9 +1,11 @@
 import {
+  AfterViewInit,
   Component,
   DOCUMENT,
   ElementRef,
   HostListener,
   inject,
+  OnDestroy,
   PLATFORM_ID,
   Renderer2,
   ViewChild,
@@ -21,7 +23,7 @@ import { MatRippleModule } from '@angular/material/core';
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements AfterViewInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
   isBrowser = isPlatformBrowser(this.platformId);
 
