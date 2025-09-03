@@ -31,6 +31,7 @@ export class ProjectItemComponent {
   private cube2!: THREE.Mesh;
   private plane!: THREE.Mesh;
   private lighting!: HTMLElement;
+  private projectName!: HTMLElement;
 
   // Hover state.
   private isHovered = false;
@@ -43,6 +44,7 @@ export class ProjectItemComponent {
     this.lighting = wrapper.querySelector(
       '.background-lighting'
     ) as HTMLElement;
+    this.projectName = wrapper.querySelector('.project-name') as HTMLElement;
 
     // Random lighting delay.
     this.lighting.style.animationDelay = `${Math.random() * 5}s`;
@@ -174,8 +176,10 @@ export class ProjectItemComponent {
     if (state) {
       this.lighting.style.animationDelay = '0s';
       this.lighting.classList.add('touched');
+      this.projectName.classList.add('touched');
     } else {
       this.lighting.classList.remove('touched');
+      this.projectName.classList.remove('touched');
     }
   }
 }

@@ -26,6 +26,15 @@
       background: var(--mat-sys-primary);
       transition: width 0.3s ease-in-out;
     }
+
+    &.touched::after {
+      width: 100%;
+    }
+
+    &.touched {
+      transform: scale(1.05);
+      color: var(--mat-sys-primary);
+    }
   }
 
   &:hover .project-name::after {
