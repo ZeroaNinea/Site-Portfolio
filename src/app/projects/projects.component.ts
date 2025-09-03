@@ -106,7 +106,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     const paw = this.renderer.createElement('div');
 
     const pawPath = Math.random() < 0.5 ? 'paw-green' : 'paw-pink';
-    paw.innerHTML = `<img src="./assets/${pawPath}.svg" alt="🐾" width="10%" />`;
+    paw.innerHTML = `<img src="./assets/${pawPath}.svg" alt="🐾" width="10%" style="opacity: 0.5" />`;
     this.renderer.addClass(paw, 'paw');
 
     this.renderer.setStyle(paw, 'left', `${Math.random() * 90}vw`);
