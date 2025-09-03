@@ -6,6 +6,7 @@ import { HeroComponent } from './hero/hero.component';
 import { AboutComponent } from './about/about.component';
 import { TechStackComponent } from './tech-stack/tech-stack.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { ProjectsComponent } from './projects/projects.component';
     AboutComponent,
     TechStackComponent,
     ProjectsComponent,
+    ContactsComponent,
   ],
   standalone: true,
   templateUrl: './app.component.html',

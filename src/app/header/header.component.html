@@ -40,7 +40,14 @@
     >
       Projects
     </button>
-    <button mat-button routerLink="" fragment="contacts">Contacts</button>
+    <button
+      mat-button
+      routerLink=""
+      fragment="contacts"
+      (click)="scrollToSection('contacts')"
+    >
+      Contacts
+    </button>
   </nav>
 
   <button mat-icon-button class="mobile-menu-btn" (click)="toggleMenu()">
@@ -81,7 +88,12 @@
   >
     Projects
   </button>
-  <button mat-button (click)="toggleMenu()" routerLink="" fragment="contacts">
+  <button
+    mat-button
+    (click)="toggleMenu('contacts', 200)"
+    routerLink=""
+    fragment="contacts"
+  >
     Contacts
   </button>
 </nav>
