@@ -1,4 +1,5 @@
 .projects {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,6 +7,23 @@
   text-align: center;
   min-height: 100vh;
   min-height: 100dvh;
+
+  .paw-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .paw {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0;
+    animation: floatPaw 6s linear forwards;
+  }
 
   .section-title {
     font-size: 2rem;
@@ -26,5 +44,19 @@
     .project-item:hover {
       background-color: var(--mat-sys-surface-container-high);
     }
+  }
+}
+
+@keyframes floatPaw {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh) scale(0.5);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10vh) scale(1.2);
   }
 }

@@ -49,6 +49,7 @@ export class ProjectsComponent {
 
   ngAfterViewInit(): void {
     this.createObserver();
+    setInterval(() => this.spawnPaw(), 3000);
   }
 
   @HostListener('window:resize')
@@ -93,5 +94,19 @@ export class ProjectsComponent {
     if (this.observer) {
       this.observer.disconnect();
     }
+  }
+
+  spawnPaw() {
+    const container =
+      this.projects.nativeElement.querySelector('.paw-container');
+    const paw = this.renderer.createElement('div');
+    paw.innerHTML = '🐾';
+    this.renderer.addClass(paw, 'paw');
+
+    this.renderer.setStyle(paw, 'left', `${Math.random() * 90}vw`);
+
+    container?.appendChild(paw);
+
+    setTimeout(() => paw.remove(), 6000);
   }
 }
