@@ -89,7 +89,10 @@ export class ProjectItemComponent {
     const projectTexture = textureLoader.load(this.project.image);
     this.plane = new THREE.Mesh(
       new THREE.PlaneGeometry(2, 1),
-      new THREE.MeshBasicMaterial({ map: projectTexture, transparent: true })
+      new THREE.MeshBasicMaterial({
+        map: projectTexture,
+        transparent: true,
+      })
     );
     this.scene.add(this.plane);
 
