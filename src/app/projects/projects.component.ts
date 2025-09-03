@@ -1,7 +1,7 @@
 import {
+  afterNextRender,
   AfterViewInit,
   Component,
-  DOCUMENT,
   ElementRef,
   HostListener,
   inject,
@@ -32,7 +32,6 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
 
   private observer!: IntersectionObserver;
   private renderer = inject(Renderer2);
-  private document = inject(DOCUMENT);
 
   private animationService = inject(AnimationsService);
 
@@ -49,9 +48,13 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     },
   ];
 
+  constructor() {
+    afterNextRender(() => setInterval(() => this.spawnPaw(), 3000));
+  }
+
   ngAfterViewInit(): void {
     this.createObserver();
-    setInterval(() => this.spawnPaw(), 3000);
+    // setInterval(() => this.spawnPaw(), 3000);
   }
 
   @HostListener('window:resize')
@@ -102,8 +105,19 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     const container =
       this.projects.nativeElement.querySelector('.paw-container');
     const paw = this.renderer.createElement('div');
-    paw.innerHTML = '🐾';
-    this.renderer.addClass(paw, 'paw');
+    // paw.innerHTML = '🐾';
+
+    // choose randomly green or pink paw
+    if (Math.random() < 0.5) {
+      paw.innerHTML = `<img src="./assets/paw-green.svg" alt="🐾" width="10%" />`;
+      this.renderer.addClass(paw, 'paw');
+    } else {
+      paw.innerHTML = `<img src="./assets/paw-pink.svg" alt="🐾" width="10%" />`;
+      this.renderer.addClass(paw, 'paw');
+    }
+
+    // paw.innerHTML = `<img src="./assets/paw-pink.svg" alt="🐾" width="10%" />`;
+    // this.renderer.addClass(paw, 'paw');
 
     this.renderer.setStyle(paw, 'left', `${Math.random() * 90}vw`);
 
