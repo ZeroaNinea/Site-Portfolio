@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, Input } from '@angular/core';
+import { Component, ElementRef, inject, Input, ViewChild } from '@angular/core';
 import { Project } from '../shared/types/project.interface';
 
 import * as THREE from 'three';
@@ -165,6 +165,17 @@ export class ProjectItemComponent {
 
     if (state) {
       this.lighting.style.animationDelay = '0s';
+    }
+  }
+
+  onTouch(state: boolean) {
+    this.isHovered = state;
+
+    if (state) {
+      this.lighting.style.animationDelay = '0s';
+      this.lighting.classList.add('touched');
+    } else {
+      this.lighting.classList.remove('touched');
     }
   }
 }

@@ -2,10 +2,10 @@
   class="cube-wrapper"
   (mouseenter)="onHover(true)"
   (mouseleave)="onHover(false)"
-  (touchstart)="onHover(true)"
-  (touchend)="onHover(false)"
+  (touchstart)="onTouch(true)"
+  (touchend)="onTouch(false)"
 >
   <canvas #canvas></canvas>
   <h4 class="project-name">{{ project.name }}</h4>
-  <div class="background-lighting"></div>
+  <div #lighting class="background-lighting"></div>
 </div>
