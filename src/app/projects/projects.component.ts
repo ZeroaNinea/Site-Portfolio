@@ -54,7 +54,6 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.createObserver();
-    // setInterval(() => this.spawnPaw(), 3000);
   }
 
   @HostListener('window:resize')
@@ -105,19 +104,10 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     const container =
       this.projects.nativeElement.querySelector('.paw-container');
     const paw = this.renderer.createElement('div');
-    // paw.innerHTML = '🐾';
 
-    // choose randomly green or pink paw
-    if (Math.random() < 0.5) {
-      paw.innerHTML = `<img src="./assets/paw-green.svg" alt="🐾" width="10%" />`;
-      this.renderer.addClass(paw, 'paw');
-    } else {
-      paw.innerHTML = `<img src="./assets/paw-pink.svg" alt="🐾" width="10%" />`;
-      this.renderer.addClass(paw, 'paw');
-    }
-
-    // paw.innerHTML = `<img src="./assets/paw-pink.svg" alt="🐾" width="10%" />`;
-    // this.renderer.addClass(paw, 'paw');
+    const pawPath = Math.random() < 0.5 ? 'paw-green' : 'paw-pink';
+    paw.innerHTML = `<img src="./assets/${pawPath}.svg" alt="🐾" width="10%" />`;
+    this.renderer.addClass(paw, 'paw');
 
     this.renderer.setStyle(paw, 'left', `${Math.random() * 90}vw`);
 
