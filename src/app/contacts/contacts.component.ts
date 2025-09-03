@@ -6,6 +6,6 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [MatButtonModule],
   standalone: true,
   templateUrl: './contacts.component.html',
-  styleUrl: './contacts.component.scss',
+  styleUrls: ['./contacts.component.scss', './contacts.media.component.scss'],
 })
 export class ContactsComponent {}
