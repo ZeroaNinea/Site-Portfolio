@@ -29,6 +29,7 @@ export class AnimationsService {
     renderer.removeClass(this.document.documentElement, 'dark-theme');
     renderer.removeClass(this.document.documentElement, 'green-light-theme');
     renderer.removeClass(this.document.documentElement, 'rose-dark-theme');
+    renderer.removeClass(this.document.documentElement, 'yellow-light-theme');
 
     switch (theme) {
       case 'light':
@@ -42,6 +43,9 @@ export class AnimationsService {
         break;
       case 'rose-dark':
         renderer.addClass(this.document.documentElement, 'rose-dark-theme');
+        break;
+      case 'yellow-light':
+        renderer.addClass(this.document.documentElement, 'yellow-light-theme');
         break;
     }
   }
@@ -245,6 +249,28 @@ export class AnimationsService {
     if (entry.isIntersecting && ratio >= this.START_THRESHOLD) {
       this.setTheme(renderer, 'light');
     }
+  }
+
+  contactsAndHtmlAnimate(
+    entry: IntersectionObserverEntry,
+    renderer: Renderer2
+  ) {
+    if (!this.isBrowser) return;
+
+    const base = entry.target as HTMLElement;
+    const contactsSection = base.matches?.('section.contacts')
+      ? base
+      : base.querySelector('section.contacts') ?? base;
+
+    if (!contactsSection) return;
+
+    const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
+
+    if (entry.isIntersecting && ratio >= this.START_THRESHOLD) {
+      this.setTheme(renderer, 'yellow-light');
+    }
+
+    this.setTheme(renderer, 'yellow-light');
   }
 
   projectsAndHtmlAnimate(

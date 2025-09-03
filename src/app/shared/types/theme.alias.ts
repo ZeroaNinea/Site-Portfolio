@@ -1,1 +1,6 @@
-export type Theme = 'light' | 'dark' | 'green-light' | 'rose-dark';
+export type Theme =
+  | 'light'
+  | 'dark'
+  | 'green-light'
+  | 'rose-dark'
+  | 'yellow-light';

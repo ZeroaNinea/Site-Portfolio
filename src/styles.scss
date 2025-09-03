@@ -51,3 +51,13 @@ body {
     )
   );
 }
+
+.yellow-light-theme {
+  background-color: var(--mat-sys-background);
+
+  @include mat.theme(
+    (
+      color: mat.$yellow-palette,
+    )
+  );
+}
