@@ -43,3 +43,6 @@ Thumbs.db
 
 # 3D Models
 /public/assets/3d-models
+
+# Local Netlify folder
+.netlify
