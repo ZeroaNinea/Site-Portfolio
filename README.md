@@ -61,3 +61,7 @@ http-server
 
 - GitHub: [ZeroaNinea](https://github.com/ZeroaNinea)
 - Email: [your.email@example.com](mailto:zeroaninea@gmail.com)
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
