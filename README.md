@@ -50,7 +50,7 @@ http-server
 - **Hero:** light blue theme, animated triangles on the background.
 - **About Me:** dark blue theme, orbiting parallelepipeds using Three.js, and a 3D model of the car.
 - **Tech Stack:** light green theme, drag-and-drop animations.
-- **Projects** – dark pink theme, 3D cube animations using Three.js.
+- **Projects:** dark pink theme, 3D cube animations using Three.js.
 - **Contacts:** light yellow theme, contact buttons.
 
 ## 📜 Credits
