@@ -60,7 +60,7 @@ http-server
 ## 📬 Contacts
 
 - GitHub: [ZeroaNinea](https://github.com/ZeroaNinea)
-- Email: [your.email@example.com](mailto:zeroaninea@gmail.com)
+- Email: [zeroaninea@gmail.com](mailto:zeroaninea@gmail.com)
 
 ## License
 
