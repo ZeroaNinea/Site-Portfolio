@@ -1,0 +1,6 @@
+[build]
+  command = "ng build && ng run Portfolio:server"
+  publish = "dist/portfolio/browser"
+
+[functions]
+  directory = "netlify/functions"
