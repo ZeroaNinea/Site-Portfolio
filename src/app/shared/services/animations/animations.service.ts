@@ -301,7 +301,7 @@ export class AnimationsService {
     ) {
       this.contactsAnimating = true;
 
-      this.setTheme(renderer, 'green-light');
+      this.setTheme(renderer, 'yellow-light');
 
       const sectionAnim = contactsSection.animate(
         [
