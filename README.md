@@ -5,8 +5,8 @@ It showcases my skills, projects, and contact information in a clean, animated, 
 
 ## ✨ Features
 
-- **Hero section** with 3D animations.
-- **About Me** section with smooth transitions.
+- **Hero section** with SCSS animations.
+- **About Me** section with Three.js animations and a 3D model of a car.
 - **Tech Stack** section using drag-and-drop with Angular Material.
 - **Projects** section with animated 3D cubes, random background lighting, and links to live/demo projects.
 - **Contacts** section with GitHub and Gmail links.
