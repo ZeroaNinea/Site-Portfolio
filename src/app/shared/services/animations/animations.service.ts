@@ -21,6 +21,7 @@ export class AnimationsService {
   private aboutAnimating = false;
   private techStackAnimating = false;
   private projectsAnimating = false;
+  private contactsAnimating = false;
 
   private START_THRESHOLD = 0.35;
   private EXIT_THRESHOLD = 0.1;
@@ -281,8 +282,26 @@ export class AnimationsService {
 
     const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
 
-    if (entry.isIntersecting && ratio >= this.START_THRESHOLD) {
-      this.setTheme(renderer, 'yellow-light');
+    if (!entry.isIntersecting || ratio <= this.EXIT_THRESHOLD) {
+      contactsSection.animate(
+        [
+          { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
+          { transform: 'translateX(200px)', opacity: 0 },
+        ],
+        { duration: 400, fill: 'forwards' }
+      );
+      this.contactsAnimating = false;
+      return;
+    }
+
+    if (
+      entry.isIntersecting &&
+      ratio >= this.START_THRESHOLD &&
+      !this.contactsAnimating
+    ) {
+      this.contactsAnimating = true;
+
+      this.setTheme(renderer, 'green-light');
 
       const sectionAnim = contactsSection.animate(
         [
@@ -306,16 +325,12 @@ export class AnimationsService {
         { duration: 1000, fill: 'forwards' }
       );
 
-      const animations: Promise<void>[] = [];
-      if (sectionAnim?.finished)
-        animations.push(sectionAnim.finished.then(() => {}));
-
-      if (animations.length === 0) {
-        setTimeout(() => (this.techStackAnimating = false), 1200);
+      if (sectionAnim?.finished) {
+        sectionAnim.finished.finally(() => {
+          setTimeout(() => (this.contactsAnimating = false), 150);
+        });
       } else {
-        Promise.all(animations).finally(() =>
-          setTimeout(() => (this.techStackAnimating = false), 150)
-        );
+        setTimeout(() => (this.contactsAnimating = false), 1200);
       }
     }
   }
@@ -327,16 +342,16 @@ export class AnimationsService {
     if (!this.isBrowser) return;
 
     const base = entry.target as HTMLElement;
-    const techStackSection = base.matches?.('section.projects')
+    const projectsSection = base.matches?.('section.projects')
       ? base
       : base.querySelector('section.projects') ?? base;
 
-    if (!techStackSection) return;
+    if (!projectsSection) return;
 
     const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
 
     if (!entry.isIntersecting || ratio <= this.EXIT_THRESHOLD) {
-      techStackSection.animate(
+      projectsSection.animate(
         [
           { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
           { transform: 'translateX(200px)', opacity: 0 },
@@ -356,7 +371,7 @@ export class AnimationsService {
 
       this.setTheme(renderer, 'rose-dark');
 
-      const sectionAnim = techStackSection.animate(
+      const sectionAnim = projectsSection.animate(
         [
           {
             transform:
