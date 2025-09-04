@@ -20,6 +20,7 @@ export class AnimationsService {
   private typingInterval: any = null;
   private aboutAnimating = false;
   private techStackAnimating = false;
+  private projectsAnimating = false;
 
   private START_THRESHOLD = 0.35;
   private EXIT_THRESHOLD = 0.1;
@@ -195,7 +196,25 @@ export class AnimationsService {
 
     const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
 
-    if (entry.isIntersecting && ratio >= this.START_THRESHOLD) {
+    if (!entry.isIntersecting || ratio <= this.EXIT_THRESHOLD) {
+      techStackSection.animate(
+        [
+          { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
+          { transform: 'translateX(200px)', opacity: 0 },
+        ],
+        { duration: 400, fill: 'forwards' }
+      );
+      this.techStackAnimating = false;
+      return;
+    }
+
+    if (
+      entry.isIntersecting &&
+      ratio >= this.START_THRESHOLD &&
+      !this.techStackAnimating
+    ) {
+      this.techStackAnimating = true;
+
       this.setTheme(renderer, 'green-light');
 
       const sectionAnim = techStackSection.animate(
@@ -220,16 +239,12 @@ export class AnimationsService {
         { duration: 1000, fill: 'forwards' }
       );
 
-      const animations: Promise<void>[] = [];
-      if (sectionAnim?.finished)
-        animations.push(sectionAnim.finished.then(() => {}));
-
-      if (animations.length === 0) {
-        setTimeout(() => (this.techStackAnimating = false), 1200);
+      if (sectionAnim?.finished) {
+        sectionAnim.finished.finally(() => {
+          setTimeout(() => (this.techStackAnimating = false), 150);
+        });
       } else {
-        Promise.all(animations).finally(() =>
-          setTimeout(() => (this.techStackAnimating = false), 150)
-        );
+        setTimeout(() => (this.techStackAnimating = false), 1200);
       }
     }
   }
@@ -312,15 +327,33 @@ export class AnimationsService {
     if (!this.isBrowser) return;
 
     const base = entry.target as HTMLElement;
-    const techStackSection = base.matches?.('section.tech-stack')
+    const techStackSection = base.matches?.('section.projects')
       ? base
-      : base.querySelector('section.tech-stack') ?? base;
+      : base.querySelector('section.projects') ?? base;
 
     if (!techStackSection) return;
 
     const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
 
-    if (entry.isIntersecting && ratio >= this.START_THRESHOLD) {
+    if (!entry.isIntersecting || ratio <= this.EXIT_THRESHOLD) {
+      techStackSection.animate(
+        [
+          { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
+          { transform: 'translateX(200px)', opacity: 0 },
+        ],
+        { duration: 400, fill: 'forwards' }
+      );
+      this.projectsAnimating = false;
+      return;
+    }
+
+    if (
+      entry.isIntersecting &&
+      ratio >= this.START_THRESHOLD &&
+      !this.projectsAnimating
+    ) {
+      this.projectsAnimating = true;
+
       this.setTheme(renderer, 'rose-dark');
 
       const sectionAnim = techStackSection.animate(
@@ -345,16 +378,12 @@ export class AnimationsService {
         { duration: 1000, fill: 'forwards' }
       );
 
-      const animations: Promise<void>[] = [];
-      if (sectionAnim?.finished)
-        animations.push(sectionAnim.finished.then(() => {}));
-
-      if (animations.length === 0) {
-        setTimeout(() => (this.techStackAnimating = false), 1200);
+      if (sectionAnim?.finished) {
+        sectionAnim.finished.finally(() => {
+          setTimeout(() => (this.projectsAnimating = false), 150);
+        });
       } else {
-        Promise.all(animations).finally(() =>
-          setTimeout(() => (this.techStackAnimating = false), 150)
-        );
+        setTimeout(() => (this.projectsAnimating = false), 1200);
       }
     }
   }
