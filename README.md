@@ -62,10 +62,12 @@ For more information on using the Angular CLI, including detailed command refere
 
 ```bash
 python3 -m http.server 8080
+
 ```
 
 Or:
 
 ```bash
 http-server
+
 ```
