@@ -1,64 +1,37 @@
 # Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.5.
+This is my personal portfolio website built with **Angular 20**.  
+It showcases my skills, projects, and contact information in a clean, animated, and responsive design.
 
-## Development server
+## ✨ Features
 
-To start a local development server, run:
+- **Hero section** with 3D animations.
+- **About Me** section with smooth transitions.
+- **Tech Stack** section using drag-and-drop with Angular Material.
+- **Projects** section with animated 3D cubes, random background lighting, and links to live/demo projects.
+- **Contacts** section with GitHub and Gmail links.
+- Section-based **theme switching** (unique color scheme for each section).
+- **Responsive design** for desktop, tablet, and mobile.
+
+## 🚀 Development
+
+Start the dev server:
 
 ```bash
 ng serve
+
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Then open your browser at `http://localhost:4200/`.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Build for production:
 
 ```bash
 ng build
+
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
-## Run The Build Version
+Run the build locally:
 
 ```bash
 python3 -m http.server 8080
@@ -71,3 +44,20 @@ Or:
 http-server
 
 ```
+
+## 📂 Sections Overview
+
+- **Hero:** light blue theme, animated triangles on the background.
+- **About Me:** dark blue theme, orbiting parallelepipeds using Three.js, and a 3D model of the car.
+- **Tech Stack:** light green theme, drag-and-drop animations.
+- **Projects** – dark pink theme, 3D cube animations using Three.js.
+- **Contacts:** light yellow theme, contact buttons.
+
+## 📜 Credits
+
+- 3D model: [BMW M3 GTS by Mona x Supercars](https://sketchfab.com/3d-models/bmw-m3-gts-e92-034f2fdd761342dca3c5400a190eb3d5) (via CC BY).
+
+## 📬 Contacts
+
+- GitHub: [ZeroaNinea](https://github.com/ZeroaNinea)
+- Email: [your.email@example.com](mailto:zeroaninea@gmail.com)
