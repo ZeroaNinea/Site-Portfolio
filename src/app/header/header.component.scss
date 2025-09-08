@@ -1,15 +1,5 @@
 @use "@angular/material" as mat;
 
-.desktop-nav {
-  button {
-    @include mat.theme(
-      (
-        color: mat.$blue-palette,
-      )
-    );
-  }
-}
-
 .toolbar-spacer {
   height: 64px;
   display: none;
@@ -87,12 +77,6 @@
     text-align: left;
     width: 100%;
     border-radius: 0;
-
-    @include mat.theme(
-      (
-        color: mat.$orange-palette,
-      )
-    );
   }
 
   &.open {

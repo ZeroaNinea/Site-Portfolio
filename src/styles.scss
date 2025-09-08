@@ -1,7 +1,6 @@
 @use "@angular/material" as mat;
 
 @use "./styles/colors.scss" as *;
-@use "./themes/light-blue_theme-colors.scss" as blue-light;
 
 html,
 body {
@@ -16,7 +15,6 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--mat-sys-background);
-  // background-color: #818181;
 }
 
 .light-theme {
@@ -46,7 +44,7 @@ body {
 
   @include mat.theme(
     (
-      color: mat.$green-palette,
+      color: mat.$spring-green-palette,
     )
   );
 }
