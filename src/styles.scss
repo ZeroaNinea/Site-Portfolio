@@ -16,6 +16,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--mat-sys-background);
+  // background-color: #818181;
 }
 
 .light-theme {
@@ -23,11 +24,7 @@ body {
 
   @include mat.theme(
     (
-      color: (
-        primary: blue-light.$primary-palette,
-        tertiary: blue-light.$tertiary-palette,
-        theme-type: dark,
-      ),
+      color: mat.$orange-palette,
     )
   );
 }
@@ -75,4 +72,10 @@ body {
       color: mat.$yellow-palette,
     )
   );
+}
+
+:root {
+  --primary-color: #060c4b;
+  --secondary-color: #2a2541;
+  --tertiary-color: #023536;
 }

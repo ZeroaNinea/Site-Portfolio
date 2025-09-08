@@ -1,5 +1,15 @@
 @use "@angular/material" as mat;
 
+.desktop-nav {
+  button {
+    @include mat.theme(
+      (
+        color: mat.$blue-palette,
+      )
+    );
+  }
+}
+
 .toolbar-spacer {
   height: 64px;
   display: none;
