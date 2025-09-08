@@ -17,15 +17,15 @@ body {
   background-color: var(--mat-sys-background);
 }
 
-.light-theme {
-  background-color: var(--mat-sys-background);
+// .light-theme {
+//   background-color: var(--mat-sys-background);
 
-  @include mat.theme(
-    (
-      color: mat.$orange-palette,
-    )
-  );
-}
+//   @include mat.theme(
+//     (
+//       color: mat.$orange-palette,
+//     )
+//   );
+// }
 
 .dark-theme {
   background-color: var(--mat-sys-background);
