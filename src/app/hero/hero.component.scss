@@ -23,7 +23,6 @@
   top: 0;
   left: 0;
   background: transparent;
-  z-index: -1;
 }
 
 .fade-up {
@@ -95,6 +94,7 @@
   font-weight: bold;
   margin: 0;
   color: var(--mat-sys-on-background);
+  z-index: 2;
 
   .name {
     background: linear-gradient(90deg, #ff6ec4, #7873f5, #4ade80);
@@ -109,6 +109,7 @@
   font-weight: 300;
   margin-top: 1rem;
   color: var(--mat-sys-outline-variant);
+  z-index: 2;
 }
 
 .animate-text {

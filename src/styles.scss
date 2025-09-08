@@ -1,6 +1,7 @@
 @use "@angular/material" as mat;
 
 @use "./styles/colors.scss" as *;
+@use "./themes/light-blue_theme-colors.scss" as blue-light;
 
 html,
 body {
@@ -15,6 +16,20 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--mat-sys-background);
+}
+
+.light-theme {
+  background-color: var(--mat-sys-background);
+
+  @include mat.theme(
+    (
+      color: (
+        primary: blue-light.$primary-palette,
+        tertiary: blue-light.$tertiary-palette,
+        theme-type: dark,
+      ),
+    )
+  );
 }
 
 .dark-theme {
