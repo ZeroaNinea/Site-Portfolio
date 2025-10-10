@@ -164,8 +164,8 @@ export class TechStackComponent implements AfterViewInit, OnDestroy {
       icon: 'graphql.svg',
     },
     {
-      name: 'WebSockets',
-      icon: 'websockets.svg',
+      name: 'WebSocket',
+      icon: 'websocket.svg',
     },
     {
       name: 'Jest',
