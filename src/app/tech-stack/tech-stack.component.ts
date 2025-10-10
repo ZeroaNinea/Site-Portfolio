@@ -151,6 +151,26 @@ export class TechStackComponent implements AfterViewInit, OnDestroy {
       name: 'Artillery',
       icon: 'artillery.svg',
     },
+    {
+      name: 'Nest.js',
+      icon: 'nestjs.svg',
+    },
+    {
+      name: 'TypeORM',
+      icon: 'typeorm.svg',
+    },
+    {
+      name: 'GraphQL',
+      icon: 'graphql.svg',
+    },
+    {
+      name: 'WebSockets',
+      icon: 'websockets.svg',
+    },
+    {
+      name: 'Jest',
+      icon: 'jest.svg',
+    },
   ];
 
   ngAfterViewInit(): void {
