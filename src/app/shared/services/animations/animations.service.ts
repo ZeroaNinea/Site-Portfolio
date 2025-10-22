@@ -26,14 +26,7 @@ export class AnimationsService {
   private START_THRESHOLD = 0.35;
   private EXIT_THRESHOLD = 0.1;
 
-  private lastThemeSwitch = 0;
-  private THEME_COOLDOWN = 300;
-
   private setTheme(renderer: Renderer2, theme: Theme) {
-    const now = Date.now();
-    if (now - this.lastThemeSwitch < this.THEME_COOLDOWN) return;
-    this.lastThemeSwitch = now;
-
     renderer.removeClass(this.document.documentElement, 'light-theme');
     renderer.removeClass(this.document.documentElement, 'dark-theme');
     renderer.removeClass(this.document.documentElement, 'green-light-theme');
