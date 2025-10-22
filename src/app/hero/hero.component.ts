@@ -26,7 +26,7 @@ import { AnimationsService } from '../shared/services/animations/animations.serv
     './hero-triangles.media.component.scss',
   ],
 })
-export class HeroComponent implements AfterViewInit, OnDestroy {
+export class HeroComponent {
   private platformId = inject(PLATFORM_ID);
   isBrowser = isPlatformBrowser(this.platformId);
 
@@ -38,53 +38,53 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
 
   private animationService = inject(AnimationsService);
 
-  ngAfterViewInit(): void {
-    this.createObserver();
-  }
+  // ngAfterViewInit(): void {
+  //   this.createObserver();
+  // }
 
-  @HostListener('window:resize')
-  onResize() {
-    if (this.observer) {
-      this.observer.disconnect();
-    }
-    this.createObserver();
-  }
+  // @HostListener('window:resize')
+  // onResize() {
+  //   if (this.observer) {
+  //     this.observer.disconnect();
+  //   }
+  //   this.createObserver();
+  // }
 
-  private createObserver() {
-    if (isPlatformBrowser(this.platformId)) {
-      if (this.home) {
-        const options =
-          window.innerWidth > 768
-            ? {
-                threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
-                rootMargin: '0px 0px -100px 0px',
-              }
-            : window.innerHeight >= 1080
-            ? {
-                threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
-                rootMargin: '0px 0px -100px 0px',
-              }
-            : {
-                threshold: [0, 0.25, 0.35, 0.5, 1],
-                rootMargin: '0px 0px -20px 0px',
-              };
+  // private createObserver() {
+  //   if (isPlatformBrowser(this.platformId)) {
+  //     if (this.home) {
+  //       const options =
+  //         window.innerWidth > 768
+  //           ? {
+  //               threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
+  //               rootMargin: '0px 0px -100px 0px',
+  //             }
+  //           : window.innerHeight >= 1080
+  //           ? {
+  //               threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
+  //               rootMargin: '0px 0px -100px 0px',
+  //             }
+  //           : {
+  //               threshold: [0, 0.25, 0.35, 0.5, 1],
+  //               rootMargin: '0px 0px -20px 0px',
+  //             };
 
-        this.observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            this.animationService.homeAndHtmlAnimate(entry, this.renderer);
-          });
-        }, options);
+  //       this.observer = new IntersectionObserver((entries) => {
+  //         entries.forEach((entry) => {
+  //           this.animationService.homeAndHtmlAnimate(entry, this.renderer);
+  //         });
+  //       }, options);
 
-        this.observer.observe(this.home.nativeElement);
-      }
-    }
-  }
+  //       this.observer.observe(this.home.nativeElement);
+  //     }
+  //   }
+  // }
 
-  ngOnDestroy(): void {
-    if (this.observer) {
-      this.observer.disconnect();
-    }
-  }
+  // ngOnDestroy(): void {
+  //   if (this.observer) {
+  //     this.observer.disconnect();
+  //   }
+  // }
   scrollToAbout() {
     document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
   }
