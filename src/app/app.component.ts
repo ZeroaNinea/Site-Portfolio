@@ -72,7 +72,9 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
       this.observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          this.animationService.aboutAndHtmlAnimate(entry, this.renderer);
+          if (entry.target.id === 'about') {
+            this.animationService.aboutAndHtmlAnimate(entry, this.renderer);
+          }
         });
       }, options);
 
