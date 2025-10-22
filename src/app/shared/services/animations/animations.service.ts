@@ -402,6 +402,8 @@ export class AnimationsService {
   private START_THRESHOLD = 0.35;
   private EXIT_THRESHOLD = 0.1;
 
+  typingInterval: any = null;
+
   constructor(rendererFactory: RendererFactory2) {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
@@ -468,11 +470,19 @@ export class AnimationsService {
     console.log(section);
 
     if (section?.classList.contains('about')) {
+      const aboutSubtitle = section.querySelector(
+        'h3.subtitle'
+      ) as HTMLElement | null;
       const paragraphs = section.querySelectorAll(
         '.about-content .text-wrapper p'
       ) as NodeListOf<HTMLElement>;
-      console.log(paragraphs);
 
+      if (aboutSubtitle) {
+        this.startTyping(
+          aboutSubtitle,
+          'Building interactive apps with style 🚀'
+        );
+      }
       this.animateParagraphs(paragraphs);
     }
 
@@ -527,5 +537,25 @@ export class AnimationsService {
         );
       }, i * 200);
     });
+  }
+
+  private startTyping(element: Element, text: string) {
+    this.resetTyping();
+
+    element.textContent = '';
+    let i = 0;
+
+    this.typingInterval = setInterval(() => {
+      element.textContent += text[i];
+      i++;
+      if (i >= text.length) this.resetTyping();
+    }, 40);
+  }
+
+  private resetTyping() {
+    if (this.typingInterval) {
+      clearInterval(this.typingInterval);
+      this.typingInterval = null;
+    }
   }
 }
