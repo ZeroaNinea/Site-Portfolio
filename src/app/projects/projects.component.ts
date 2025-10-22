@@ -23,17 +23,17 @@ import { MatRippleModule } from '@angular/material/core';
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss', './projects.media.component.scss'],
 })
-export class ProjectsComponent implements AfterViewInit, OnDestroy {
+export class ProjectsComponent {
   private platformId = inject(PLATFORM_ID);
   isBrowser = isPlatformBrowser(this.platformId);
 
   @ViewChild('projects', { static: false })
   projects!: ElementRef<HTMLElement>;
 
-  private observer!: IntersectionObserver;
+  // private observer!: IntersectionObserver;
   private renderer = inject(Renderer2);
 
-  private animationService = inject(AnimationsService);
+  // private animationService = inject(AnimationsService);
 
   projectList: Project[] = [
     {
@@ -52,53 +52,53 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     afterNextRender(() => setInterval(() => this.spawnPaw(), 3000));
   }
 
-  ngAfterViewInit(): void {
-    this.createObserver();
-  }
+  // ngAfterViewInit(): void {
+  //   this.createObserver();
+  // }
 
-  @HostListener('window:resize')
-  onResize() {
-    if (this.observer) {
-      this.observer.disconnect();
-    }
-    this.createObserver();
-  }
+  // @HostListener('window:resize')
+  // onResize() {
+  //   if (this.observer) {
+  //     this.observer.disconnect();
+  //   }
+  //   this.createObserver();
+  // }
 
-  private createObserver() {
-    if (isPlatformBrowser(this.platformId)) {
-      if (this.projects) {
-        const options =
-          window.innerWidth > 768
-            ? {
-                threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
-                rootMargin: '0px 0px -100px 0px',
-              }
-            : window.innerHeight >= 1080
-            ? {
-                threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
-                rootMargin: '0px 0px -100px 0px',
-              }
-            : {
-                threshold: [0, 0.25, 0.35, 0.5, 1],
-                rootMargin: '0px 0px -20px 0px',
-              };
+  // private createObserver() {
+  //   if (isPlatformBrowser(this.platformId)) {
+  //     if (this.projects) {
+  //       const options =
+  //         window.innerWidth > 768
+  //           ? {
+  //               threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
+  //               rootMargin: '0px 0px -100px 0px',
+  //             }
+  //           : window.innerHeight >= 1080
+  //           ? {
+  //               threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
+  //               rootMargin: '0px 0px -100px 0px',
+  //             }
+  //           : {
+  //               threshold: [0, 0.25, 0.35, 0.5, 1],
+  //               rootMargin: '0px 0px -20px 0px',
+  //             };
 
-        this.observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            this.animationService.projectsAndHtmlAnimate(entry, this.renderer);
-          });
-        }, options);
+  //       this.observer = new IntersectionObserver((entries) => {
+  //         entries.forEach((entry) => {
+  //           this.animationService.projectsAndHtmlAnimate(entry, this.renderer);
+  //         });
+  //       }, options);
 
-        this.observer.observe(this.projects.nativeElement);
-      }
-    }
-  }
+  //       this.observer.observe(this.projects.nativeElement);
+  //     }
+  //   }
+  // }
 
-  ngOnDestroy(): void {
-    if (this.observer) {
-      this.observer.disconnect();
-    }
-  }
+  // ngOnDestroy(): void {
+  //   if (this.observer) {
+  //     this.observer.disconnect();
+  //   }
+  // }
 
   spawnPaw() {
     const container =

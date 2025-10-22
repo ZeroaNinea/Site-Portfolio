@@ -48,7 +48,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   private observer!: IntersectionObserver;
   private renderer = inject(Renderer2);
-  private document = inject(DOCUMENT);
+  // private document = inject(DOCUMENT);
 
   private animationService = inject(AnimationsService);
 
@@ -73,13 +73,31 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
       this.observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          console.log(entry.target.id);
-          if (entry.target.id === 'home') {
-            this.animationService.homeAndHtmlAnimate(entry, this.renderer);
-          } else if (entry.target.id === 'about') {
-            this.animationService.aboutAndHtmlAnimate(entry, this.renderer);
-          } else if (entry.target.id === 'tech-stack') {
-            this.animationService.techStackAndHtmlAnimate(entry, this.renderer);
+          switch (entry.target.id) {
+            case 'home':
+              this.animationService.homeAndHtmlAnimate(entry, this.renderer);
+              break;
+            case 'about':
+              this.animationService.aboutAndHtmlAnimate(entry, this.renderer);
+              break;
+            case 'tech-stack':
+              this.animationService.techStackAndHtmlAnimate(
+                entry,
+                this.renderer
+              );
+              break;
+            case 'projects':
+              this.animationService.projectsAndHtmlAnimate(
+                entry,
+                this.renderer
+              );
+              break;
+            case 'contacts':
+              this.animationService.contactsAndHtmlAnimate(
+                entry,
+                this.renderer
+              );
+              break;
           }
         });
       }, options);
