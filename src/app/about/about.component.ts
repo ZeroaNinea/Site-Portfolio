@@ -87,21 +87,21 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
     //   }
   }
 
-  // toggleCar() {
-  //   console.log('toggleCar');
+  toggleCar() {
+    console.log('toggleCar');
 
-  //   this.showCar = !this.showCar;
+    this.showCar = !this.showCar;
 
-  //   if (this.showCar) {
-  //     setTimeout(() => {
-  //       this.scrollToCar();
-  //     }, 300);
-  //   } else {
-  //     setTimeout(() => {
-  //       this.scrollToAbout();
-  //     }, 300);
-  //   }
-  // }
+    if (this.showCar) {
+      setTimeout(() => {
+        this.scrollToCar();
+      }, 300);
+    } else {
+      setTimeout(() => {
+        this.scrollToAbout();
+      }, 300);
+    }
+  }
 
   scrollToCar() {
     this.document.querySelector('#car')?.scrollIntoView({ behavior: 'smooth' });
