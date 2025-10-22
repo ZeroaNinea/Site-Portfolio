@@ -44,6 +44,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('about', { static: false, read: ElementRef })
   about!: ElementRef<HTMLElement>;
+  @ViewChild('techStack', { static: false, read: ElementRef })
+  techStack!: ElementRef<HTMLElement>;
 
   private observer!: IntersectionObserver;
   private renderer = inject(Renderer2);
@@ -58,7 +60,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   private createObserver() {
-    if (this.about?.nativeElement) {
+    if (this.about?.nativeElement || this.techStack?.nativeElement) {
       const options =
         window.innerWidth > 768
           ? {
@@ -72,13 +74,17 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
       this.observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
+          console.log(entry.target.id);
           if (entry.target.id === 'about') {
             this.animationService.aboutAndHtmlAnimate(entry, this.renderer);
+          } else if (entry.target.id === 'tech-stack') {
+            this.animationService.techStackAndHtmlAnimate(entry, this.renderer);
           }
         });
       }, options);
 
       this.observer.observe(this.about.nativeElement);
+      this.observer.observe(this.techStack.nativeElement);
     }
   }
 
