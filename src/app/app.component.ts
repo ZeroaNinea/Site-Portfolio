@@ -9,6 +9,7 @@ import {
   PLATFORM_ID,
   Renderer2,
   ViewChild,
+  ViewChildren,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -42,10 +43,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
   isBrowser = isPlatformBrowser(this.platformId);
 
-  @ViewChild('about', { static: false, read: ElementRef })
-  about!: ElementRef<HTMLElement>;
-  @ViewChild('techStack', { static: false, read: ElementRef })
-  techStack!: ElementRef<HTMLElement>;
+  @ViewChildren('section', { read: ElementRef })
+  sections!: ElementRef<HTMLElement>[];
 
   private observer!: IntersectionObserver;
   private renderer = inject(Renderer2);
@@ -60,7 +59,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   private createObserver() {
-    if (this.about?.nativeElement || this.techStack?.nativeElement) {
+    if (this.sections) {
       const options =
         window.innerWidth > 768
           ? {
@@ -83,8 +82,9 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         });
       }, options);
 
-      this.observer.observe(this.about.nativeElement);
-      this.observer.observe(this.techStack.nativeElement);
+      this.sections.forEach((section) => {
+        this.observer.observe(section.nativeElement);
+      });
     }
   }
 
