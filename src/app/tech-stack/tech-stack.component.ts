@@ -40,11 +40,11 @@ export class TechStackComponent {
   @ViewChild('techStack', { static: false })
   techStack!: ElementRef<HTMLElement>;
 
-  private observer!: IntersectionObserver;
-  private renderer = inject(Renderer2);
-  private document = inject(DOCUMENT);
+  // private observer!: IntersectionObserver;
+  // private renderer = inject(Renderer2);
+  // private document = inject(DOCUMENT);
 
-  private animationService = inject(AnimationsService);
+  // private animationService = inject(AnimationsService);
 
   stackItems: StackItem[] = [
     {

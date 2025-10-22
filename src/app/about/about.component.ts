@@ -31,11 +31,11 @@ export class AboutComponent {
 
   @ViewChild('about', { static: false }) about!: ElementRef<HTMLElement>;
 
-  private observer!: IntersectionObserver;
-  private renderer = inject(Renderer2);
+  // private observer!: IntersectionObserver;
+  // private renderer = inject(Renderer2);
   private document = inject(DOCUMENT);
 
-  private animationService = inject(AnimationsService);
+  // private animationService = inject(AnimationsService);
 
   showCar = false;
 
