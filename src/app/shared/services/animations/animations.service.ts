@@ -462,23 +462,70 @@ export class AnimationsService {
     this.setTheme(themeMap[id] ?? 'light');
   }
 
-  private animateIn(section: HTMLElement) {
-    section.animate(
+  private animateIn(document: HTMLElement) {
+    const section = document.querySelector('section');
+
+    console.log(section);
+
+    if (section?.classList.contains('about')) {
+      const paragraphs = section.querySelectorAll(
+        '.about-content .text-wrapper p'
+      ) as NodeListOf<HTMLElement>;
+      console.log(paragraphs);
+
+      this.animateParagraphs(paragraphs);
+    }
+
+    section?.animate(
       [
-        { transform: 'translateY(50px)', opacity: 0, filter: 'blur(2px)' },
-        { transform: 'translateY(0)', opacity: 1, filter: 'blur(0)' },
+        {
+          transform:
+            window.innerWidth <= 768
+              ? 'translateX(-70px)'
+              : 'translateX(-200px)',
+          opacity: 0,
+          filter: 'blur(1px)',
+        },
+        {
+          transform:
+            window.innerWidth <= 768 ? 'translateX(20px)' : 'translateX(50px)',
+          opacity: 0.5,
+        },
+        { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
       ],
-      { duration: 800, fill: 'forwards', easing: 'ease-out' }
+      { duration: 1000, fill: 'forwards' }
     );
   }
 
   private animateOut(section: HTMLElement) {
-    section.animate(
+    section.querySelector('section')?.animate(
       [
-        { transform: 'translateY(0)', opacity: 1 },
-        { transform: 'translateY(50px)', opacity: 0 },
+        { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
+        { transform: 'translateX(200px)', filter: 'blur(1px)', opacity: 0 },
       ],
-      { duration: 500, fill: 'forwards', easing: 'ease-in' }
+      { duration: 400, fill: 'forwards' }
     );
+  }
+
+  private animateParagraphs(paragraphs: NodeListOf<HTMLElement>) {
+    Array.from(paragraphs).forEach((p, i) => {
+      setTimeout(() => {
+        p.animate(
+          [
+            {
+              transform: 'translateX(-100px)',
+              opacity: 0,
+              filter: 'blur(1px)',
+            },
+            { transform: 'translateX(20px)', opacity: 0.5 },
+            { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
+          ],
+          {
+            duration: 500,
+            fill: 'forwards',
+          }
+        );
+      }, i * 200);
+    });
   }
 }
