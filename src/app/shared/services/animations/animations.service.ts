@@ -86,8 +86,6 @@ export class AnimationsService {
   private animateIn(element: HTMLElement) {
     const section = element.querySelector('section');
 
-    console.log(section);
-
     if (section?.classList.contains('about')) {
       const aboutSubtitle = section.querySelector(
         'h3.subtitle'
@@ -131,15 +129,13 @@ export class AnimationsService {
 
     const section = element.querySelector('section') as HTMLElement;
 
-    // section.animate(
-    //   [
-    //     { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
-    //     { transform: 'translateX(200px)', opacity: 0 },
-    //   ],
-    //   { duration: 400, fill: 'forwards' }
-    // );
-
-    section.style.display = 'none';
+    section.animate(
+      [
+        { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
+        { transform: 'translateX(200px)', filter: 'blur(1px)', opacity: 0 },
+      ],
+      { duration: 400, fill: 'forwards' }
+    );
   }
 
   private animateParagraphs(paragraphs: NodeListOf<HTMLElement>) {

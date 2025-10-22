@@ -71,37 +71,16 @@ export class AppComponent implements AfterViewInit, OnDestroy {
               rootMargin: '0px 0px -20px 0px',
             };
 
-      this.observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          // switch (entry.target.id) {
-          //   case 'hero':
-          //     this.animationService.homeAndHtmlAnimate(entry, this.renderer);
-          //     break;
-          //   case 'about':
-          //     this.animationService.aboutAndHtmlAnimate(entry, this.renderer);
-          //     break;
-          //   case 'tech-stack':
-          //     this.animationService.techStackAndHtmlAnimate(
-          //       entry,
-          //       this.renderer
-          //     );
-          //     break;
-          //   case 'projects':
-          //     this.animationService.projectsAndHtmlAnimate(
-          //       entry,
-          //       this.renderer
-          //     );
-          //     break;
-          //   case 'contacts':
-          //     this.animationService.contactsAndHtmlAnimate(
-          //       entry,
-          //       this.renderer
-          //     );
-          //     break;
-          // }
-          this.animationService.animateSection(entry);
-        });
-      }, options);
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            this.animationService.animateSection(entry);
+          });
+        },
+        {
+          threshold: 0.5,
+        }
+      );
 
       this.sections.forEach((section) => {
         this.observer.observe(section.nativeElement);
