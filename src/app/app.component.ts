@@ -42,7 +42,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
   isBrowser = isPlatformBrowser(this.platformId);
 
-  @ViewChild('about', { static: false }) about!: ElementRef<HTMLElement>;
+  @ViewChild('about', { static: false, read: ElementRef })
+  about!: ElementRef<HTMLElement>;
 
   private observer!: IntersectionObserver;
   private renderer = inject(Renderer2);
@@ -51,44 +52,31 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   private animationService = inject(AnimationsService);
 
   ngAfterViewInit(): void {
-    this.createObserver();
-  }
-
-  @HostListener('window:resize')
-  onResize() {
-    if (this.observer) {
-      this.observer.disconnect();
+    if (this.isBrowser) {
+      setTimeout(() => this.createObserver(), 0);
     }
-    this.createObserver();
   }
 
   private createObserver() {
-    if (isPlatformBrowser(this.platformId)) {
-      if (this.about) {
-        const options =
-          window.innerWidth > 768
-            ? {
-                threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
-                rootMargin: '0px 0px -100px 0px',
-              }
-            : window.innerHeight >= 1080
-            ? {
-                threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
-                rootMargin: '0px 0px -100px 0px',
-              }
-            : {
-                threshold: [0, 0.25, 0.35, 0.5, 1],
-                rootMargin: '0px 0px -20px 0px',
-              };
+    if (this.about?.nativeElement) {
+      const options =
+        window.innerWidth > 768
+          ? {
+              threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
+              rootMargin: '0px 0px -100px 0px',
+            }
+          : {
+              threshold: [0, 0.25, 0.35, 0.5, 1],
+              rootMargin: '0px 0px -20px 0px',
+            };
 
-        this.observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            this.animationService.aboutAndHtmlAnimate(entry, this.renderer);
-          });
-        }, options);
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          this.animationService.aboutAndHtmlAnimate(entry, this.renderer);
+        });
+      }, options);
 
-        this.observer.observe(this.about.nativeElement);
-      }
+      this.observer.observe(this.about.nativeElement);
     }
   }
 
