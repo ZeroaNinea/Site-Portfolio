@@ -88,6 +88,8 @@ export class AnimationsService {
 
     if (!section) return;
 
+    section.style.pointerEvents = 'auto';
+
     if (section?.classList.contains('about')) {
       const aboutSubtitle = section.querySelector(
         'h3.subtitle'
@@ -131,9 +133,7 @@ export class AnimationsService {
 
     if (!section) return;
 
-    if (section.classList.contains('about')) {
-      section.querySelector('.car-container')?.classList.remove('show');
-    }
+    section.style.pointerEvents = 'none';
 
     section.animate(
       [
