@@ -1,20 +1,17 @@
 import {
   afterNextRender,
-  AfterViewInit,
   Component,
   ElementRef,
-  HostListener,
   inject,
-  OnDestroy,
   PLATFORM_ID,
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { ProjectItemComponent } from '../project-item/project-item.component';
 import { isPlatformBrowser } from '@angular/common';
-import { Project } from '../shared/types/project.interface';
-import { AnimationsService } from '../shared/services/animations/animations.service';
 import { MatRippleModule } from '@angular/material/core';
+
+import { ProjectItemComponent } from '../project-item/project-item.component';
+import { Project } from '../shared/types/project.interface';
 
 @Component({
   selector: 'app-projects',
@@ -30,10 +27,7 @@ export class ProjectsComponent {
   @ViewChild('projects', { static: false })
   projects!: ElementRef<HTMLElement>;
 
-  // private observer!: IntersectionObserver;
   private renderer = inject(Renderer2);
-
-  // private animationService = inject(AnimationsService);
 
   projectList: Project[] = [
     {
@@ -51,54 +45,6 @@ export class ProjectsComponent {
   constructor() {
     afterNextRender(() => setInterval(() => this.spawnPaw(), 3000));
   }
-
-  // ngAfterViewInit(): void {
-  //   this.createObserver();
-  // }
-
-  // @HostListener('window:resize')
-  // onResize() {
-  //   if (this.observer) {
-  //     this.observer.disconnect();
-  //   }
-  //   this.createObserver();
-  // }
-
-  // private createObserver() {
-  //   if (isPlatformBrowser(this.platformId)) {
-  //     if (this.projects) {
-  //       const options =
-  //         window.innerWidth > 768
-  //           ? {
-  //               threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
-  //               rootMargin: '0px 0px -100px 0px',
-  //             }
-  //           : window.innerHeight >= 1080
-  //           ? {
-  //               threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
-  //               rootMargin: '0px 0px -100px 0px',
-  //             }
-  //           : {
-  //               threshold: [0, 0.25, 0.35, 0.5, 1],
-  //               rootMargin: '0px 0px -20px 0px',
-  //             };
-
-  //       this.observer = new IntersectionObserver((entries) => {
-  //         entries.forEach((entry) => {
-  //           this.animationService.projectsAndHtmlAnimate(entry, this.renderer);
-  //         });
-  //       }, options);
-
-  //       this.observer.observe(this.projects.nativeElement);
-  //     }
-  //   }
-  // }
-
-  // ngOnDestroy(): void {
-  //   if (this.observer) {
-  //     this.observer.disconnect();
-  //   }
-  // }
 
   spawnPaw() {
     const container =

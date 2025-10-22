@@ -1,14 +1,11 @@
 import {
   AfterViewInit,
   Component,
-  DOCUMENT,
   ElementRef,
-  HostListener,
   inject,
   OnDestroy,
   PLATFORM_ID,
   Renderer2,
-  ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
@@ -48,7 +45,6 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   private observer!: IntersectionObserver;
   private renderer = inject(Renderer2);
-  // private document = inject(DOCUMENT);
 
   private animationService = inject(AnimationsService);
 
@@ -60,17 +56,6 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   private createObserver() {
     if (this.sections) {
-      const options =
-        window.innerWidth > 768
-          ? {
-              threshold: [0, 0.1, 0.25, 0.35, 0.5, 1],
-              rootMargin: '0px 0px -100px 0px',
-            }
-          : {
-              threshold: [0, 0.25, 0.35, 0.5, 1],
-              rootMargin: '0px 0px -20px 0px',
-            };
-
       this.observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {

@@ -3,18 +3,13 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   inject,
   PLATFORM_ID,
-  Renderer2,
   ViewChild,
   ElementRef,
-  OnDestroy,
-  AfterViewInit,
-  HostListener,
   DOCUMENT,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 import { GeometricShapeComponent } from '../geometric-shape/geometric-shape.component';
-import { AnimationsService } from '../shared/services/animations/animations.service';
 
 @Component({
   selector: 'app-about',
@@ -31,11 +26,7 @@ export class AboutComponent {
 
   @ViewChild('about', { static: false }) about!: ElementRef<HTMLElement>;
 
-  // private observer!: IntersectionObserver;
-  // private renderer = inject(Renderer2);
   private document = inject(DOCUMENT);
-
-  // private animationService = inject(AnimationsService);
 
   showCar = false;
 
