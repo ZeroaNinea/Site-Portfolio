@@ -73,32 +73,33 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
       this.observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          switch (entry.target.id) {
-            case 'hero':
-              this.animationService.homeAndHtmlAnimate(entry, this.renderer);
-              break;
-            case 'about':
-              this.animationService.aboutAndHtmlAnimate(entry, this.renderer);
-              break;
-            case 'tech-stack':
-              this.animationService.techStackAndHtmlAnimate(
-                entry,
-                this.renderer
-              );
-              break;
-            case 'projects':
-              this.animationService.projectsAndHtmlAnimate(
-                entry,
-                this.renderer
-              );
-              break;
-            case 'contacts':
-              this.animationService.contactsAndHtmlAnimate(
-                entry,
-                this.renderer
-              );
-              break;
-          }
+          // switch (entry.target.id) {
+          //   case 'hero':
+          //     this.animationService.homeAndHtmlAnimate(entry, this.renderer);
+          //     break;
+          //   case 'about':
+          //     this.animationService.aboutAndHtmlAnimate(entry, this.renderer);
+          //     break;
+          //   case 'tech-stack':
+          //     this.animationService.techStackAndHtmlAnimate(
+          //       entry,
+          //       this.renderer
+          //     );
+          //     break;
+          //   case 'projects':
+          //     this.animationService.projectsAndHtmlAnimate(
+          //       entry,
+          //       this.renderer
+          //     );
+          //     break;
+          //   case 'contacts':
+          //     this.animationService.contactsAndHtmlAnimate(
+          //       entry,
+          //       this.renderer
+          //     );
+          //     break;
+          // }
+          this.animationService.animateSection(entry);
         });
       }, options);
 
