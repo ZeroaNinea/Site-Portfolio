@@ -31,8 +31,6 @@ export class AboutComponent {
   showCar = false;
 
   toggleCar() {
-    console.log('toggleCar');
-
     this.showCar = !this.showCar;
 
     if (this.showCar) {

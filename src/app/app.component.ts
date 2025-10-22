@@ -63,7 +63,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
           });
         },
         {
-          threshold: 0.5,
+          threshold: 0.4,
         }
       );
 

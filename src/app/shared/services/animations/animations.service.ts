@@ -86,6 +86,8 @@ export class AnimationsService {
   private animateIn(element: HTMLElement) {
     const section = element.querySelector('section');
 
+    if (!section) return;
+
     if (section?.classList.contains('about')) {
       const aboutSubtitle = section.querySelector(
         'h3.subtitle'
@@ -125,9 +127,13 @@ export class AnimationsService {
   }
 
   private animateOut(element: HTMLElement) {
-    console.log(element);
-
     const section = element.querySelector('section') as HTMLElement;
+
+    if (!section) return;
+
+    if (section.classList.contains('about')) {
+      section.querySelector('.car-container')?.classList.remove('show');
+    }
 
     section.animate(
       [
