@@ -139,12 +139,12 @@ export class AnimationsService {
       [
         { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
         {
-          transform:
-            window.innerWidth <= 768
-              ? 'translateX(-70px)'
-              : 'translateX(200px)',
+          // transform:
+          //   window.innerWidth <= 768
+          //     ? 'translateX(-70px)'
+          //     : 'translateX(200px)',
           filter: 'blur(1px)',
-          opacity: 0,
+          opacity: 1,
         },
       ],
       { duration: 400, fill: 'forwards' }
