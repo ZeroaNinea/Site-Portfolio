@@ -13,6 +13,21 @@
   }
 }
 
+@media (max-width: 915px) {
+  .hero-text {
+    font-size: 2rem;
+  }
+  .hero-subtext {
+    font-size: 1rem;
+  }
+
+  .hero-container {
+    height: 88vh;
+    height: 88dvh;
+    min-height: calc(100dvh - 64px);
+  }
+}
+
 @media (min-height: 768px) {
   .hero-text {
     font-size: 2rem;
