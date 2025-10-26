@@ -11,5 +11,51 @@
     max-width: none;
     max-height: 300px;
     margin: 0;
+
+    .car-title {
+      font-size: 1rem !important;
+    }
+  }
+}
+
+@media ((max-width: 915px) and (orientation: landscape)) {
+  h2.title {
+    font-size: 1.75rem !important;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .car-container {
+    max-width: 300px;
+    max-height: 225px;
+    // max-height: 230px;
+    margin: 0 auto;
+
+    .car-title {
+      font-size: 1rem !important;
+    }
+  }
+}
+
+@media ((max-width: 883px) and (orientation: landscape)) {
+  h2.title {
+    font-size: 1.75rem !important;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .car-container {
+    max-width: 300px;
+    max-height: 210px;
+    // max-height: 230px;
+    margin: 0 auto;
+
+    .car-title {
+      font-size: 1rem !important;
+    }
   }
 }
