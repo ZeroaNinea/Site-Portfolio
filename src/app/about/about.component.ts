@@ -45,7 +45,9 @@ export class AboutComponent {
   }
 
   scrollToCar() {
-    this.document.querySelector('#car')?.scrollIntoView({ behavior: 'smooth' });
+    this.document
+      .querySelector('#car')
+      ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
   scrollToAbout() {
