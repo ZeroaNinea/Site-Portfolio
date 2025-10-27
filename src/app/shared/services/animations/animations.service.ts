@@ -144,7 +144,7 @@ export class AnimationsService {
               ? 'translateX(-70px)'
               : 'translateX(200px)',
           filter: 'blur(1px)',
-          opacity: 1,
+          opacity: 0,
         },
       ],
       { duration: 400, fill: 'forwards' }
