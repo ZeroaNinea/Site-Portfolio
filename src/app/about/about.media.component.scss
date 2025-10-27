@@ -58,22 +58,22 @@
   }
 }
 
-@media ((max-width: 768px) and (orientation: landscape)) {
-  h2.title {
-    font-size: 1.75rem !important;
-  }
+// @media ((max-width: 768px) and (orientation: landscape)) {
+//   h2.title {
+//     font-size: 1.75rem !important;
+//   }
 
-  .subtitle {
-    font-size: 1rem;
-  }
+//   .subtitle {
+//     font-size: 1rem;
+//   }
 
-  .car-container {
-    max-width: none;
-    max-height: 300px;
-    margin: 0;
+//   .car-container {
+//     max-width: none;
+//     max-height: 300px;
+//     margin: 0;
 
-    .car-title {
-      font-size: 1rem !important;
-    }
-  }
-}
+//     .car-title {
+//       font-size: 1rem !important;
+//     }
+//   }
+// }
