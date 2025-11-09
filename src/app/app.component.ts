@@ -63,7 +63,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
           });
         },
         {
-          threshold: 0.4,
+          threshold:
+            screen.orientation.type === 'landscape-primary' &&
+            window.innerHeight < 600
+              ? 0.4
+              : 0.4,
         }
       );
 
