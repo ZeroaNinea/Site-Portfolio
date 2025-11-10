@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [MatButtonModule, MatRippleModule],
   standalone: true,
   templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.scss', './contacts.media.component.scss'],
+  styleUrls: ['./contacts.component.scss', './contacts.component.media.scss'],
 })
 export class ContactsComponent {
   @ViewChild('contacts', { static: false })

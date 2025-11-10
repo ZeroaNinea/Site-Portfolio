@@ -173,6 +173,7 @@ export class ProjectItemComponent {
   ngOnDestroy() {
     cancelAnimationFrame(this.animationId);
     this.renderer.dispose();
+    window.removeEventListener('resize', this.onResize);
   }
 
   onHover(state: boolean) {

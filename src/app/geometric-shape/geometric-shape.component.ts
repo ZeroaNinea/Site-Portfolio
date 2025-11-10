@@ -21,7 +21,10 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
   imports: [MatIconModule, MatButtonModule],
   standalone: true,
   templateUrl: './geometric-shape.component.html',
-  styleUrl: './geometric-shape.component.scss',
+  styleUrls: [
+    './geometric-shape.component.scss',
+    './geometric-shape.component.media.scss',
+  ],
 })
 export class GeometricShapeComponent implements OnInit, OnDestroy {
   @Output() carToggled = new EventEmitter<void>();
@@ -32,6 +35,7 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
   containerRef!: ElementRef<HTMLDivElement>;
 
   private ngZone: NgZone = inject(NgZone);
+  private host = inject(ElementRef);
 
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;
@@ -56,6 +60,7 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     cancelAnimationFrame(this.animationId);
     this.renderer.dispose();
+    window.removeEventListener('resize', this.onResize);
   }
 
   private initScene(): void {
@@ -68,7 +73,10 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
       canvas: this.canvasRef.nativeElement,
       alpha: true,
     });
-    this.renderer.setSize(300, 300);
+
+    window.addEventListener('resize', this.onResize);
+    this.onResize();
+    // this.renderer.setSize(300, 300);
 
     // this.axesHelper = new THREE.AxesHelper(5); // Adds a 3D axis helper.
     // this.scene.add(this.axesHelper);
@@ -204,4 +212,15 @@ export class GeometricShapeComponent implements OnInit, OnDestroy {
       });
     }
   }
+
+  private onResize = () => {
+    const wrapper = this.host.nativeElement.querySelector(
+      '.shape-container'
+    ) as HTMLElement;
+    const size = wrapper.clientWidth;
+
+    this.renderer.setSize(size, size);
+    this.camera.aspect = 1;
+    this.camera.updateProjectionMatrix();
+  };
 }
