@@ -111,8 +111,10 @@ export class AnimationsService {
       [
         {
           transform:
-            window.innerWidth <= 768
-              ? 'translateX(-70px)'
+            window.innerWidth <= 768 ||
+            (screen.orientation.type === 'landscape-primary' &&
+              window.innerHeight < 600)
+              ? 'translateX(-20px)'
               : 'translateX(-200px)',
           opacity: 0,
           filter: 'blur(1px)',
@@ -140,8 +142,10 @@ export class AnimationsService {
         { transform: 'translateX(0)', filter: 'blur(0px)', opacity: 1 },
         {
           transform:
-            window.innerWidth <= 768
-              ? 'translateX(-70px)'
+            window.innerWidth <= 768 ||
+            (screen.orientation.type === 'landscape-primary' &&
+              window.innerHeight < 600)
+              ? 'translateX(-20px)'
               : 'translateX(200px)',
           filter: 'blur(1px)',
           opacity: 0,

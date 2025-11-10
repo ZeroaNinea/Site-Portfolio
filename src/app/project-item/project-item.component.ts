@@ -59,7 +59,14 @@ export class ProjectItemComponent {
       alpha: true,
       antialias: true,
     });
-    this.renderer.setSize(300, 300);
+
+    const sceneSize =
+      screen.orientation.type === 'landscape-primary' &&
+      window.innerHeight < 600
+        ? 150
+        : 300;
+
+    this.renderer.setSize(sceneSize, sceneSize);
 
     // Cubes.
     this.cube1 = new THREE.Mesh(

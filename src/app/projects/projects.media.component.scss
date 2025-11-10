@@ -5,3 +5,14 @@
     }
   }
 }
+
+@media ((max-height: 600px) and (orientation: landscape)) {
+  .project-item-list {
+    display: flex;
+    flex-direction: row;
+
+    .project-item {
+      width: 40%;
+    }
+  }
+}
