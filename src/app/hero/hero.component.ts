@@ -16,8 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: [
     './hero.component.scss',
     './hero-triangles.component.scss',
-    './hero.media.component.scss',
-    './hero-triangles.media.component.scss',
+    './hero.component.media.scss',
+    './hero-triangles.component.media.scss',
   ],
 })
 export class HeroComponent {

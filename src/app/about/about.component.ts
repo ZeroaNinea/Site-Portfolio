@@ -17,7 +17,7 @@ import { GeometricShapeComponent } from '../geometric-shape/geometric-shape.comp
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   standalone: true,
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss', './about.media.component.scss'],
+  styleUrls: ['./about.component.scss', './about.component.media.scss'],
   host: { ngSkipHydration: 'true' },
 })
 export class AboutComponent {

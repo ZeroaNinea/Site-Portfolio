@@ -23,7 +23,7 @@ import { StackItem } from '../shared/types/stack-item.interface';
   templateUrl: './tech-stack.component.html',
   styleUrls: [
     './tech-stack.component.scss',
-    './tech-stack.media.component.scss',
+    './tech-stack.component.media.scss',
   ],
 })
 export class TechStackComponent {

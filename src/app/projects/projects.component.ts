@@ -18,7 +18,7 @@ import { Project } from '../shared/types/project.interface';
   imports: [ProjectItemComponent, MatRippleModule],
   standalone: true,
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss', './projects.media.component.scss'],
+  styleUrls: ['./projects.component.scss', './projects.component.media.scss'],
 })
 export class ProjectsComponent {
   private platformId = inject(PLATFORM_ID);
