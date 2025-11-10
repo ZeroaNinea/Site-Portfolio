@@ -60,13 +60,16 @@ export class ProjectItemComponent {
       antialias: true,
     });
 
-    const sceneSize =
-      screen.orientation.type === 'landscape-primary' &&
-      window.innerHeight < 600
-        ? 150
-        : 300;
+    // const sceneSize =
+    //   screen.orientation.type === 'landscape-primary' &&
+    //   window.innerHeight < 600
+    //     ? 190
+    //     : 300;
 
-    this.renderer.setSize(sceneSize, sceneSize);
+    // this.renderer.setSize(sceneSize, sceneSize);
+
+    window.addEventListener('resize', this.onResize);
+    this.onResize();
 
     // Cubes.
     this.cube1 = new THREE.Mesh(
@@ -192,4 +195,19 @@ export class ProjectItemComponent {
       this.projectName.classList.remove('touched');
     }
   }
+
+  private onResize = () => {
+    const wrapper = this.host.nativeElement.querySelector(
+      '.cube-wrapper'
+    ) as HTMLElement;
+    const size =
+      screen.orientation.type === 'landscape-primary' &&
+      window.innerHeight < 600
+        ? wrapper.clientWidth - 50
+        : wrapper.clientWidth;
+
+    this.renderer.setSize(size, size);
+    this.camera.aspect = 1;
+    this.camera.updateProjectionMatrix();
+  };
 }
