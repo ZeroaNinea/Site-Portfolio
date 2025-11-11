@@ -16,6 +16,12 @@
       font-size: 1rem !important;
     }
   }
+
+  .text-wrapper {
+    max-height: 50vh;
+    max-height: 50dvh;
+    overflow-y: scroll;
+  }
 }
 
 @media ((max-width: 915px) and (orientation: landscape)) {
@@ -35,6 +41,12 @@
     .car-title {
       font-size: 1rem !important;
     }
+  }
+
+  .text-wrapper {
+    max-height: 50vh;
+    max-height: 50dvh;
+    overflow-y: scroll;
   }
 }
 
@@ -56,24 +68,22 @@
       font-size: 1rem !important;
     }
   }
+
+  .text-wrapper {
+    max-height: 50vh;
+    max-height: 50dvh;
+    overflow-y: scroll;
+  }
 }
 
-// @media ((max-width: 768px) and (orientation: landscape)) {
-//   h2.title {
-//     font-size: 1.75rem !important;
-//   }
+@media ((max-height: 600px) and (orientation: landscape)) {
+  .about-content {
+    gap: 0;
+  }
 
-//   .subtitle {
-//     font-size: 1rem;
-//   }
-
-//   .car-container {
-//     max-width: none;
-//     max-height: 300px;
-//     margin: 0;
-
-//     .car-title {
-//       font-size: 1rem !important;
-//     }
-//   }
-// }
+  .text-wrapper {
+    max-height: 50vh;
+    max-height: 50dvh;
+    overflow-y: scroll;
+  }
+}

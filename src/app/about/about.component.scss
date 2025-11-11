@@ -52,6 +52,7 @@
 .text-wrapper {
   flex: 2;
   text-align: left;
+  overflow-x: hidden;
 
   p {
     font-size: 1.05rem;
