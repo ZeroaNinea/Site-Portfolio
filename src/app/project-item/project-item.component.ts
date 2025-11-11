@@ -204,7 +204,7 @@ export class ProjectItemComponent {
     const size =
       screen.orientation.type === 'landscape-primary' &&
       window.innerHeight < 600
-        ? wrapper.clientWidth - 150
+        ? wrapper.clientWidth / 2
         : wrapper.clientWidth;
 
     this.renderer.setSize(size, size);
