@@ -158,6 +158,10 @@ export class TechStackComponent {
       name: 'Jest',
       icon: 'jest.svg',
     },
+    {
+      name: 'React',
+      icon: 'react.svg',
+    },
   ];
 
   drop(event: CdkDragDrop<StackItem[]>) {
