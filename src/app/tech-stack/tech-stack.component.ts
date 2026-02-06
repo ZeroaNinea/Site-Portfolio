@@ -330,6 +330,10 @@ export class TechStackComponent {
     return this.tabs[this.activeTabIndex].value;
   }
 
+  get tabCount() {
+    return this.tabs.length;
+  }
+
   drop(event: CdkDragDrop<StackItem[]>) {
     moveItemInArray(this.stackItems, event.previousIndex, event.currentIndex);
   }
