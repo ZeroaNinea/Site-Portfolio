@@ -4,8 +4,15 @@
       matIconButton
       areal-label="toggle the sidebar"
       (click)="drawer.toggle()"
+      class="toggle-button"
     >
-      <mat-icon>more_vert</mat-icon>
+      <mat-icon>
+        @if (drawer.opened) {
+          close
+        } @else {
+          more_vert
+        }
+      </mat-icon>
     </button>
     Tech Stack
   </h2>
