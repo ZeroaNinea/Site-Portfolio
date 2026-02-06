@@ -59,11 +59,6 @@ export class TechStackComponent implements AfterViewInit {
 
   activeTabIndex = 0;
 
-  // trackByName = (_: number, item: StackItem) => item.name;
-  // trackById = (_: number, item: StackItem) => item.id;
-  // trackByTabItem = (_: number, item: StackItem, tab: StackTab) =>
-  //   `${tab}:${item.id}`;
-
   stackItems: StackItem[] = [
     {
       id: 'angular',
