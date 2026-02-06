@@ -47,7 +47,7 @@
         class="tab-view-point"
         [style.transform]="'translateY(-' + activeTabIndex * 100 + '%)'"
       >
-        @for (tab of tabs; track tab) {
+        @for (tab of tabs; track tab.value) {
           <div
             cdkDropList
             cdkDropListOrientation="mixed"
@@ -55,25 +55,23 @@
             class="stack-grid"
             (cdkDropListDropped)="drop($event, tab.value)"
           >
-            @for (item of stackItems; track item) {
-              @if (item.meta.tab === tab.value) {
-                <div
-                  cdkDrag
-                  [cdkDragDisabled]="tab.value !== activeTab"
-                  matRipple
-                  [matRippleTrigger]="trigger"
-                  class="ripple"
-                >
-                  <div #trigger class="stack-card">
-                    <img
-                      src="./assets/technology-icons/{{ item.icon }}"
-                      alt="{{ item.name }}"
-                      class="stack-icon"
-                    />
-                    <p>{{ item.name }}</p>
-                  </div>
+            @for (item of getItemsForTab(tab.value); track item) {
+              <div
+                cdkDrag
+                [cdkDragDisabled]="tab.value !== activeTab"
+                matRipple
+                [matRippleTrigger]="trigger"
+                class="ripple"
+              >
+                <div #trigger class="stack-card">
+                  <img
+                    src="./assets/technology-icons/{{ item.icon }}"
+                    alt="{{ item.name }}"
+                    class="stack-icon"
+                  />
+                  <p>{{ item.name }}</p>
                 </div>
-              }
+              </div>
             }
           </div>
         }

@@ -59,8 +59,14 @@ export class TechStackComponent implements AfterViewInit {
 
   activeTabIndex = 0;
 
+  // trackByName = (_: number, item: StackItem) => item.name;
+  // trackById = (_: number, item: StackItem) => item.id;
+  // trackByTabItem = (_: number, item: StackItem, tab: StackTab) =>
+  //   `${tab}:${item.id}`;
+
   stackItems: StackItem[] = [
     {
+      id: 'angular',
       name: 'Angular',
       icon: 'angular.svg',
       meta: {
@@ -68,6 +74,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'ngrx',
       name: 'NgRx',
       icon: 'ngrx.svg',
       meta: {
@@ -75,6 +82,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'rxjs',
       name: 'RxJS',
       icon: 'rxjs.svg',
       meta: {
@@ -82,6 +90,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'angular-material',
       name: 'Angular Material',
       icon: 'angular-material.svg',
       meta: {
@@ -89,6 +98,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'threejs',
       name: 'Three.js',
       icon: 'threejs.svg',
       meta: {
@@ -96,6 +106,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'nestjs',
       name: 'Nest.js',
       icon: 'nestjs.svg',
       meta: {
@@ -103,6 +114,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'tailwind',
       name: 'Tailwind',
       icon: 'tailwind.svg',
       meta: {
@@ -110,6 +122,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'bootstrap',
       name: 'Bootstrap',
       icon: 'bootstrap.svg',
       meta: {
@@ -117,6 +130,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'nodejs',
       name: 'Node.js',
       icon: 'node.svg',
       meta: {
@@ -124,6 +138,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'nextjs',
       name: 'Next.js',
       icon: 'nextjs.svg',
       meta: {
@@ -131,6 +146,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'expressjs',
       name: 'Express JS',
       icon: 'expressjs.svg',
       meta: {
@@ -138,6 +154,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'sequelize',
       name: 'Sequelize',
       icon: 'sequelize.svg',
       meta: {
@@ -145,6 +162,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'mongoose',
       name: 'Mongoose',
       icon: 'mongoose.svg',
       meta: {
@@ -152,6 +170,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'redis',
       name: 'Redis',
       icon: 'redis.svg',
       meta: {
@@ -159,6 +178,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'graphql',
       name: 'GraphQL',
       icon: 'graphql.svg',
       meta: {
@@ -166,6 +186,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'prismaorm',
       name: 'Prisma ORM',
       icon: 'prismaorm.svg',
       meta: {
@@ -173,6 +194,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'socketio',
       name: 'Socket.io',
       icon: 'socketio.svg',
       meta: {
@@ -180,6 +202,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'jwt',
       name: 'JWT',
       icon: 'jwt.svg',
       meta: {
@@ -187,6 +210,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'auth0',
       name: 'Auth0',
       icon: 'auth0.svg',
       meta: {
@@ -194,6 +218,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'passportjs',
       name: 'Passport.js',
       icon: 'passportjs.svg',
       meta: {
@@ -201,6 +226,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'git',
       name: 'Git',
       icon: 'git.svg',
       meta: {
@@ -208,6 +234,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'docker',
       name: 'Docker',
       icon: 'docker.svg',
       meta: {
@@ -215,6 +242,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'kubernetes',
       name: 'Kubernetes',
       icon: 'kubernetes.svg',
       meta: {
@@ -222,6 +250,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'jenkins',
       name: 'Jenkins',
       icon: 'jenkins.svg',
       meta: {
@@ -229,6 +258,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'cypress',
       name: 'Cypress',
       icon: 'cypress.svg',
       meta: {
@@ -236,6 +266,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'jasmine',
       name: 'Jasmine',
       icon: 'jasmine.svg',
       meta: {
@@ -243,6 +274,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'karma',
       name: 'Karma',
       icon: 'karma.svg',
       meta: {
@@ -250,6 +282,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'mocha',
       name: 'Mocha',
       icon: 'mocha.svg',
       meta: {
@@ -257,6 +290,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'chai',
       name: 'Chai',
       icon: 'chai.svg',
       meta: {
@@ -264,6 +298,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'lighthouseci',
       name: 'Lighthouse CI',
       icon: 'lighthouseci.png',
       meta: {
@@ -271,6 +306,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'clinicjs',
       name: 'Clinic.js',
       icon: 'clinicjs.svg',
       meta: {
@@ -278,6 +314,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'artillery',
       name: 'Artillery',
       icon: 'artillery.svg',
       meta: {
@@ -285,6 +322,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'nestjs',
       name: 'Nest.js',
       icon: 'nestjs.svg',
       meta: {
@@ -292,6 +330,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'typeorm',
       name: 'TypeORM',
       icon: 'typeorm.svg',
       meta: {
@@ -299,6 +338,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'graphql',
       name: 'GraphQL',
       icon: 'graphql.svg',
       meta: {
@@ -306,6 +346,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'websocket',
       name: 'WebSocket',
       icon: 'websocket.svg',
       meta: {
@@ -313,6 +354,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'jest',
       name: 'Jest',
       icon: 'jest.svg',
       meta: {
@@ -320,6 +362,7 @@ export class TechStackComponent implements AfterViewInit {
       },
     },
     {
+      id: 'react',
       name: 'React',
       icon: 'react.svg',
       meta: {
