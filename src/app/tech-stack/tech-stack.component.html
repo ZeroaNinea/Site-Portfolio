@@ -28,14 +28,13 @@
           >
             {{ tab.label }}
           </button>
-          {{ activeTabIndex }}
         }
       </div>
     </mat-drawer>
     <mat-drawer-content class="drawer-content">
       <div
         class="tab-view-point"
-        [style]="'transform: translateY(-' + activeTabIndex * 50 + 'vh)'"
+        [style.transform]="'translateY(-' + activeTabIndex * 100 + '%)'"
       >
         @for (tab of tabs; track tab) {
           <div

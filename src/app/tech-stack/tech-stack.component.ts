@@ -108,6 +108,13 @@ export class TechStackComponent {
       },
     },
     {
+      name: 'Next.js',
+      icon: 'nextjs.svg',
+      meta: {
+        tab: 'fullstack',
+      },
+    },
+    {
       name: 'Express JS',
       icon: 'expressjs.svg',
       meta: {
