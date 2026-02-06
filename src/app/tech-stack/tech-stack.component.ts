@@ -101,6 +101,20 @@ export class TechStackComponent {
       },
     },
     {
+      name: 'Tailwind',
+      icon: 'tailwind.svg',
+      meta: {
+        tab: 'frontend',
+      },
+    },
+    {
+      name: 'Bootstrap',
+      icon: 'bootstrap.svg',
+      meta: {
+        tab: 'frontend',
+      },
+    },
+    {
       name: 'Node.js',
       icon: 'node.svg',
       meta: {
