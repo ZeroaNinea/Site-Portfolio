@@ -49,7 +49,7 @@ export class TechStackComponent {
   tabs: { label: string; value: StackTab }[] = [
     { label: 'Frontend', value: 'frontend' },
     { label: 'Backend', value: 'backend' },
-    { label: 'Full-stack / SSR', value: 'fullstack' },
+    { label: 'Full-stack', value: 'fullstack' },
     { label: 'Real-time', value: 'realtime' },
     { label: 'DevOps', value: 'devops' },
     { label: 'Testing & Quality', value: 'testing' },
