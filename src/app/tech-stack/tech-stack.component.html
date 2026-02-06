@@ -20,6 +20,11 @@
   <mat-drawer-container>
     <mat-drawer #drawer mode="side">
       <div class="tabs">
+        <div
+          class="tab-indicator"
+          [style.transform]="'translateY(' + activeTabIndex * 100 + '%)'"
+        ></div>
+
         @for (tab of tabs; track $index) {
           <button
             matButton
@@ -31,6 +36,7 @@
         }
       </div>
     </mat-drawer>
+
     <mat-drawer-content class="drawer-content">
       <div
         class="tab-view-point"
