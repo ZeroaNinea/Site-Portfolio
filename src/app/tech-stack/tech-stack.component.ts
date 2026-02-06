@@ -5,6 +5,7 @@ import {
   inject,
   PLATFORM_ID,
   ViewChild,
+  AfterViewInit,
 } from '@angular/core';
 
 import { MatRippleModule } from '@angular/material/core';
@@ -39,9 +40,10 @@ import { StackTab } from '../shared/types/stack-tab.alias';
     './tech-stack.component.media.scss',
   ],
 })
-export class TechStackComponent {
+export class TechStackComponent implements AfterViewInit {
   private platformId = inject(PLATFORM_ID);
   isBrowser = isPlatformBrowser(this.platformId);
+  isDesktop = false;
 
   @ViewChild('techStack', { static: false })
   techStack!: ElementRef<HTMLElement>;
@@ -332,6 +334,12 @@ export class TechStackComponent {
 
   get tabCount() {
     return this.tabs.length;
+  }
+
+  ngAfterViewInit() {
+    if (!this.isBrowser) return;
+
+    this.isDesktop = window.matchMedia('(min-width: 1024px)').matches;
   }
 
   drop(event: CdkDragDrop<StackItem[]>) {
