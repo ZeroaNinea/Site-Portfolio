@@ -1,25 +1,15 @@
 <section class="tech-stack">
-  <h2 class="section-title">Tech Stack</h2>
+  <h2 class="section-title">
+    <button
+      matIconButton
+      areal-label="toggle the sidebar"
+      (click)="drawer.toggle()"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    Tech Stack
+  </h2>
 
-  <!-- <div
-    cdkDropList
-    cdkDropListOrientation="mixed"
-    class="stack-grid"
-    (cdkDropListDropped)="drop($event)"
-  >
-    @for(item of stackItems; track item) {
-    <div cdkDrag matRipple [matRippleTrigger]="trigger" class="ripple">
-      <div #trigger class="stack-card">
-        <img
-          src="./assets/technology-icons/{{ item.icon }}"
-          alt="{{ item.name }}"
-          class="stack-icon"
-        />
-        <p>{{ item.name }}</p>
-      </div>
-    </div>
-    }
-  </div> -->
   <mat-drawer-container>
     <mat-drawer #drawer mode="side">I'm a drawer</mat-drawer>
     <mat-drawer-content class="drawer-content">
@@ -42,9 +32,6 @@
           </div>
         }
       </div>
-      <button matButton="elevated" (click)="drawer.toggle()">
-        Toggle drawer
-      </button>
     </mat-drawer-content>
   </mat-drawer-container>
 </section>
