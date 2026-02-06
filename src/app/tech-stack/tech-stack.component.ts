@@ -8,6 +8,8 @@ import {
 } from '@angular/core';
 
 import { MatRippleModule } from '@angular/material/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 import {
   CdkDragDrop,
   CdkDropList,
@@ -16,9 +18,17 @@ import {
 } from '@angular/cdk/drag-drop';
 
 import { StackItem } from '../shared/types/stack-item.interface';
+import { MatButtonModule } from '@angular/material/button';
+
 @Component({
   selector: 'app-tech-stack',
-  imports: [MatRippleModule, CdkDropList, CdkDrag],
+  imports: [
+    MatRippleModule,
+    MatSidenavModule,
+    CdkDropList,
+    CdkDrag,
+    MatButtonModule,
+  ],
   standalone: true,
   templateUrl: './tech-stack.component.html',
   styleUrls: [
