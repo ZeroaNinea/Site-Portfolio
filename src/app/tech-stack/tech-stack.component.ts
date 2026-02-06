@@ -342,11 +342,22 @@ export class TechStackComponent implements AfterViewInit {
     this.isDesktop = window.matchMedia('(min-width: 1024px)').matches;
   }
 
-  drop(event: CdkDragDrop<StackItem[]>) {
-    moveItemInArray(this.stackItems, event.previousIndex, event.currentIndex);
+  drop(event: CdkDragDrop<StackItem[]>, tab: StackTab) {
+    const tabItems = event.container.data;
+
+    moveItemInArray(tabItems, event.previousIndex, event.currentIndex);
+
+    this.stackItems = [
+      ...this.stackItems.filter((item) => item.meta.tab !== tab),
+      ...tabItems,
+    ];
   }
 
   selectTab(index: number) {
     this.activeTabIndex = index;
+  }
+
+  getItemsForTab(tab: StackTab): StackItem[] {
+    return this.stackItems.filter((item) => item.meta.tab === tab);
   }
 }

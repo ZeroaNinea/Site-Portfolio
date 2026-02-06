@@ -51,13 +51,15 @@
           <div
             cdkDropList
             cdkDropListOrientation="mixed"
+            [cdkDropListData]="getItemsForTab(tab.value)"
             class="stack-grid"
-            (cdkDropListDropped)="drop($event)"
+            (cdkDropListDropped)="drop($event, tab.value)"
           >
             @for (item of stackItems; track item) {
               @if (item.meta.tab === tab.value) {
                 <div
                   cdkDrag
+                  [cdkDragDisabled]="tab.value !== activeTab"
                   matRipple
                   [matRippleTrigger]="trigger"
                   class="ripple"
