@@ -20,6 +20,7 @@ import {
 } from '@angular/cdk/drag-drop';
 
 import { StackItem } from '../shared/types/stack-item.interface';
+import { StackTab } from '../shared/types/stack-tab.alias';
 
 @Component({
   selector: 'app-tech-stack',
@@ -45,134 +46,276 @@ export class TechStackComponent {
   @ViewChild('techStack', { static: false })
   techStack!: ElementRef<HTMLElement>;
 
+  tabs: { label: string; value: StackTab }[] = [
+    { label: 'Frontend', value: 'frontend' },
+    { label: 'Backend', value: 'backend' },
+    { label: 'Full-stack / SSR', value: 'fullstack' },
+    { label: 'Real-time', value: 'realtime' },
+    { label: 'DevOps', value: 'devops' },
+    { label: 'Testing & Quality', value: 'testing' },
+  ];
+
+  activeTab: StackTab = 'frontend';
+
   stackItems: StackItem[] = [
     {
       name: 'Angular',
       icon: 'angular.svg',
+      meta: {
+        tab: 'frontend',
+      },
     },
     {
       name: 'NgRx',
       icon: 'ngrx.svg',
+      meta: {
+        tab: 'frontend',
+      },
     },
     {
       name: 'RxJS',
       icon: 'rxjs.svg',
+      meta: {
+        tab: 'frontend',
+      },
     },
     {
       name: 'Angular Material',
       icon: 'angular-material.svg',
+      meta: {
+        tab: 'frontend',
+      },
     },
     {
       name: 'Three.js',
       icon: 'threejs.svg',
+      meta: {
+        tab: 'frontend',
+      },
+    },
+    {
+      name: 'Nest.js',
+      icon: 'nest.svg',
+      meta: {
+        tab: 'backend',
+      },
     },
     {
       name: 'Node.js',
       icon: 'node.svg',
+      meta: {
+        tab: 'fullstack',
+      },
     },
     {
       name: 'Express JS',
       icon: 'expressjs.svg',
+      meta: {
+        tab: 'backend',
+      },
+    },
+    {
+      name: 'MongoDB',
+      icon: 'mongodb.svg',
+      meta: {
+        tab: 'backend',
+      },
     },
     {
       name: 'Sequelize',
       icon: 'sequelize.svg',
+      meta: {
+        tab: 'backend',
+      },
     },
     {
       name: 'Mongoose',
       icon: 'mongoose.svg',
+      meta: {
+        tab: 'backend',
+      },
+    },
+    {
+      name: 'PostgreSQL',
+      icon: 'postgresql.svg',
+      meta: {
+        tab: 'backend',
+      },
     },
     {
       name: 'Redis',
       icon: 'redis.svg',
-    },
-    {
-      name: 'Socket.io',
-      icon: 'socketio.svg',
-    },
-    {
-      name: 'JWT',
-      icon: 'jwt.svg',
-    },
-    {
-      name: 'Auth0',
-      icon: 'auth0.svg',
-    },
-    {
-      name: 'Passport.js',
-      icon: 'passportjs.svg',
-    },
-    {
-      name: 'Git',
-      icon: 'git.svg',
-    },
-    {
-      name: 'Docker',
-      icon: 'docker.svg',
-    },
-    {
-      name: 'Kubernetes',
-      icon: 'kubernetes.svg',
-    },
-    {
-      name: 'Jenkins',
-      icon: 'jenkins.svg',
-    },
-    {
-      name: 'Cypress',
-      icon: 'cypress.svg',
-    },
-    {
-      name: 'Jasmine',
-      icon: 'jasmine.svg',
-    },
-    {
-      name: 'Karma',
-      icon: 'karma.svg',
-    },
-    {
-      name: 'Mocha',
-      icon: 'mocha.svg',
-    },
-    {
-      name: 'Chai',
-      icon: 'chai.svg',
-    },
-    {
-      name: 'Lighthouse CI',
-      icon: 'lighthouseci.png',
-    },
-    {
-      name: 'Clinic.js',
-      icon: 'clinicjs.svg',
-    },
-    {
-      name: 'Artillery',
-      icon: 'artillery.svg',
-    },
-    {
-      name: 'Nest.js',
-      icon: 'nestjs.svg',
-    },
-    {
-      name: 'TypeORM',
-      icon: 'typeorm.svg',
+      meta: {
+        tab: 'backend',
+      },
     },
     {
       name: 'GraphQL',
       icon: 'graphql.svg',
+      meta: {
+        tab: 'backend',
+      },
+    },
+    {
+      name: 'Prisma',
+      icon: 'prisma.svg',
+      meta: {
+        tab: 'backend',
+      },
+    },
+    {
+      name: 'Socket.io',
+      icon: 'socketio.svg',
+      meta: {
+        tab: 'realtime',
+      },
+    },
+    {
+      name: 'JWT',
+      icon: 'jwt.svg',
+      meta: {
+        tab: 'backend',
+      },
+    },
+    {
+      name: 'Auth0',
+      icon: 'auth0.svg',
+      meta: {
+        tab: 'backend',
+      },
+    },
+    {
+      name: 'Passport.js',
+      icon: 'passportjs.svg',
+      meta: {
+        tab: 'backend',
+      },
+    },
+    {
+      name: 'Git',
+      icon: 'git.svg',
+      meta: {
+        tab: 'devops',
+      },
+    },
+    {
+      name: 'Docker',
+      icon: 'docker.svg',
+      meta: {
+        tab: 'devops',
+      },
+    },
+    {
+      name: 'Kubernetes',
+      icon: 'kubernetes.svg',
+      meta: {
+        tab: 'devops',
+      },
+    },
+    {
+      name: 'Jenkins',
+      icon: 'jenkins.svg',
+      meta: {
+        tab: 'devops',
+      },
+    },
+    {
+      name: 'Cypress',
+      icon: 'cypress.svg',
+      meta: {
+        tab: 'testing',
+      },
+    },
+    {
+      name: 'Jasmine',
+      icon: 'jasmine.svg',
+      meta: {
+        tab: 'testing',
+      },
+    },
+    {
+      name: 'Karma',
+      icon: 'karma.svg',
+      meta: {
+        tab: 'testing',
+      },
+    },
+    {
+      name: 'Mocha',
+      icon: 'mocha.svg',
+      meta: {
+        tab: 'testing',
+      },
+    },
+    {
+      name: 'Chai',
+      icon: 'chai.svg',
+      meta: {
+        tab: 'testing',
+      },
+    },
+    {
+      name: 'Lighthouse CI',
+      icon: 'lighthouseci.png',
+      meta: {
+        tab: 'testing',
+      },
+    },
+    {
+      name: 'Clinic.js',
+      icon: 'clinicjs.svg',
+      meta: {
+        tab: 'testing',
+      },
+    },
+    {
+      name: 'Artillery',
+      icon: 'artillery.svg',
+      meta: {
+        tab: 'testing',
+      },
+    },
+    {
+      name: 'Nest.js',
+      icon: 'nestjs.svg',
+      meta: {
+        tab: 'backend',
+      },
+    },
+    {
+      name: 'TypeORM',
+      icon: 'typeorm.svg',
+      meta: {
+        tab: 'backend',
+      },
+    },
+    {
+      name: 'GraphQL',
+      icon: 'graphql.svg',
+      meta: {
+        tab: 'backend',
+      },
     },
     {
       name: 'WebSocket',
       icon: 'websocket.svg',
+      meta: {
+        tab: 'backend',
+      },
     },
     {
       name: 'Jest',
       icon: 'jest.svg',
+      meta: {
+        tab: 'testing',
+      },
     },
     {
       name: 'React',
       icon: 'react.svg',
+      meta: {
+        tab: 'frontend',
+      },
     },
   ];
 

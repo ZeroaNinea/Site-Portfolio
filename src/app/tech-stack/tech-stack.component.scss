@@ -16,6 +16,13 @@
     margin: 0;
     padding: 1rem 0;
 
+    height: 50vh;
+    height: 50dvh;
+
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: start;
+
     .stack-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
