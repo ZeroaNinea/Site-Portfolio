@@ -14,70 +14,87 @@
   .drawer-content {
     overflow: hidden;
     margin: 0;
-    padding: 1rem 0;
+    padding: 0;
 
-    height: 50vh;
-    height: 50dvh;
+    // height: 50vh;
+    // height: 50dvh;
 
     // display: flex;
     // flex-direction: column;
     // justify-content: start;
 
-    .stack-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 1rem;
-      justify-items: center;
+    .tab-view-point {
+      overflow: hidden;
+      margin: 0;
+      padding: 1rem;
 
-      .ripple {
-        border-radius: 0.75rem;
-        block-size: fit-content;
+      // height: 50vh;
+      // height: 50dvh;
 
-        transition:
-          background-color 0.1s ease-in-out,
-          transform 0.1s ease-in-out,
-          box-shadow 0.1s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      // justify-content: start;
 
-        .stack-card {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 1rem;
+      transition: all 0.3s ease-in-out;
+
+      .stack-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+        justify-items: center;
+        // height: 100vh;
+        // height: 100dvh;
+
+        .ripple {
           border-radius: 0.75rem;
-          background: var(--mat-sys-secondary-container);
-          color: var(--mat-sys-on-background);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-          cursor: grab;
+          block-size: fit-content;
 
           transition:
             background-color 0.1s ease-in-out,
             transform 0.1s ease-in-out,
             box-shadow 0.1s ease-in-out;
 
-          .stack-icon {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 0.5rem;
-            user-select: none;
-          }
-
-          p {
-            margin: 0;
-            font-weight: 500;
-            user-select: none;
-          }
-        }
-
-        &:hover {
-          transform: scale(1.05);
-          box-shadow:
-            0 1px 1px rgba(0, 0, 0, 0.1),
-            0 -2px 8px rgba(0, 0, 0, 0.1),
-            2px 0 8px rgba(0, 0, 0, 0.1),
-            -2px 0 8px rgba(0, 0, 0, 0.1);
-
           .stack-card {
-            background-color: var(--mat-sys-secondary-fixed-dim);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background: var(--mat-sys-secondary-container);
+            color: var(--mat-sys-on-background);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            cursor: grab;
+
+            transition:
+              background-color 0.1s ease-in-out,
+              transform 0.1s ease-in-out,
+              box-shadow 0.1s ease-in-out;
+
+            .stack-icon {
+              width: 48px;
+              height: 48px;
+              margin-bottom: 0.5rem;
+              user-select: none;
+            }
+
+            p {
+              margin: 0;
+              font-weight: 500;
+              user-select: none;
+            }
+          }
+
+          &:hover {
+            transform: scale(1.05);
+            box-shadow:
+              0 1px 1px rgba(0, 0, 0, 0.1),
+              0 -2px 8px rgba(0, 0, 0, 0.1),
+              2px 0 8px rgba(0, 0, 0, 0.1),
+              -2px 0 8px rgba(0, 0, 0, 0.1);
+
+            .stack-card {
+              background-color: var(--mat-sys-secondary-fixed-dim);
+            }
           }
         }
       }

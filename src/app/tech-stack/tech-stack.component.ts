@@ -55,7 +55,7 @@ export class TechStackComponent {
     { label: 'Testing & Quality', value: 'testing' },
   ];
 
-  activeTab: StackTab = 'frontend';
+  activeTabIndex = 0;
 
   stackItems: StackItem[] = [
     {
@@ -95,7 +95,7 @@ export class TechStackComponent {
     },
     {
       name: 'Nest.js',
-      icon: 'nest.svg',
+      icon: 'nestjs.svg',
       meta: {
         tab: 'backend',
       },
@@ -115,13 +115,6 @@ export class TechStackComponent {
       },
     },
     {
-      name: 'MongoDB',
-      icon: 'mongodb.svg',
-      meta: {
-        tab: 'backend',
-      },
-    },
-    {
       name: 'Sequelize',
       icon: 'sequelize.svg',
       meta: {
@@ -131,13 +124,6 @@ export class TechStackComponent {
     {
       name: 'Mongoose',
       icon: 'mongoose.svg',
-      meta: {
-        tab: 'backend',
-      },
-    },
-    {
-      name: 'PostgreSQL',
-      icon: 'postgresql.svg',
       meta: {
         tab: 'backend',
       },
@@ -157,8 +143,8 @@ export class TechStackComponent {
       },
     },
     {
-      name: 'Prisma',
-      icon: 'prisma.svg',
+      name: 'Prisma ORM',
+      icon: 'prismaorm.svg',
       meta: {
         tab: 'backend',
       },
@@ -319,7 +305,15 @@ export class TechStackComponent {
     },
   ];
 
+  get activeTab() {
+    return this.tabs[this.activeTabIndex].value;
+  }
+
   drop(event: CdkDragDrop<StackItem[]>) {
     moveItemInArray(this.stackItems, event.previousIndex, event.currentIndex);
+  }
+
+  selectTab(index: number) {
+    this.activeTabIndex = index;
   }
 }

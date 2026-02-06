@@ -18,36 +18,54 @@
   </h2>
 
   <mat-drawer-container>
-    <mat-drawer #drawer mode="side">I'm a drawer</mat-drawer>
+    <mat-drawer #drawer mode="side">
+      <div class="tabs">
+        @for (tab of tabs; track $index) {
+          <button
+            matButton
+            (click)="selectTab($index)"
+            [class.active]="$index === activeTabIndex"
+          >
+            {{ tab.label }}
+          </button>
+          {{ activeTabIndex }}
+        }
+      </div>
+    </mat-drawer>
     <mat-drawer-content class="drawer-content">
-      @for (tab of tabs; track tab) {
-        <div
-          cdkDropList
-          cdkDropListOrientation="mixed"
-          class="stack-grid"
-          (cdkDropListDropped)="drop($event)"
-        >
-          @for (item of stackItems; track item) {
-            @if (item.meta.tab === tab.value) {
-              <div
-                cdkDrag
-                matRipple
-                [matRippleTrigger]="trigger"
-                class="ripple"
-              >
-                <div #trigger class="stack-card">
-                  <img
-                    src="./assets/technology-icons/{{ item.icon }}"
-                    alt="{{ item.name }}"
-                    class="stack-icon"
-                  />
-                  <p>{{ item.name }}</p>
+      <div
+        class="tab-view-point"
+        [style]="'transform: translateY(-' + activeTabIndex * 50 + 'vh)'"
+      >
+        @for (tab of tabs; track tab) {
+          <div
+            cdkDropList
+            cdkDropListOrientation="mixed"
+            class="stack-grid"
+            (cdkDropListDropped)="drop($event)"
+          >
+            @for (item of stackItems; track item) {
+              @if (item.meta.tab === tab.value) {
+                <div
+                  cdkDrag
+                  matRipple
+                  [matRippleTrigger]="trigger"
+                  class="ripple"
+                >
+                  <div #trigger class="stack-card">
+                    <img
+                      src="./assets/technology-icons/{{ item.icon }}"
+                      alt="{{ item.name }}"
+                      class="stack-icon"
+                    />
+                    <p>{{ item.name }}</p>
+                  </div>
                 </div>
-              </div>
+              }
             }
-          }
-        </div>
-      }
+          </div>
+        }
+      </div>
     </mat-drawer-content>
   </mat-drawer-container>
 </section>
