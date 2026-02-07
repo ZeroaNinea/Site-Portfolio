@@ -165,7 +165,7 @@ export class TechStackComponent implements OnInit {
       name: 'Sequelize',
       icon: 'sequelize.svg',
       description:
-        'A library for ORM (Object-Relational Mapping) in Node.js, providing a simple way to work with SQL-based databases.',
+        'A modern TypeScript and Node.js ORM for Oracle, Postgres, MySQL, MariaDB, SQLite and SQL Server, and more.',
       meta: {
         tab: 'backend',
       },
