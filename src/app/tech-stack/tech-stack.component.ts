@@ -337,8 +337,7 @@ export class TechStackComponent implements AfterViewInit {
       id: 'lighthouseci',
       name: 'Lighthouse CI',
       icon: 'lighthouseci.png',
-      description:
-        'A tool for generating and publishing Lighthouse reports for your web projects. Optimizes performance, accessibility, and SEO.',
+      description: 'A tool for optimizing performance, accessibility, and SEO.',
       meta: {
         tab: 'testing',
       },
@@ -398,7 +397,7 @@ export class TechStackComponent implements AfterViewInit {
       name: 'Jest',
       icon: 'jest.svg',
       description:
-        'A delightful JavaScript Testing Framework with a focus on simplicity.',
+        'A delightful JavaScript Testing Framework with a focus on simplicity. Used by default in Nest.js.',
       meta: {
         tab: 'testing',
       },
