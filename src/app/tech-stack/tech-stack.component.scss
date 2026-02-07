@@ -65,100 +65,105 @@
       height: 67dvh;
       background-color: transparent;
 
-      .tab-view-point {
+      .tab-viewport {
         height: 100%;
-        display: flex;
-        flex-direction: column;
+        overflow: hidden;
 
-        transition: transform 0.3s ease-in-out;
-
-        .stack-grid {
-          flex: 0 0 100%;
+        .tab-view-point {
           height: 100%;
+          display: flex;
+          flex-direction: column;
 
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-          gap: 1rem;
-          justify-items: center;
+          transition: transform 0.3s ease-in-out;
 
-          padding: 1rem;
-          box-sizing: border-box;
-          background-color: transparent;
+          .stack-grid {
+            flex: 0 0 100%;
+            height: 100%;
 
-          .ripple {
-            border-radius: 0.75rem;
-            block-size: fit-content;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            justify-items: center;
 
-            transition:
-              background-color 0.1s ease-in-out,
-              transform 0.1s ease-in-out,
-              box-shadow 0.1s ease-in-out;
+            padding: 1rem;
+            box-sizing: border-box;
+            background-color: transparent;
 
-            .stack-card {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              padding: 1rem;
+            .ripple {
               border-radius: 0.75rem;
-              background: var(--mat-sys-secondary-container);
-              color: var(--mat-sys-on-background);
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-              cursor: grab;
+              block-size: fit-content;
 
               transition:
                 background-color 0.1s ease-in-out,
                 transform 0.1s ease-in-out,
                 box-shadow 0.1s ease-in-out;
 
-              .stack-icon {
-                width: 48px;
-                height: 48px;
-                margin-bottom: 0.5rem;
-                user-select: none;
-              }
-
-              .stack-description {
-                color: var(--mat-sys-outline);
-                font-size: 0.875rem;
-
-                max-height: 0;
-                max-width: 0;
-                overflow: hidden;
-                opacity: 0;
-                user-select: none;
-                display: inline-block;
+              .stack-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem;
+                border-radius: 0.75rem;
+                background: var(--mat-sys-secondary-container);
+                color: var(--mat-sys-on-background);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+                cursor: grab;
 
                 transition:
-                  max-height 250ms ease,
-                  max-width 400ms ease,
-                  opacity 200ms ease,
-                  margin-top 200ms ease;
+                  background-color 0.1s ease-in-out,
+                  transform 0.1s ease-in-out,
+                  box-shadow 0.1s ease-in-out;
+
+                .stack-icon {
+                  width: 48px;
+                  height: 48px;
+                  margin-bottom: 0.5rem;
+                  user-select: none;
+                }
+
+                .stack-description {
+                  color: var(--mat-sys-outline);
+                  font-size: 0.875rem;
+
+                  max-height: 0;
+                  max-width: 0;
+                  overflow: hidden;
+                  opacity: 0;
+                  user-select: none;
+                  display: inline-block;
+
+                  transition:
+                    max-height 250ms ease,
+                    max-width 400ms ease,
+                    opacity 200ms ease,
+                    margin-top 200ms ease;
+                }
+
+                .stack-description.expanded {
+                  max-height: 200px;
+                  max-width: 200px;
+                  opacity: 1;
+                  margin-top: 0.5rem;
+                }
+
+                p {
+                  margin: 0;
+                  font-weight: 500;
+                  user-select: none;
+                }
               }
 
-              .stack-description.expanded {
-                max-height: 200px;
-                max-width: 200px;
-                opacity: 1;
-                margin-top: 0.5rem;
-              }
+              &:hover {
+                transform: scale(1.05);
+                box-shadow:
+                  0 1px 1px rgba(0, 0, 0, 0.1),
+                  0 -2px 8px rgba(0, 0, 0, 0.1),
+                  2px 0 8px rgba(0, 0, 0, 0.1),
+                  -2px 0 8px rgba(0, 0, 0, 0.1);
 
-              p {
-                margin: 0;
-                font-weight: 500;
-                user-select: none;
-              }
-            }
-
-            &:hover {
-              transform: scale(1.05);
-              box-shadow:
-                0 1px 1px rgba(0, 0, 0, 0.1),
-                0 -2px 8px rgba(0, 0, 0, 0.1),
-                2px 0 8px rgba(0, 0, 0, 0.1),
-                -2px 0 8px rgba(0, 0, 0, 0.1);
-
-              .stack-card {
-                background-color: var(--mat-sys-secondary-fixed-dim);
+                .stack-card {
+                  background-color: var(--mat-sys-secondary-fixed-dim);
+                }
               }
             }
           }
