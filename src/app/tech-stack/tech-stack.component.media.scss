@@ -20,6 +20,11 @@
         }
       }
     }
+
+    .drawer-content {
+      height: 100vh !important;
+      height: 100dvh !important;
+    }
   }
 }
 
@@ -48,5 +53,10 @@
         }
       }
     }
+  }
+
+  .drawer-content {
+    height: 100vh !important;
+    height: 100dvh !important;
   }
 }
