@@ -5,7 +5,7 @@ import {
   inject,
   PLATFORM_ID,
   ViewChild,
-  AfterViewInit,
+  OnInit,
 } from '@angular/core';
 
 import { MatRippleModule } from '@angular/material/core';
@@ -40,7 +40,7 @@ import { StackTab } from '../shared/types/stack-tab.alias';
     './tech-stack.component.media.scss',
   ],
 })
-export class TechStackComponent implements AfterViewInit {
+export class TechStackComponent implements OnInit {
   private platformId = inject(PLATFORM_ID);
   isBrowser = isPlatformBrowser(this.platformId);
   isDesktop = false;
@@ -421,7 +421,7 @@ export class TechStackComponent implements AfterViewInit {
     return this.tabs.length;
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     if (!this.isBrowser) return;
 
     this.isDesktop = window.matchMedia('(min-width: 1024px)').matches;
