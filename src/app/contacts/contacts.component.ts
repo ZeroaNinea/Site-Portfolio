@@ -13,6 +13,9 @@ import { MatButtonModule } from '@angular/material/button';
 export class ContactsComponent {
   @ViewChild('contacts', { static: false })
   contacts!: ElementRef<HTMLElement>;
+  date() {
+    return new Date();
+  }
 
   openLink(url: string) {
     window.open(url, '_blank');
