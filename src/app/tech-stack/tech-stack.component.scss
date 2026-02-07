@@ -120,7 +120,11 @@
                 align-items: center;
                 padding: 1rem;
                 border-radius: 0.75rem;
-                background: var(--mat-sys-secondary-container);
+                background-color: color-mix(
+                  in srgb,
+                  var(--mat-sys-secondary-container) 75%,
+                  transparent
+                );
                 color: var(--mat-sys-on-background);
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
                 cursor: grab;
@@ -178,7 +182,11 @@
                   -2px 0 8px rgba(0, 0, 0, 0.1);
 
                 .stack-card {
-                  background-color: var(--mat-sys-secondary-fixed-dim);
+                  background-color: color-mix(
+                    in srgb,
+                    var(--mat-sys-secondary-fixed-dim) 75%,
+                    transparent
+                  );
                 }
               }
             }
@@ -193,7 +201,11 @@
   position: relative;
   box-sizing: border-box;
   border-radius: 0.75rem;
-  background-color: var(--mat-sys-secondary-container);
+  background-color: color-mix(
+    in srgb,
+    var(--mat-sys-secondary-container) 75%,
+    transparent
+  );
   box-shadow:
     0 5px 5px -3px rgba(0, 0, 0, 0.2),
     0 8px 10px 1px rgba(0, 0, 0, 0.14),
