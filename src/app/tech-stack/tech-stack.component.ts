@@ -64,7 +64,7 @@ export class TechStackComponent implements AfterViewInit {
       id: 'angular',
       name: 'Angular',
       icon: 'angular.svg',
-      description: '',
+      description: 'A framework for building single-page applications.',
       meta: {
         tab: 'frontend',
       },
