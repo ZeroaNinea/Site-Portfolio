@@ -20,6 +20,8 @@ import {
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
 
+import { CyberLinesComponent } from '../cyber-lines/cyber-lines.component';
+
 import { StackItem } from '../shared/types/stack-item.interface';
 import { StackTab } from '../shared/types/stack-tab.alias';
 
@@ -32,6 +34,7 @@ import { StackTab } from '../shared/types/stack-tab.alias';
     MatIconModule,
     CdkDropList,
     CdkDrag,
+    CyberLinesComponent,
   ],
   standalone: true,
   templateUrl: './tech-stack.component.html',
