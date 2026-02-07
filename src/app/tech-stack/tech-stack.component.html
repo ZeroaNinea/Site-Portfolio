@@ -59,17 +59,24 @@
               <div
                 cdkDrag
                 [cdkDragDisabled]="tab.value !== activeTab"
+                [cdkDragStartDelay]="150"
                 matRipple
                 [matRippleTrigger]="trigger"
                 class="ripple"
               >
-                <div #trigger class="stack-card">
+                <div #trigger class="stack-card" (click)="toggle(item)">
                   <img
                     src="./assets/technology-icons/{{ item.icon }}"
                     alt="{{ item.name }}"
                     class="stack-icon"
                   />
                   <p>{{ item.name }}</p>
+                  <div
+                    class="stack-description"
+                    [class.expanded]="isExpanded(item)"
+                  >
+                    {{ item.description }}
+                  </div>
                 </div>
               </div>
             }

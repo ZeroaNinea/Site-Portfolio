@@ -55,8 +55,8 @@
     margin: 0;
     padding: 0;
 
-    height: 60vh;
-    height: 60dvh;
+    height: 70vh;
+    height: 70dvh;
 
     .tab-view-point {
       height: 100%;
@@ -109,6 +109,31 @@
               user-select: none;
             }
 
+            .stack-description {
+              color: var(--mat-sys-outline);
+              font-size: 0.875rem;
+
+              max-height: 0;
+              max-width: 0;
+              overflow: hidden;
+              opacity: 0;
+              user-select: none;
+              display: inline-block;
+
+              transition:
+                max-height 250ms ease,
+                max-width 400ms ease,
+                opacity 200ms ease,
+                margin-top 200ms ease;
+            }
+
+            .stack-description.expanded {
+              max-height: 200px;
+              max-width: 200px;
+              opacity: 1;
+              margin-top: 0.5rem;
+            }
+
             p {
               margin: 0;
               font-weight: 500;
@@ -156,6 +181,10 @@
   }
 
   p {
+    display: none;
+  }
+
+  .stack-description {
     display: none;
   }
 }
