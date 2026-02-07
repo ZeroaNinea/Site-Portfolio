@@ -61,7 +61,11 @@
 
         button.active {
           color: var(--mat-sys-primary);
-          background-color: var(--mat-sys-secondary-container);
+          background-color: color-mix(
+            in srgb,
+            var(--mat-sys-secondary-container) 75%,
+            transparent
+          );
           font-weight: 600;
         }
       }
@@ -216,7 +220,11 @@
 }
 
 .cdk-drag-placeholder {
-  background: var(--mat-sys-secondary-container);
+  background-color: color-mix(
+    in srgb,
+    var(--mat-sys-secondary-container) 75%,
+    transparent
+  );
   border: 2px dashed var(--mat-sys-primary);
   border-radius: 0.75rem;
   opacity: 0.3;
