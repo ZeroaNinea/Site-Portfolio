@@ -328,7 +328,7 @@ export class TechStackComponent implements AfterViewInit {
       name: 'Chai',
       icon: 'chai.svg',
       description:
-        'A BDD/TDD assertion library for node and the browser that can be delightfully paired with any javascript testing framework.',
+        'A BDD/TDD assertion library for Node.js and any javascript testing framework.',
       meta: {
         tab: 'testing',
       },
