@@ -1,3 +1,10 @@
+@media ((max-height: 760px)) {
+  .drawer-content {
+    height: 200vh !important;
+    height: 200dvh !important;
+  }
+}
+
 @media (max-width: 768px) {
   .tech-stack {
     .section-title {
