@@ -4,6 +4,14 @@
       font-size: 1.5rem;
     }
 
+    mat-drawer-container {
+      mat-drawer {
+        .tabs {
+          width: 87vw;
+        }
+      }
+    }
+
     .stack-grid {
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
