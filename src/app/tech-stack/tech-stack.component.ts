@@ -102,6 +102,15 @@ export class TechStackComponent implements OnInit {
       },
     },
     {
+      id: 'react',
+      name: 'React',
+      icon: 'react.svg',
+      description: 'A JavaScript library for building user interfaces.',
+      meta: {
+        tab: 'frontend',
+      },
+    },
+    {
       id: 'vuejs',
       name: 'Vue.js',
       icon: 'vuejs.svg',
@@ -120,15 +129,6 @@ export class TechStackComponent implements OnInit {
       meta: {
         tab: 'frontend',
       }
-    },
-    {
-      id: 'react',
-      name: 'React',
-      icon: 'react.svg',
-      description: 'A JavaScript library for building user interfaces.',
-      meta: {
-        tab: 'frontend',
-      },
     },
     {
       id: 'threejs',
