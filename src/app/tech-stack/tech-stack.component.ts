@@ -102,6 +102,35 @@ export class TechStackComponent implements OnInit {
       },
     },
     {
+      id: 'vuejs',
+      name: 'Vue.js',
+      icon: 'vuejs.svg',
+      description:
+        'A progressive JavaScript framework for building user interfaces.',
+      meta: {
+        tab: 'frontend',
+      },
+    },
+    {
+      id: 'Pinia',
+      name: 'Pinia',
+      icon: 'pinia.svg',
+      description:
+        'A state management library for Vue.js applications.',
+      meta: {
+        tab: 'frontend',
+      }
+    },
+    {
+      id: 'react',
+      name: 'React',
+      icon: 'react.svg',
+      description: 'A JavaScript library for building user interfaces.',
+      meta: {
+        tab: 'frontend',
+      },
+    },
+    {
       id: 'threejs',
       name: 'Three.js',
       icon: 'threejs.svg',
@@ -405,15 +434,7 @@ export class TechStackComponent implements OnInit {
         tab: 'testing',
       },
     },
-    {
-      id: 'react',
-      name: 'React',
-      icon: 'react.svg',
-      description: 'A JavaScript library for building user interfaces.',
-      meta: {
-        tab: 'frontend',
-      },
-    },
+    
   ];
 
   get activeTab() {
