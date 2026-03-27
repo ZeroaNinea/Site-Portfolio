@@ -33,7 +33,7 @@ export class ProjectsComponent {
     {
       name: 'Real-Time Chat App',
       image: './assets/previews/real-time-chat-app.png',
-      link: 'https://github.com/ZeroaNinea/Real-Time-Chat-App',
+      link: 'https://real-time-chat-app-great-bulbdog.vercel.app/',
     },
     {
       name: 'UI Elements',
