@@ -3,6 +3,8 @@ import { MatRippleModule } from '@angular/material/core';
 
 import { MatButtonModule } from '@angular/material/button';
 
+import { ContactItem } from '../shared/types/contactItem.interface';
+
 @Component({
   selector: 'app-contacts',
   imports: [MatButtonModule, MatRippleModule],
@@ -14,7 +16,7 @@ export class ContactsComponent {
   @ViewChild('contacts', { static: false })
   contacts!: ElementRef<HTMLElement>;
 
-  contactList = [
+  contactList: ContactItem[] = [
     {
       icon: './assets/contact-icons/github.svg',
       link: 'https://github.com/ZeroaNinea',
