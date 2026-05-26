@@ -40,6 +40,21 @@ export class ProjectsComponent {
       image: './assets/previews/ui-elements.png',
       link: 'https://github.com/ZeroaNinea/UI-Elements',
     },
+    {
+      name: 'Real Estate Agency Website',
+      image: './assets/previews/real-estate-agency.png',
+      link: 'https://real-estate-agency.zeroaninea.workers.dev/',
+    },
+    {
+      name: 'Command Palette in Angular',
+      image: './assets/previews/command-palette-angular.png',
+      link: 'https://zeroaninea.github.io/Command-Palette-Angular/',
+    },
+    {
+      name: 'Modal Window in React',
+      image: './assets/previews/modal-window-react.png',
+      link: 'https://zeroaninea.github.io/Modal-Window-Vite-React-Tailwind/',
+    },
   ];
 
   constructor() {
