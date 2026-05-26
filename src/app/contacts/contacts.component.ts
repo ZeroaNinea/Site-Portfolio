@@ -13,6 +13,20 @@ import { MatButtonModule } from '@angular/material/button';
 export class ContactsComponent {
   @ViewChild('contacts', { static: false })
   contacts!: ElementRef<HTMLElement>;
+
+  contactList = [
+    {
+      icon: './assets/contact-icons/github.svg',
+      link: 'https://github.com/ZeroaNinea',
+      alt: 'GitHub',
+    },
+    {
+      icon: './assets/contact-icons/gmail.svg',
+      link: 'mailto:heghine.dev357@gmail.com',
+      alt: 'Gmail',
+    },
+  ];
+
   date() {
     return new Date();
   }
