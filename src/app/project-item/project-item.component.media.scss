@@ -3,3 +3,10 @@
     width: 120px;
   }
 }
+
+@media ((max-height: 600px) and (orientation: landscape)) {
+  .cube-wrapper {
+    flex-direction: row;
+    min-width: 225px;
+  }
+}
