@@ -40,6 +40,7 @@
     gap: 5rem;
 
     .project-item {
+      block-size: fit-content;
       transition: background-color 0.3s ease-in-out;
     }
 

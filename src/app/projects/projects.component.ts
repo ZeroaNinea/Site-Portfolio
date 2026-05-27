@@ -55,6 +55,11 @@ export class ProjectsComponent {
       image: './assets/previews/modal-window-react.png',
       link: 'https://zeroaninea.github.io/Modal-Window-Vite-React-Tailwind/',
     },
+    {
+      name: 'Site Portfolio',
+      image: './assets/previews/site-portfolio.png',
+      link: 'https://github.com/ZeroaNinea/Site-Portfolio',
+    },
   ];
 
   constructor() {

@@ -38,11 +38,11 @@ export class ProjectItemComponent {
 
   ngAfterViewInit() {
     const canvas = this.host.nativeElement.querySelector(
-      'canvas'
+      'canvas',
     ) as HTMLCanvasElement;
     const wrapper = this.host.nativeElement.querySelector('.cube-wrapper');
     this.lighting = wrapper.querySelector(
-      '.background-lighting'
+      '.background-lighting',
     ) as HTMLElement;
     this.projectName = wrapper.querySelector('.project-name') as HTMLElement;
 
@@ -79,7 +79,7 @@ export class ProjectItemComponent {
         wireframe: true,
         opacity: 0.5,
         transparent: true,
-      })
+      }),
     );
     this.scene.add(this.cube1);
 
@@ -90,7 +90,7 @@ export class ProjectItemComponent {
         wireframe: true,
         opacity: 0.5,
         transparent: true,
-      })
+      }),
     );
     this.scene.add(this.cube2);
 
@@ -102,7 +102,7 @@ export class ProjectItemComponent {
       new THREE.MeshBasicMaterial({
         map: projectTexture,
         transparent: true,
-      })
+      }),
     );
     this.scene.add(this.plane);
 
@@ -125,12 +125,12 @@ export class ProjectItemComponent {
         this.cube1.scale.set(
           Math.min(this.cube1.scale.x + 0.015, 1.2),
           Math.min(this.cube1.scale.y + 0.015, 1.2),
-          Math.min(this.cube1.scale.z + 0.015, 1.2)
+          Math.min(this.cube1.scale.z + 0.015, 1.2),
         );
         this.cube2.scale.set(
           Math.min(this.cube2.scale.x + 0.015, 1.2),
           Math.min(this.cube2.scale.y + 0.015, 1.2),
-          Math.min(this.cube2.scale.z + 0.015, 1.2)
+          Math.min(this.cube2.scale.z + 0.015, 1.2),
         );
 
         this.cube1.rotation.x += 0.01;
@@ -139,12 +139,12 @@ export class ProjectItemComponent {
         this.cube1.scale.set(
           Math.max(this.cube1.scale.x - 0.01, 1),
           Math.max(this.cube1.scale.y - 0.01, 1),
-          Math.max(this.cube1.scale.z - 0.01, 1)
+          Math.max(this.cube1.scale.z - 0.01, 1),
         );
         this.cube2.scale.set(
           Math.max(this.cube2.scale.x - 0.01, 1),
           Math.max(this.cube2.scale.y - 0.01, 1),
-          Math.max(this.cube2.scale.z - 0.01, 1)
+          Math.max(this.cube2.scale.z - 0.01, 1),
         );
 
         this.cube1.rotation.x += this.cube1Rot.x;
@@ -199,8 +199,9 @@ export class ProjectItemComponent {
 
   private onResize = () => {
     const wrapper = this.host.nativeElement.querySelector(
-      '.cube-wrapper'
+      '.cube-wrapper',
     ) as HTMLElement;
+    console.log('clientWidth', wrapper.clientWidth);
     const size =
       screen.orientation.type === 'landscape-primary' &&
       window.innerHeight < 600

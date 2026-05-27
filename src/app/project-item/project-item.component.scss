@@ -4,6 +4,8 @@
   margin: 1rem;
   cursor: pointer;
 
+  width: 200px;
+
   canvas {
     display: block;
     border-radius: 1rem;
@@ -15,7 +17,9 @@
     font-weight: 500;
     font-size: 1rem;
     user-select: none;
-    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition:
+      color 0.3s ease-in-out,
+      transform 0.3s ease-in-out;
 
     &::after {
       content: "";
