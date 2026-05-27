@@ -60,6 +60,52 @@
     margin-bottom: 1rem;
     color: var(--mat-sys-on-background);
     opacity: 0;
+
+    .gradient-text {
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .angular {
+      background-image: linear-gradient(90deg, #dd0088, #e66bff);
+    }
+
+    .react {
+      background-image: linear-gradient(90deg, #61dafb, #149eca);
+    }
+
+    .react-native {
+      background-image: linear-gradient(90deg, #61dafb, #8ed6fb);
+    }
+
+    .next {
+      background-image: linear-gradient(90deg, #ffffff, #888888);
+    }
+
+    .vue {
+      background-image: linear-gradient(90deg, #42b883, #35495e);
+    }
+
+    .nest {
+      background-image: linear-gradient(90deg, #ea2845, #b3122f);
+    }
+
+    .node {
+      background-image: linear-gradient(90deg, #68a063, #3c873a);
+    }
+
+    .cicd {
+      background-image: linear-gradient(90deg, #f59e0b, #ef4444);
+    }
+
+    .docker {
+      background-image: linear-gradient(90deg, #2496ed, #0b63b6);
+    }
+
+    .kubernetes {
+      background-image: linear-gradient(90deg, #326ce5, #6ea8fe);
+    }
   }
 }
 
