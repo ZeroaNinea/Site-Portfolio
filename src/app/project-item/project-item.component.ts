@@ -8,7 +8,10 @@ import * as THREE from 'three';
   imports: [],
   standalone: true,
   templateUrl: './project-item.component.html',
-  styleUrl: './project-item.component.scss',
+  styleUrls: [
+    './project-item.component.scss',
+    './project-item.component.media.scss',
+  ],
 })
 export class ProjectItemComponent {
   @Input() project!: Project;

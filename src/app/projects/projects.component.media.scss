@@ -4,12 +4,18 @@
       font-size: 1.5rem;
     }
   }
+
+  .project-item-list {
+    gap: 2rem !important;
+  }
 }
 
 @media ((max-height: 600px) and (orientation: landscape)) {
   .project-item-list {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem !important;
 
     .project-item {
       width: 40%;
