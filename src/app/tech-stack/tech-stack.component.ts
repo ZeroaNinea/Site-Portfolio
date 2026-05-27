@@ -110,6 +110,26 @@ export class TechStackComponent implements OnInit {
         tab: 'frontend',
       },
     },
+
+    {
+      id: 'zustand',
+      name: 'Zustand',
+      icon: 'zustand.svg',
+      description: 'A state management library for React applications.',
+      meta: {
+        tab: 'frontend',
+      },
+    },
+    {
+      id: 'expo',
+      name: 'Expo',
+      icon: 'expo.svg',
+      description:
+        'A framework for building native apps using React and React Native.',
+      meta: {
+        tab: 'frontend',
+      },
+    },
     {
       id: 'vuejs',
       name: 'Vue.js',
@@ -124,11 +144,10 @@ export class TechStackComponent implements OnInit {
       id: 'Pinia',
       name: 'Pinia',
       icon: 'pinia.svg',
-      description:
-        'A state management library for Vue.js applications.',
+      description: 'A state management library for Vue.js applications.',
       meta: {
         tab: 'frontend',
-      }
+      },
     },
     {
       id: 'threejs',
@@ -434,7 +453,6 @@ export class TechStackComponent implements OnInit {
         tab: 'testing',
       },
     },
-    
   ];
 
   get activeTab() {
