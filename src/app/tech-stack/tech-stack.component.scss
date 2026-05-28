@@ -76,14 +76,20 @@
         .stack-grid {
           display: flex;
           flex-direction: row;
-          justify-content: center;
           flex-wrap: wrap;
-          min-height: 500px;
+          gap: 2rem;
+          min-height: 450px;
+          padding-left: 2rem;
+          padding-top: 1rem;
 
           .ripple {
-            width: 100px;
-            // height: 200px;
-            // overflow: hidden;
+            border-radius: 0.75rem;
+            block-size: fit-content;
+
+            transition:
+              background-color 0.1s ease-in-out,
+              transform 0.1s ease-in-out,
+              box-shadow 0.1s ease-in-out;
 
             .stack-card {
               display: flex;
@@ -106,8 +112,10 @@
                 box-shadow 0.1s ease-in-out;
 
               img {
-                width: 50px;
-                height: 50px;
+                width: 48px;
+                height: 48px;
+                margin-bottom: 0.5rem;
+                user-select: none;
               }
 
               .stack-description {
@@ -126,6 +134,36 @@
                   max-width 400ms ease,
                   opacity 200ms ease,
                   margin-top 200ms ease;
+              }
+
+              .stack-description.expanded {
+                max-height: 200px;
+                max-width: 200px;
+                opacity: 1;
+                margin-top: 0.5rem;
+              }
+
+              p {
+                margin: 0;
+                font-weight: 500;
+                user-select: none;
+              }
+            }
+
+            &:hover {
+              transform: scale(1.05);
+              box-shadow:
+                0 1px 1px rgba(0, 0, 0, 0.1),
+                0 -2px 8px rgba(0, 0, 0, 0.1),
+                2px 0 8px rgba(0, 0, 0, 0.1),
+                -2px 0 8px rgba(0, 0, 0, 0.1);
+
+              .stack-card {
+                background-color: color-mix(
+                  in srgb,
+                  var(--mat-sys-secondary-fixed-dim) 75%,
+                  transparent
+                );
               }
             }
           }
