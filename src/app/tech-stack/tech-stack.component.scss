@@ -75,13 +75,59 @@
       .stack-grid-wrapper {
         .stack-grid {
           display: flex;
-          flex-direction: column;
-          align-items: center;
+          flex-direction: row;
+          justify-content: center;
+          flex-wrap: wrap;
+          min-height: 500px;
 
           .ripple {
-            width: 50px;
-            height: 50px;
-            overflow: hidden;
+            width: 100px;
+            // height: 200px;
+            // overflow: hidden;
+
+            .stack-card {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              padding: 1rem;
+              border-radius: 0.75rem;
+              background-color: color-mix(
+                in srgb,
+                var(--mat-sys-secondary-container) 75%,
+                transparent
+              );
+              color: var(--mat-sys-on-background);
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+              cursor: grab;
+
+              transition:
+                background-color 0.1s ease-in-out,
+                transform 0.1s ease-in-out,
+                box-shadow 0.1s ease-in-out;
+
+              img {
+                width: 50px;
+                height: 50px;
+              }
+
+              .stack-description {
+                color: var(--mat-sys-outline);
+                font-size: 0.875rem;
+
+                max-height: 0;
+                max-width: 0;
+                overflow: hidden;
+                opacity: 0;
+                user-select: none;
+                display: inline-block;
+
+                transition:
+                  max-height 250ms ease,
+                  max-width 400ms ease,
+                  opacity 200ms ease,
+                  margin-top 200ms ease;
+              }
+            }
           }
         }
       }
