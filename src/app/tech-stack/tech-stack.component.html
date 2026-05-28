@@ -44,7 +44,7 @@
     </mat-drawer>
 
     <mat-drawer-content class="drawer-content">
-      <div class="tab-viewport">
+      <!-- <div class="tab-viewport">
         <div
           class="tab-view-point"
           [style.transform]="'translateY(-' + activeTabIndex * 100 + '%)'"
@@ -82,6 +82,42 @@
                   </div>
                 </div>
               }
+            </div>
+          }
+        </div>
+      </div> -->
+      <div class="stack-grid-wrapper">
+        <div
+          cdkDropList
+          cdkDropListOrientation="mixed"
+          [cdkDropListData]="getItemsForTab(activeTab)"
+          class="stack-grid"
+          (cdkDropListDropped)="drop($event, activeTab)"
+        >
+          @for (item of getItemsForTab(activeTab); track item.id) {
+            <div
+              cdkDrag
+              [cdkDragStartDelay]="150"
+              matRipple
+              [matRippleTrigger]="trigger"
+              class="ripple"
+            >
+              <div #trigger class="stack-card" (click)="toggle(item)">
+                <img
+                  src="./assets/technology-icons/{{ item.icon }}"
+                  alt="{{ item.name }}"
+                  class="stack-icon"
+                />
+
+                <p>{{ item.name }}</p>
+
+                <div
+                  class="stack-description"
+                  [class.expanded]="isExpanded(item)"
+                >
+                  {{ item.description }}
+                </div>
+              </div>
             </div>
           }
         </div>

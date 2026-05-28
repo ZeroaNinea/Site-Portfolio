@@ -110,7 +110,6 @@ export class TechStackComponent implements OnInit {
         tab: 'frontend',
       },
     },
-
     {
       id: 'zustand',
       name: 'Zustand',
