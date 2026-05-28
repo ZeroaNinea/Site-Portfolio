@@ -174,8 +174,8 @@
       margin: 0;
       padding: 0;
 
-      height: min(67vh, 700px);
-      height: min(67dvh, 700px);
+      height: min(69vh, 700px);
+      height: min(69dvh, 700px);
       background-color: transparent;
 
       .tab-viewport {
@@ -274,7 +274,7 @@
 
                 .stack-description.expanded {
                   max-height: 200px;
-                  max-width: 200px;
+                  max-width: 100px;
                   opacity: 1;
                   margin-top: 0.5rem;
                 }
