@@ -19,11 +19,8 @@
   </h2>
 
   <mat-drawer-container>
-    <mat-drawer
-      #drawer
-      [mode]="isDesktop ? 'side' : 'over'"
-      [opened]="isDesktop"
-    >
+    <mat-drawer #drawer mode="side" [opened]="isDesktop">
+      <!-- [mode]="isDesktop ? 'side' : 'over'" -->
       <div class="tabs">
         <div
           class="tab-indicator"
