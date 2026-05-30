@@ -206,8 +206,8 @@ export class ProjectItemComponent {
     ) as HTMLElement;
     console.log('clientWidth', wrapper.clientWidth);
     const size =
-      screen.orientation.type === 'landscape-primary' &&
-      window.innerHeight < 600
+      window.innerHeight < 600 &&
+      screen.orientation.type === 'landscape-primary'
         ? wrapper.clientWidth / 2
         : wrapper.clientWidth;
 

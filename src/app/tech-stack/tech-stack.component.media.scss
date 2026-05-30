@@ -6,9 +6,7 @@
 
     mat-drawer-container {
       mat-drawer {
-        .tabs {
-          width: 87vw;
-        }
+        width: 87vw;
       }
     }
 
@@ -43,6 +41,12 @@
 
     .section-title {
       font-size: 1.5rem;
+    }
+
+    mat-drawer-container {
+      mat-drawer {
+        width: 87vw;
+      }
     }
 
     .stack-grid {
