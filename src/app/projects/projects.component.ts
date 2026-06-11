@@ -31,9 +31,9 @@ export class ProjectsComponent {
 
   projectList: Project[] = [
     {
-      name: 'Real-Time Chat App',
+      name: 'Great Bulbdog Application',
       image: './assets/previews/real-time-chat-app.png',
-      link: 'https://real-time-chat-app-great-bulbdog.vercel.app/',
+      link: 'https://bulbchat.vercel.app/',
     },
     {
       name: 'UI Elements',
