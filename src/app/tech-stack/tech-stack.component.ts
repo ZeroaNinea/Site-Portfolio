@@ -120,6 +120,15 @@ export class TechStackComponent implements OnInit {
       },
     },
     {
+      id: 'redux',
+      name: 'Redux',
+      icon: 'redux.svg',
+      description: 'A state management library for React applications.',
+      meta: {
+        tab: 'frontend',
+      },
+    },
+    {
       id: 'expo',
       name: 'Expo',
       icon: 'expo.svg',
@@ -379,6 +388,16 @@ export class TechStackComponent implements OnInit {
       icon: 'chai.svg',
       description:
         'A BDD/TDD assertion library for Node.js and any javascript testing framework.',
+      meta: {
+        tab: 'testing',
+      },
+    },
+    {
+      id: 'react-testing-library',
+      name: 'React Testing Library',
+      icon: 'react-testing-library.svg',
+      description:
+        'A set of utility functions for testing React components. Used by default in React.',
       meta: {
         tab: 'testing',
       },
